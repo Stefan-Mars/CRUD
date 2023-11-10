@@ -1,14 +1,14 @@
 @extends('layouts/head')
 @section('content')
-
     @php
         $columns = Schema::getColumnListing('attributes');
         $excludeColumns = ['id'];
         $filteredColumns = array_diff($columns, $excludeColumns);
     @endphp
-    <a href="/">Back</a>
+    <br>
+    <a href="/" style='margin: 15px;'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='center'>
-        <table>
+        <table style='background-color: #d34428; padding:70px; border-radius: 5px'>
             <tr>
                 <td>KlantNaam</td>
                 <td>{{$project->KlantNaam}}</td>

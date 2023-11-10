@@ -1,13 +1,14 @@
 @extends('layouts.head')
 @section('content')
-<a href="/">Back</a>
+    <br>
+    <a href="/" style='margin: 15px;'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='center'>
         @php
             $columns = Schema::getColumnListing('attributes');
             $excludeColumns = ['id'];
             $filteredColumns = array_diff($columns, $excludeColumns);
         @endphp
-        <form action="/projects" method="POST">
+        <form action="/projects" method="POST" style='background-color: #d34428; padding:70px; border-radius: 5px'>
             @csrf
             <table>
                 <tr>
@@ -25,24 +26,25 @@
                 </tr>
                 <tr>
                     <td colspan="2" style='text-align:center'>
-                        <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres" style='width:80%'>
+                        <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
+                            style='width:80%'>
                         @error('ProjectAdres')
                             <p class="error-message">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
-                    <td colspan="2" style='text-align:center'>
-                        <input type="email" name="Email" id="Email" placeholder="Email" style='width:80%'>
-                        @error('Email')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
-                    </td>
+                <td colspan="2" style='text-align:center'>
+                    <input type="email" name="Email" id="Email" placeholder="Email" style='width:80%'>
+                    @error('Email')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
+                </td>
                 </tr>
 
                 @foreach ($filteredColumns as $column)
                     <tr>
                         <td>
-                            <label for="{{ $column }}">{{ $column }}</label>
+                            <label for="{{ $column }}">{{ str_replace('_', ' ', $column) }}</label>
                         </td>
                         <td>
                             <select name="{{ $column }}" id="{{ $column }}">
@@ -55,7 +57,7 @@
                                     @endforeach
                                 @endforeach
                             </select>
-                            @error('{{ $column }}')
+                            @error($column)
                                 <p class="error-message">{{ $message }}</p>
                             @enderror
                         </td>
