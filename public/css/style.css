@@ -1,0 +1,17 @@
+.error-message{
+    color: red;
+    font-size: small;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+select{
+    width: 100%;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0 3px;
+}
+
+  
