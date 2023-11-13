@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Kozijnen;
 use App\Models\Attributes;
 use Illuminate\Http\Request;
 
@@ -49,18 +50,21 @@ class ProjectController extends Controller
         return redirect('/')->with('message', 'Project created successfully!');
     }
     public function show(Project $project){
-        return view('projects/show', compact('project'));
+        $kozijnen = Kozijnen::all();
+        return view('projects/show', compact('kozijnen','project'));
     }
 
     public function create(Request $request){
         $attributes = Attributes::all();
-        return view('projects/create', compact('attributes'));
+        $kozijnen = Kozijnen::all();
+        return view('projects/create', compact('kozijnen','attributes'));
     }
 
     public function edit(Project $project)
     {
         $attributes = Attributes::all();
-        return view('projects/edit', compact('attributes','project'));
+        $kozijnen = Kozijnen::all();
+        return view('projects/edit', compact('kozijnen','project','attributes'));
     }
 
     public function update(Request $request, Project $project) {

@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     <script src="https://kit.fontawesome.com/356eec8587.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <title>Document</title>
 </head>
-<body style='margin:0px'>
+<body class='text-black font-sans m-0'>
     @yield('content') 
 </body>
 </html>
+
+

@@ -1,10 +1,6 @@
 @extends('layouts/head')
 @section('content')
-    @php
-        $columns = Schema::getColumnListing('attributes');
-        $excludeColumns = ['id'];
-        $filteredColumns = array_diff($columns, $excludeColumns);
-    @endphp
+
     <br>
     <a href="/" style='margin: 15px;'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='center'>
@@ -21,14 +17,15 @@
                 <td>Email</td>
                 <td>{{$project->Email}}</td>
             </tr>
-            @foreach($filteredColumns as $collumn)
-            <tr>
-                <td>{{$collumn}}</td>
-                <td>{{$project->$collumn}}</td>
-            </tr>
-            
+            @foreach($kozijnen as $column)
+                <tr>
+                    <td>{{ str_replace('_', ' ', $column->kozijn) }}</td>
+                    @php
+                        $attribute =  $column->kozijn
+                    @endphp
+                    <td>{{$project->$attribute}}</td>
+                </tr>
             @endforeach
         </table>
     </div>
 @endsection
-

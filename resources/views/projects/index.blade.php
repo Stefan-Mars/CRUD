@@ -2,12 +2,12 @@
 @section('content')
     @include('layouts/nav')
 
-    <div style='width:30%;'>
+    <div style='margin-left:15%; margin-right:15%;'>
     <br>
     <table id="myTable" class='display table'>
         <thead>
             <tr>
-                <td>Klant naam</td>
+                <td>Projecten</td>
                 <td></td>
                 <td style='text-align: right'><a href='/project/create'><i class="fa-solid fa-plus"></i></a><br></td>
             </tr>
@@ -22,6 +22,9 @@
             @endforeach
         </tbody>
     </table>
+    
+
+
 </div>
     <script>
         $('#myTable').DataTable( {

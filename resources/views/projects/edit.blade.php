@@ -3,70 +3,69 @@
 <br>
     <a href="/" style='margin: 15px;'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='center'>
-        @php
-            $columns = Schema::getColumnListing('attributes');
-            $excludeColumns = ['id'];
-            $filteredColumns = array_diff($columns, $excludeColumns);
-        @endphp
         <form action="/projects/{{ $project->id }}" method="POST" style='background-color: #d34428; padding:70px; border-radius: 5px'>
             @csrf
-            <table>
+            <table class='border-separate'>
                 <tr>
                     <td colspan="2" style='text-align:center; font-size:30px'>
                         Bewerk {{ $project->KlantNaam }}
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style='text-align:center'>
-                        <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" style='width:80%'
+                    <td>Klantnaam</td>
+                    <td>
+                        <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" 
                             value='{{ $project->KlantNaam }}'>
                         @error('KlantNaam')
-                            <p class="error-message">{{ $message }}</p>
+                            <p class="text-red text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style='text-align:center'>
+                    <td>ProjectAdres</td>
+                    <td>
                         <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
-                            style='width:80%' value='{{ $project->ProjectAdres }}'>
+                             value='{{ $project->ProjectAdres }}'>
                         @error('ProjectAdres')
-                            <p class="error-message">{{ $message }}</p>
+                            <p class="text-red text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
-                <td colspan="2" style='text-align:center'>
-                    <input type="email" name="Email" id="Email" placeholder="Email" style='width:80%'
+                <td>Email</td>
+                <td >
+                    <input type="email" name="Email" id="Email" placeholder="Email" 
                         value='{{ $project->Email }}'>
                     @error('Email')
-                        <p class="error-message">{{ $message }}</p>
+                        <p class="text-red text-xs">{{ $message }}</p>
                     @enderror
                 </td>
                 </tr>
 
-                @foreach ($filteredColumns as $column)
+                
+                @foreach ($kozijnen as $kozijn)
                     <tr>
                         <td>
-                            <label for="{{ $column }}">{{ str_replace('_', ' ', $column) }}</label>
+                            <label for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                         </td>
                         <td>
-                            <select name="{{ $column }}" id="{{ $column }}">
+                            <select class='w-full' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
                                 @foreach ($attributes as $attribute)
                                     @php
-                                        $values = explode(',', $attribute->$column);
+                                        $ding =  $kozijn->kozijn
                                     @endphp
-                                    @foreach ($values as $value)
-                                        <option @if (trim($project->$column) == trim($value)) selected @endif
-                                            value="{{ $value }}">{{ $value }}</option>
-                                    @endforeach
+                                    @if ($kozijn->id == $attribute->kozijn_id)
+                                        <option  @if($project->$ding == $attribute->attribute) selected @endif value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
+                                    @endif
                                 @endforeach
                             </select>
-                            @error($column)
-                                <p class="error-message">{{ $message }}</p>
+                            @error($kozijn->kozijn)
+                                <p class="text-red text-xs">{{ $message }}</p>
                             @enderror
                         </td>
                     </tr>
                 @endforeach
             </table>
+                    
 
             <button type="submit">Submit</button>
         </form>

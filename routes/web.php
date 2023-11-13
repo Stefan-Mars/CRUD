@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\Kozijnen;
+use App\Models\Attributes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\KozijnenController;
+use App\Http\Controllers\AttributeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +27,17 @@ Route::get('/project/show/{project}', [ProjectController::class, 'show']);
 Route::get('/project/edit/{project}', [ProjectController::class, 'edit']);
 Route::get('/project/delete/{project}', [ProjectController::class, 'destroy']);
 
+Route::post('/kozijnen', [KozijnenController::class, 'store']);
+Route::get('/kozijn/delete/{kozijnen}', [KozijnenController::class, 'destroy']);
 
+
+Route::post('/attributes/{kozijnen}', [AttributeController::class, 'store']);
+Route::get('/attribute/delete/{attributes}', [AttributeController::class, 'destroy']);
+
+
+
+Route::get('/admin', function () {
+    $kozijnen = Kozijnen::all();
+    $attributes = Attributes::all();
+    return view('admin', compact('kozijnen','attributes'));
+});
