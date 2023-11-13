@@ -3,7 +3,7 @@
     <br>
     <a href="/" class='m-4'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='flex justify-center'>
-        <form action="/projects/{{ $project->id }}" method="POST" class='bg-red-700 p-16 rounded'>
+        <form action="/projects/{{ $project->id }}" method="POST" class='border p-16 rounded'>
             @csrf
             <table class='border-separate'>
                 <tr>
@@ -17,7 +17,7 @@
                         <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam"
                             value='{{ $project->KlantNaam }}'>
                         @error('KlantNaam')
-                            <p class="text-red text-xs">{{ $message }}</p>
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
@@ -27,7 +27,7 @@
                         <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
                             value='{{ $project->ProjectAdres }}'>
                         @error('ProjectAdres')
-                            <p class="text-red text-xs">{{ $message }}</p>
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
@@ -35,7 +35,7 @@
                 <td>
                     <input type="email" name="Email" id="Email" placeholder="Email" value='{{ $project->Email }}'>
                     @error('Email')
-                        <p class="text-red text-xs">{{ $message }}</p>
+                        <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
                 </td>
                 </tr>
@@ -59,7 +59,7 @@
                                 @endforeach
                             </select>
                             @error($kozijn->kozijn)
-                                <p class="text-red text-xs">{{ $message }}</p>
+                                <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
                         </td>
                     </tr>

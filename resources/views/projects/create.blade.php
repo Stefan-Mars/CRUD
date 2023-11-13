@@ -16,7 +16,7 @@
                     <td colspan="2" class='text-center'>
                         <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" class='w-[80%]'>
                         @error('KlantNaam')
-                            <p class="text-red text-xs">{{ $message }}</p>
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
@@ -25,14 +25,14 @@
                         <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
                             class='w-[80%]'>
                         @error('ProjectAdres')
-                            <p class="text-red text-xs">{{ $message }}</p>
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
                 <td colspan="2" class='text-center'>
                     <input type="email" name="Email" id="Email" placeholder="Email" class='w-[80%]'>
                     @error('Email')
-                        <p class="text-red text-xs">{{ $message }}</p>
+                        <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
                 </td>
                 </tr>
@@ -52,7 +52,7 @@
                                 @endforeach
                             </select>
                             @error($kozijn->kozijn)
-                                <p class="text-red text-xs">{{ $message }}</p>
+                                <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
                         </td>
                     </tr>

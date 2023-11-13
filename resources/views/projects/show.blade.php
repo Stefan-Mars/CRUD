@@ -3,7 +3,7 @@
     <br>
     <a href="/" class='m-4'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='flex justify-center'>
-        <table class='bg-red-700 p-16 rounded'>
+        <table class='border p-16 rounded border-spacing-y-3'>
             <tr>
                 <td>KlantNaam</td>
                 <td>{{ $project->KlantNaam }}</td>
