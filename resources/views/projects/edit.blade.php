@@ -1,20 +1,20 @@
 @extends('layouts.head')
 @section('content')
-<br>
-    <a href="/" style='margin: 15px;'><i class="fa-solid fa-arrow-left"></i>Back</a>
-    <div class='center'>
-        <form action="/projects/{{ $project->id }}" method="POST" style='background-color: #d34428; padding:70px; border-radius: 5px'>
+    <br>
+    <a href="/" class='m-4'><i class="fa-solid fa-arrow-left"></i>Back</a>
+    <div class='flex justify-center'>
+        <form action="/projects/{{ $project->id }}" method="POST" class='bg-red-700 p-16 rounded'>
             @csrf
             <table class='border-separate'>
                 <tr>
-                    <td colspan="2" style='text-align:center; font-size:30px'>
+                    <td colspan="2" class='text-center font-xl'>
                         Bewerk {{ $project->KlantNaam }}
                     </td>
                 </tr>
                 <tr>
                     <td>Klantnaam</td>
                     <td>
-                        <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" 
+                        <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam"
                             value='{{ $project->KlantNaam }}'>
                         @error('KlantNaam')
                             <p class="text-red text-xs">{{ $message }}</p>
@@ -25,23 +25,22 @@
                     <td>ProjectAdres</td>
                     <td>
                         <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
-                             value='{{ $project->ProjectAdres }}'>
+                            value='{{ $project->ProjectAdres }}'>
                         @error('ProjectAdres')
                             <p class="text-red text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
                 <td>Email</td>
-                <td >
-                    <input type="email" name="Email" id="Email" placeholder="Email" 
-                        value='{{ $project->Email }}'>
+                <td>
+                    <input type="email" name="Email" id="Email" placeholder="Email" value='{{ $project->Email }}'>
                     @error('Email')
                         <p class="text-red text-xs">{{ $message }}</p>
                     @enderror
                 </td>
                 </tr>
 
-                
+
                 @foreach ($kozijnen as $kozijn)
                     <tr>
                         <td>
@@ -51,10 +50,11 @@
                             <select class='w-full' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
                                 @foreach ($attributes as $attribute)
                                     @php
-                                        $ding =  $kozijn->kozijn
+                                        $ding = $kozijn->kozijn;
                                     @endphp
                                     @if ($kozijn->id == $attribute->kozijn_id)
-                                        <option  @if($project->$ding == $attribute->attribute) selected @endif value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
+                                        <option @if ($project->$ding == $attribute->attribute) selected @endif
+                                            value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -65,7 +65,7 @@
                     </tr>
                 @endforeach
             </table>
-                    
+
 
             <button type="submit">Submit</button>
         </form>

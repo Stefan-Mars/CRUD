@@ -1,36 +1,36 @@
 @extends('layouts.head')
 @section('content')
     <br>
-    <a href="/" style='margin: 15px;'><i class="fa-solid fa-arrow-left"></i>Back</a>
+    <a href="/" class='m-4'><i class="fa-solid fa-arrow-left"></i>Back</a>
     <div class='flex justify-center'>
 
-        <form action="/projects" method="POST" style='background-color: #d34428; padding:70px; border-radius: 5px'>
+        <form action="/projects" method="POST" class='bg-red-700 p-16 rounded'>
             @csrf
             <table class='border-separate'>
                 <tr>
-                    <td colspan="2" style='text-align:center'>
+                    <td colspan="2" class='text-center'>
                         Nieuw Project
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style='text-align:center'>
-                        <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" style='width:80%'>
+                    <td colspan="2" class='text-center'>
+                        <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" class='w-[80%]'>
                         @error('KlantNaam')
                             <p class="text-red text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style='text-align:center'>
+                    <td colspan="2" class='text-center'>
                         <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
-                            style='width:80%'>
+                            class='w-[80%]'>
                         @error('ProjectAdres')
                             <p class="text-red text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                 </tr>
-                <td colspan="2" style='text-align:center'>
-                    <input type="email" name="Email" id="Email" placeholder="Email" style='width:80%'>
+                <td colspan="2" class='text-center'>
+                    <input type="email" name="Email" id="Email" placeholder="Email" class='w-[80%]'>
                     @error('Email')
                         <p class="text-red text-xs">{{ $message }}</p>
                     @enderror

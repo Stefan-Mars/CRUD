@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts/nav')
     <div class='flex justify-center'>
-        <table class='border-separate'> 
+        <table class='border-separate'>
             @foreach ($kozijnen as $kozijn)
                 <tr>
                     <td>
@@ -28,8 +28,8 @@
                     <form action="/attributes/{{ $kozijn->id }}" method="POST">
                         @csrf
                         <td>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<input class='shadow shadow-gray-400 w-full' type="text" name="attribute" id="attribute"
-                                placeholder="Naam" style='width:80%'>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input class='shadow shadow-gray-400' type="text" name="attribute"
+                                id="attribute" placeholder="Naam">
                             @error('attribute')
                                 <p class="text-red text-xs">{{ $message }}</p>
                             @enderror
@@ -41,15 +41,15 @@
                 </tr>
             @endforeach
 
-            
+
 
 
             <form action="/kozijnen" method="POST">
                 @csrf
                 <tr>
                     <td colspan="2">
-                        <input class='shadow shadow-gray-400 w-full' type="text" name="kozijn" id="kozijn"
-                            placeholder="Naam" style='width:80%'>
+                        <input class='shadow shadow-gray-400 w-[80%]' type="text" name="kozijn" id="kozijn"
+                            placeholder="Naam">
                         @error('kozijn')
                             <p class="text-red text-xs">{{ $message }}</p>
                         @enderror
