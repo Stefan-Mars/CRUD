@@ -1,4 +1,4 @@
-<nav class="bg-red-600 h-32 t-0 flex flex-row w-full h-auto justify-between items-center">
+<nav class="bg-red-600 h-32 t-0 flex flex-row w-full justify-between items-center">
     <a href='/'><img
             class='w-[150px] h-[112.5px]'src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-4.png"
             alt=""></a>

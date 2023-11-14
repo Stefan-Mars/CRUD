@@ -16,8 +16,8 @@
                     <tr>
                         <td>KlantNaam</td>
                         <td class='text-center'>
-                            <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam" value='{{ old('Klantnaam') }}'
-                                class='w-full border-2'>
+                            <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam"
+                                value='{{ old('Klantnaam') }}' class='w-full border-2'>
                             @error('KlantNaam')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
@@ -26,8 +26,8 @@
                     <tr>
                         <td>Project Adres</td>
                         <td class='text-center'>
-                            <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"value='{{ old('ProjectAdres') }}'
-                                class='w-full border-2'>
+                            <input type="text" name="ProjectAdres" id="ProjectAdres"
+                                placeholder="Project Adres"value='{{ old('ProjectAdres') }}' class='w-full border-2'>
                             @error('ProjectAdres')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
@@ -35,7 +35,8 @@
                     </tr>
                     <td>Email</td>
                     <td class='text-center'>
-                        <input type="email" name="Email" id="Email" placeholder="Email" class='w-full border-2'value='{{ old('Email') }}'>
+                        <input type="email" name="Email" id="Email" placeholder="Email"
+                            class='w-full border-2'value='{{ old('Email') }}'>
                         @error('Email')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
@@ -52,7 +53,8 @@
                                 <select class='w-full border-2'name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
                                     @foreach ($attributes as $attribute)
                                         @if ($kozijn->id == $attribute->kozijn_id)
-                                            <option @if(old($kozijn->kozijn) == $attribute->attribute ) selected @endif value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
+                                            <option @if (old($kozijn->kozijn) == $attribute->attribute) selected @endif
+                                                value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
                                         @endif
                                     @endforeach
                                 </select>
