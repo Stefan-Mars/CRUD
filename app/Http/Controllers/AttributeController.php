@@ -16,7 +16,7 @@ class AttributeController extends Controller
         $formFields["kozijn_id"] = $kozijnen->id;
         Attributes::insert($formFields);
 
-        return redirect('/admin')->with('message', 'Attribute created successfully!');
+        return back()->with('message', 'Attribute created successfully!');
     }
 
     public function destroy(Attributes $Attributes) {

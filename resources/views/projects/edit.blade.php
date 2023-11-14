@@ -64,10 +64,13 @@
                         </td>
                     </tr>
                 @endforeach
+                <tr class='text-center'>
+                    <td colspan="2"><button class='bg-red-500 p-1 rounded-sm'type="submit">Submit</button></td>
+                </tr>
             </table>
 
 
-            <button type="submit">Submit</button>
+            
         </form>
     </div>
 @endsection

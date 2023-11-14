@@ -10,11 +10,13 @@
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     <script src="https://kit.fontawesome.com/356eec8587.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     <title>Document</title>
 </head>
 
 <body class='text-black font-sans m-0'>
+    @include('layouts/flash-message')
     @yield('content')
 </body>
 

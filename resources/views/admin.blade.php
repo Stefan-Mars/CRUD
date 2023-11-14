@@ -6,7 +6,7 @@
             <form action="/kozijnen" method="POST" class='w-full border h-14'>
                 @csrf
                 <input class='w-full h-full indent-5' type="text" name="kozijn" id="kozijn"
-                    placeholder="Naam">
+                    placeholder="Voeg toe">
                 @error('kozijn')
                     <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
@@ -16,14 +16,14 @@
                 <div class='rounded-sm'>
                     <table class='border-separate table-fixed border-spacing-y-3 border'>
                     <tr>
-                        <td class='p-2'>
+                        <td class='p-2 pl-4'>
                             {{ str_replace('_', ' ', $kozijn->kozijn) }}
                         </td>
                         <td class='whitespace-nowrap w-[1%] pr-16'>
                             <a href="/kozijn/delete/{{ $kozijn->id }}"><i class="fa-solid fa-trash"></i></a>
                         </td>
                         <td class='whitespace-nowrap w-[1%] pr-4' id='button{{ $kozijn->id }}' onclick="test({{ $kozijn->id }})">
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right cursor-pointer"></i>
                         </td>
                         
                     </tr>
@@ -38,9 +38,9 @@
                     <tr class='k{{ $kozijn->id }}' style='display: none;'>
                         <form action="/attributes/{{ $kozijn->id }}" method="POST">
                             @csrf
-                            <td>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input class='border indent-px' type="text" name="attribute"
-                                    id="attribute" placeholder="Naam">
+                            <td colspan="2">
+                                <input class='border-2 indent-px w-full ml-4 p-4' type="text" name="attribute"
+                                    id="attribute" placeholder="Voeg toe">
                                 @error('attribute')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
@@ -61,10 +61,10 @@
             elements.forEach(function(element) {
                 if (element.style.display === 'none' || element.style.display === '') {
                     element.style.display = 'table-row';
-                    document.getElementById('button' + id).innerHTML = "<i class='fa-solid fa-angle-down'></i>";
+                    document.getElementById('button' + id).innerHTML = "<i class='fa-solid fa-angle-down cursor-pointer'></i>";
                 } else {
                     element.style.display = 'none';
-                    document.getElementById('button' + id).innerHTML = "<i class='fa-solid fa-angle-right'></i>";
+                    document.getElementById('button' + id).innerHTML = "<i class='fa-solid fa-angle-right cursor-pointer'></i>";
                 }
             });
         }

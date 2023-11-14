@@ -14,7 +14,7 @@ class KozijnenController extends Controller
         ]);
         Kozijnen::insert($formFields);
 
-        return redirect('/admin')->with('message', 'Kozijn created successfully!');
+        return back()->with('message', 'Kozijn created successfully!');
     }
     public function destroy(Kozijnen $kozijnen) {
         $kozijnen->delete();
