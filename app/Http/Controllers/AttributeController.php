@@ -13,7 +13,7 @@ class AttributeController extends Controller
         $formFields = $request->validate([
             'attribute' => 'required',
         ]);
-        $formFields["kozijn_id"] = $kozijnen->id;
+        $formFields["kozijnen_id"] = $kozijnen->id;
         Attributes::insert($formFields);
 
         return back()->with('message', 'Attribute created successfully!');

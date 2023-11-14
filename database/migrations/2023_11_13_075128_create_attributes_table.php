@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("kozijn_id")->nullable;
+            $table->foreignId("kozijnen_id")->nullable;
             $table->string("attribute");
         });
     }

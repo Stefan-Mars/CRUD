@@ -13,7 +13,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Klantnaam</td>
+                        <td>Klant naam</td>
                         <td>
                             <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam"
                                 value='{{ $project->KlantNaam }}' class='w-full border-2'>
@@ -49,16 +49,15 @@
                                 <label for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                             </td>
                             <td>
-                                <select class='w-full border-2' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
-                                    @foreach ($attributes as $attribute)
+                                <select class='w-full border-2 ' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
+                                    @foreach ($attributes[$kozijn->id - 1] as $attribute)
                                         @php
                                             $ding = $kozijn->kozijn;
                                         @endphp
-                                        @if ($kozijn->id == $attribute->kozijn_id)
-                                            <option @if ($project->$ding == $attribute->attribute) selected @endif
-                                                value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
-                                        @endif
+                                        <option @if ($project->$ding == $attribute->attribute) selected @endif
+                                            value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
                                     @endforeach
+                                </select>
                                 </select>
                                 @error($kozijn->kozijn)
                                     <p class="text-red-500 text-xs">{{ $message }}</p>

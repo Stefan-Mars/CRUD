@@ -37,7 +37,7 @@ Route::get('/attribute/delete/{attributes}', [AttributeController::class, 'destr
 
 
 Route::get('/admin', function () {
-    $kozijnen = Kozijnen::all();
-    $attributes = Attributes::all();
+    $kozijnen = Kozijnen::paginate(10);
+    $attributes = Attributes::get();
     return view('admin', compact('kozijnen','attributes'));
 });

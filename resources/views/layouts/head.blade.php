@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/356eec8587.js" crossorigin="anonymous"></script>
     <link href="/css/output.css" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
-
+    <script src='/js/index.js'></script>
     <title>Document</title>
 </head>
 

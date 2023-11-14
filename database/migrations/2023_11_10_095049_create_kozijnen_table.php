@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kozijnen', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("project_id")->nullable();
             $table->string("kozijn");
     
         });

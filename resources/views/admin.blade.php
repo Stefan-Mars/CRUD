@@ -14,7 +14,7 @@
         @foreach ($kozijnen as $kozijn)
             <div class='rounded-sm'>
                 <table class='border-separate table-fixed border'>
-                    <tr>
+                    <tr onclick="test({{ $kozijn->id }})">
                         <td class='p-2 pl-4 truncate '>
                             {{ str_replace('_', ' ', $kozijn->kozijn) }}
                         </td>
@@ -22,13 +22,13 @@
                             <a href="/kozijn/delete/{{ $kozijn->id }}"><i class="fa-solid fa-trash"></i></a>
                         </td>
                         <td class='whitespace-nowrap w-[1%] pr-4' id='button{{ $kozijn->id }}'
-                            onclick="test({{ $kozijn->id }})">
+                            >
                             <i class="fa-solid fa-angle-right cursor-pointer"></i>
                         </td>
 
                     </tr>
                     @foreach ($attributes as $attribute)
-                        @if ($kozijn->id == $attribute->kozijn_id)
+                        @if ($kozijn->id == $attribute->kozijnen_id)
                             <tr class='attribute-row k{{ $kozijn->id }} truncate' style='display: none;'>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;• {{ $attribute->attribute }}</td>
                                 <td><a href="/attribute/delete/{{ $attribute->id }}"><i class="fa-solid fa-trash"></i></a>
@@ -49,10 +49,21 @@
                             </td>
                         </form>
                     </tr>
+                    
                 </table>
+
             </div>
         @endforeach
-
+        <table class='w-full'>
+            <tr>
+                <td class='w-1/2 text-left'><a href="{{ $kozijnen->previousPageUrl() }}">Previous</a></td>
+                @if($kozijnen->hasMorePages())
+                <td class='w-1/2 text-right'><a href="{{ $kozijnen->nextPageUrl() }}">Next</a></td>
+                @endif
+            </tr>
+        </table>
+        
+        
 
 
     </div>
