@@ -1,11 +1,13 @@
 @extends('layouts/head')
 @section('content')
-    <div class='h-screen'>
+    <div class='h-screen bg-slate-200'>
     <br>
-    <a href="/" class='m-4'><i class="fa-solid fa-arrow-left"></i>Back</a>
+    
     <div class='flex justify-center'>
+        <div class='border p-16 rounded-sm border-spacing-y-3 bg-white'>
+            <a href="/" class='m-4'><i class="fa-solid fa-arrow-left mt-4"></i>Back</a>
+        <table >
 
-        <table class='border p-16 rounded border-spacing-y-3 bg-white'>
             <tr class="text-center text-2xl">
                 <td colspan="2">{{ $project->KlantNaam }}</td>
             </tr>
@@ -27,6 +29,7 @@
                 </tr>
             @endforeach
         </table>
+        </div>
     </div>
 </div>
 @endsection
