@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kozijnen', function (Blueprint $table) {
+        Schema::create('project_attributes', function (Blueprint $table) {
             $table->id();
-            $table->string("kozijn");
-    
+            $table->foreignId('project_id')->onDelete('cascade');
+            $table->foreignId('kozijnen_id')->onDelete('cascade');
+            $table->string('value'); // Add a column to store the attribute value
+            $table->timestamps();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kozijnen');
+        //
     }
 };

@@ -22,14 +22,12 @@
                     @foreach ($kozijnen as $column)
                         <tr>
                             <td>{{ str_replace('_', ' ', $column->kozijn) }}</td>
-                            @php
-                                $attribute = $column->kozijn;
-                            @endphp
-                            <td>{{ $project->$attribute }}</td>
+                            <td>{{ $column->pivot->value }}</td>
                         </tr>
                     @endforeach
                 </table>
             </div>
         </div>
+
     </div>
 @endsection

@@ -12,6 +12,7 @@
     <link href="/css/output.css" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src='/js/index.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
 

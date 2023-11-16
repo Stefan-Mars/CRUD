@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             KozijnenSeeder::class,
             AttributeSeeder::class,
+            ContentSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

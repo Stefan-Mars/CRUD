@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Project extends Model
 {
     protected $guarded = [];
-    public function kozijnen(): HasMany
+
+    public function kozijnen()
     {
-        return $this->hasMany(Kozijnen::class);
+        return $this->belongsToMany(Kozijnen::class, 'project_attributes')->withPivot('value');
     }
 }

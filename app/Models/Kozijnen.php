@@ -12,12 +12,14 @@ class Kozijnen extends Model
     use HasFactory;
     protected $table = "kozijnen";
     protected $guarded = [];
-    public function project()
+
+    public function projects()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsToMany(Project::class, 'project_attributes')->withPivot('value');
     }
     public function attributes(): HasMany
     {
         return $this->hasMany(Attributes::class);
     }
+    
 };

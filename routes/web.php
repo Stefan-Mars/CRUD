@@ -1,11 +1,15 @@
 <?php
 
+use App\Models\Content;
 use App\Models\Kozijnen;
 use App\Models\Attributes;
+use App\Models\projectTest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\KozijnenController;
 use App\Http\Controllers\AttributeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +45,21 @@ Route::get('/admin', function () {
     $attributes = Attributes::get();
     return view('admin', compact('kozijnen','attributes'));
 });
+Route::get('/test', function () {
+    $content = Content::get();
+    return view('test', compact('content'));
+});
+
+
+Route::post('/tests', function (Request $request) {
+   // dd($request);
+    $formFields = $request->validate([
+        '*' => 'required',
+    ]);
+
+    projectTest::create($formFields);
+
+
+    return redirect('/test')->with('message', 'Project created successfully!');
+});
+

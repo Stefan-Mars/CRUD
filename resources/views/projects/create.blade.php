@@ -4,20 +4,16 @@
         <br>
 
         <div class='flex justify-center'>
-            <form action="/projects" method="POST" class='p-16 rounded-sm bg-white border'>
+            <form action="/projects" method="POST" class='p-10 rounded-sm bg-white border'>
                 @csrf
                 <a href="/"><i class="fa-solid fa-arrow-left"></i>Back</a>
+                <h1 class="text-center">Nieuw Project</h1>
                 <table class='border-separate'>
-                    <tr>
-                        <td colspan="2" class='text-center'>
-                            Nieuw Project
-                        </td>
-                    </tr>
                     <tr>
                         <td>Klant Naam</td>
                         <td class='text-center'>
                             <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam"
-                                value='{{ old('Klantnaam') }}' class='w-full border-2'>
+                                value='{{ old('Klantnaam') }}' class='w-full border'>
                             @error('KlantNaam')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
@@ -27,7 +23,7 @@
                         <td>Project Adres</td>
                         <td class='text-center'>
                             <input type="text" name="ProjectAdres" id="ProjectAdres"
-                                placeholder="Project Adres"value='{{ old('ProjectAdres') }}' class='w-full border-2'>
+                                placeholder="Project Adres" value='{{ old('ProjectAdres') }}' class='w-full border'>
                             @error('ProjectAdres')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
@@ -36,7 +32,7 @@
                     <td>Email</td>
                     <td class='text-center'>
                         <input type="email" name="Email" id="Email" placeholder="Email"
-                            class='w-full border-2'value='{{ old('Email') }}'>
+                            class='w-full border'value='{{ old('Email') }}'>
                         @error('Email')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
@@ -50,7 +46,7 @@
                                 <label for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                             </td>
                             <td>
-                                <select class='w-full border-2' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
+                                <select class='w-full border' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
                                     @foreach ($attributes[$kozijn->id - 1] as $attribute)
                                         <option @if (old($kozijn->kozijn) == $attribute->attribute) selected @endif
                                             value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>

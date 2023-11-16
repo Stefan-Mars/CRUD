@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attributes;
 use App\Models\Project;
 use App\Models\Kozijnen;
-use App\Models\Attributes;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -20,24 +20,23 @@ class ProjectController extends Controller
         'KlantNaam' => 'required',
         'ProjectAdres' => 'required',
         'Email' => ['required', 'email'],
-        // Other validation rules for your form fields
     ]);
 
-    // Create a new project and retrieve its ID
     $project = Project::create($formFields);
-    $projectId = $project->id;
 
-    // Update Kozijnen records with the project_id
-    $kozijnenRecords = Kozijnen::all();
-    foreach ($kozijnenRecords as $kozijn) {
-        $kozijn->project_id = $projectId;
-        $kozijn->save(['timestamps' => false]);
+    // Attach all available attributes dynamically
+    $attributes = Kozijnen::all(); // Assuming you have an Attribute model
+    $attributeValues = $request->except(['_token', 'KlantNaam', 'ProjectAdres', 'Email']);
+
+    foreach ($attributes as $attribute) {
+        $value = $attributeValues[$attribute->kozijn] ?? null;
+        $project->kozijnen()->attach($attribute->id, ['value' => $value]);
     }
 
     return redirect('/')->with('message', 'Project created successfully!');
 }
     public function show(Project $project){
-        $kozijnen = Kozijnen::all();
+        $kozijnen = $project->kozijnen;
         return view('projects/show', compact('kozijnen','project'));
     }
 
@@ -55,12 +54,12 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $kozijnen = Kozijnen::all();
+        $kozijnen1 = Kozijnen::all();
         $attributes = array();
-        foreach($kozijnen as $koz) {
+        foreach($kozijnen1 as $koz) {
             array_push($attributes, Kozijnen::find($koz->id)->attributes);
         }
-        
+        $kozijnen = $project->kozijnen;
         return view('projects/edit', compact('kozijnen','project','attributes'));
     }
 
