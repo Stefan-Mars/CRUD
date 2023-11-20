@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('project_attributes', function (Blueprint $table) {
+            Schema::dropIfExists('project_attributes');
             $table->id();
             $table->foreignId('project_id')->onDelete('cascade');
             $table->foreignId('kozijnen_id')->onDelete('cascade');

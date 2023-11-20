@@ -13,18 +13,34 @@ return new class extends Migration
     {
         Schema::create('project_test', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string("ProjectNaam");
-            $table->string("datum");
+            $table->string("datumBestelling");
             $table->string("telefoonnummer");
+            $table->string("datum");
+            $table->string("label");
             $table->string("totaalEuro");
             $table->string("dagen");
             $table->string("personen");
             $table->string("naam");
             $table->string("korting");
-            for( $i = 0; $i < 33; $i++ ) {
-                $table->string($i)->nullable();
-            }
+            $table->string("diversen");
+            $table->string("Kraan")->nullable();
+            $table->string("Kraantype")->nullable();
+            $table->string("BTW");
+            $table->string("inmeting");
+            $table->string("orderVerwerktDoor");
+            $table->string("gevelbekleding");
+            $table->string("SRLM")->nullable();
+            $table->string("gordijnen")->nullable();
+            $table->string("ZetWater")->nullable();
+            $table->string("werk");
+            $table->string("Stuckvloer")->nullable();
+            $table->string("afvoer");
+            $table->string("andereGevelbekleding")->nullable();
+            
+
+            $table->timestamps();
+            
         });
     }
 

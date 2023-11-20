@@ -20,9 +20,9 @@
                         @enderror
                     <p class='float-right font-semibold'>
                         Datum bestelling<br>
-                        <input class='border border-slate-300 font-normal' type="text" name='datum'>
+                        <input class='border border-slate-300 font-normal' type="date" name='datumBestelling'>
                     </p>
-                    @error('datum')
+                    @error('datumBestelling')
                         <p class="text-red-500 text-xs">{{$message}}</p>
                         @enderror
                 </td>
@@ -42,7 +42,7 @@
                     @enderror
                 </td>
                 <td class='border border-black p-2'>
-                    Magazijn order compleet: <input class='border border-slate-300' type="date">
+                    Magazijn order compleet: <input class='border border-slate-300' type="date" name='datum'>
                 </td>
             </tr>
             <tr>
@@ -133,17 +133,15 @@
             @foreach($content as $item)
                 <tr class='border border-black '>
                     <td class='text-center border border-black'>
-                        <input type="hidden" name="{{$item->id}}" value="" />
-                        <input type="radio" name='{{$item->id}}' value='teBestellen'>
+                        <input type="radio" checked name='field{{$item->id}}' value='teBestellen'>
                     </td>
                     <td class='text-center border border-black'>
-                        <input type="radio" name='{{$item->id}}' value='besteld'>
+                        <input type="radio" name='field{{$item->id}}' value='besteld'>
                     </td>
                     <td class='text-center border border-black'>
-                        <input type="radio" name='{{$item->id}}' value='ontvangen'>
+                        <input type="radio" name='field{{$item->id}}' value='ontvangen'>
                     </td>
-                    <td class='text-center border border-black'><input type="checkbox" name='' value='inclusief'
-                            id='{{$item->id}}'></td>
+                    <td class='text-center border border-black'><input type="checkbox" name='inclusief{{$item->id}}' value='true'></td>
                     <td colspan='2'> {!!$item->content!!} 
                         
                     @error($item->id)
@@ -159,7 +157,7 @@
                         <p class="text-red-500 text-xs">{{$message}}</p>
                     @enderror
                     <input type="radio"
-                        name='30'> Inclusief BTW <input type="radio" name='30'> Exclusief BTW zonder
+                        name='BTW' value="Inclusief_BTW"> Inclusief BTW <input type="radio" name='BTW' value='Exclusief_BTW'> Exclusief BTW zonder
                     betalingskorting<br>
                     (voor specificaties over uw bestelling en de kozijntekeningen zie de bijlage)
                 </td>
@@ -205,8 +203,8 @@
 
             <tr class="bg-gray-300 border border-black text-center"><td colspan="6">Bij geen bevestiging van uw zijde per email op 1 van de bovenstaande voorstellen, kan er later geen korting worden verrekend</td></tr>
             <tr class="border border-black">
-                <td class="border border-black"colspan="5"><b>Inmeting: </b><u>paraaf</u> <input type="radio" name='31'> Henk <input type="radio" name='31'> Willem</td>
-                <td colspan="1"><b>Order verwerkt door:</b> <input type="radio" name='32'> Willem <input type="radio" name='32'> Rene</td>
+                <td class="border border-black"colspan="5"><b>Inmeting: </b><u>paraaf</u> <input type="radio" name='inmeting' value="Henk"> Henk <input type="radio" name='inmeting' value="Willem"> Willem</td>
+                <td colspan="1"><b>Order verwerkt door:</b> <input type="radio" name='orderVerwerktDoor' value="Willem"> Willem <input type="radio" name='orderVerwerktDoor' value="Rene"> Rene</td>
             </tr>
             <tr class="border border-black">
                 <td colspan="6">
@@ -227,7 +225,7 @@
             </td>
             </tr>
             <tr class="border border-black">
-                <td colspan="6">Diversen: <textarea class='w-full h-1/3' name="diversen" id="" cols="30" rows="3" ></textarea></td>
+                <td colspan="6">Diversen: <textarea class='w-full h-1/3' name="diversen" cols="30" rows="3" ></textarea></td>
             </tr>
 
         </table>

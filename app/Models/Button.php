@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class projectTest extends Model
+class Button extends Model
 {
-    use HasFactory; 
-    protected $table = "project_test";
+    use HasFactory;
     protected $guarded = [];
-    public function buttons()
-    {
-        return $this->hasMany(Button::class);
-    }
 
+    public function projectTest()
+    {
+        return $this->belongsTo(ProjectTest::class);
+    }
 }

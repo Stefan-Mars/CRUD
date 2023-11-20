@@ -1,15 +1,16 @@
 <?php
 
+use App\Models\Button;
 use App\Models\Content;
 use App\Models\Kozijnen;
 use App\Models\Attributes;
 use App\Models\projectTest;
 use Illuminate\Http\Request;
+use App\Models\testAttributes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\KozijnenController;
 use App\Http\Controllers\AttributeController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -52,14 +53,56 @@ Route::get('/test', function () {
 
 
 Route::post('/tests', function (Request $request) {
-   // dd($request);
-    $formFields = $request->validate([
-        '*' => 'required',
-    ]);
+    //dd($request->all());
+    try{
+        $rules = [
+            'datumBestelling' => 'required',
+            'ProjectNaam' => 'required',
+            'telefoonnummer' => 'required',
+            'datum' => 'required',
+            'label' => 'required',
+            'totaalEuro' => 'required',
+            'dagen' => 'required',
+            'personen' => 'required',
+            'naam' => 'required',
+            'korting' => 'required',
+            'diversen' => 'required',
+            'Kraan' => 'sometimes|nullable',
+            'gevelbekleding' => 'sometimes|nullable',
+            'SRLM' => 'sometimes|nullable',
+            'andereGevelbekleding' => 'sometimes|nullable',
+            'gordijnen' => 'sometimes|nullable',
+            'ZetWater' => 'sometimes|nullable',
+            'werk' => 'required',
+            'Stuckvloer' => 'sometimes|nullable',
+            'afvoer' => 'required',
+            'Kraantype' => 'required',
+            'BTW' => 'required',
+            'inmeting' => 'required',
+            'orderVerwerktDoor' => 'required',
 
-    projectTest::create($formFields);
+        ];
+        $formFields = $request->validate($rules);
 
+        // Create ProjectTest
+        $projectTest = ProjectTest::create($formFields);
 
-    return redirect('/test')->with('message', 'Project created successfully!');
+        // Create a new Button instance
+        $button = new Button();
+
+        // Loop through content and associate fields with the Button
+        $content = Content::all();
+        foreach ($content as $attribute) {
+            $button->{'field' . $attribute->id} = $request->input('field' . $attribute->id);
+            $button->{'inclusief' . $attribute->id} = $request->input('inclusief' . $attribute->id);
+        }
+
+        // Save the Button associated with the ProjectTest
+        $projectTest->buttons()->save($button);
+
+        return back()->with('message', 'Project created successfully!');
+    }catch (\Exception $e){
+        return $e;
+    }
 });
 
