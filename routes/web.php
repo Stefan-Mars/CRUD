@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\Button;
-use App\Models\Content;
+
 use App\Models\Kozijnen;
 use App\Models\Attributes;
-use App\Models\projectInfo;
-use Illuminate\Http\Request;
-use App\Models\testAttributes;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\AkkoordController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\KozijnenController;
 use App\Http\Controllers\AttributeController;
@@ -32,11 +30,11 @@ Route::get('/project/{project}', [ProjectController::class, 'show']);
 Route::get('/project/edit/{project}', [ProjectController::class, 'edit']);
 Route::get('/project/delete/{project}', [ProjectController::class, 'destroy']);
 
-Route::get('/project/akkoord/{project}', [ProjectController::class, 'akkoord']);
-Route::post('/project/akkoord/create/{project}', [ProjectController::class, 'akkoordCreate']);
+Route::get('/project/akkoord/{project}', [AkkoordController::class, 'create']);
+Route::post('/project/akkoord/create/{project}', [AkkoordController::class, 'store']);
 
-Route::get('/project/info/{project}', [ProjectController::class, 'info']);
-Route::post('/project/info/create/{project}', [ProjectController::class, 'infoCreate']);
+Route::get('/project/info/{project}', [InfoController::class, 'create']);
+Route::post('/project/info/create/{project}', [infoController::class, 'store']);
 
 Route::post('/kozijnen', [KozijnenController::class, 'store']);
 Route::get('/kozijn/delete/{kozijnen}', [KozijnenController::class, 'destroy']);

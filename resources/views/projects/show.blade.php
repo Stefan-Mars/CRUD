@@ -26,8 +26,20 @@
                         </tr>
                     @endforeach
                 </table>
+                @if(!$info || ($info->project_id != $project->id))
+                    <a href="/project/info/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Info</a>
+                    @else
+                        Show Info <br>
+                        @if(!$akkoord || ($akkoord && $akkoord->id != $project->id))
+                            <a href="/project/akkoord/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Akkoord</a>
+                            @else
+                                Show Akkoords
+                        @endif
+                @endif
             </div>
+            
         </div>
-
     </div>
+    
+    
 @endsection

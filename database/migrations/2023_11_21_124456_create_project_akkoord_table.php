@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_akkoord', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("project_id")->nullable();
+            $table->foreignId("project_id")->nullable()->onDelete('cascade');
             $table->string("soortAanvraag");
             $table->string("naamOpdrachtgever");
             $table->string("ProjectAdres");

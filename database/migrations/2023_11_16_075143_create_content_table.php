@@ -14,9 +14,6 @@ return new class extends Migration
         Schema::create('content', function (Blueprint $table) {
             $table->id();
             $table->longText("content");
-            // $table->string("status")->nullable();
-            // $table->string("inclusief")->nullable();
-           
         });
     }
 

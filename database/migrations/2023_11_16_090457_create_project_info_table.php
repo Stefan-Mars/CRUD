@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_info', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("project_id")->nullable();
+            $table->foreignId("project_id")->nullable()->onDelete('cascade');
             $table->string("ProjectNaam");
             $table->string("datumBestelling");
             $table->string("telefoonnummer");

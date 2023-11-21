@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('buttons', function (Blueprint $table) {
             Schema::dropIfExists('buttons');
             $table->id();
-            $table->foreignId("project_info_id");
+            $table->foreignId("project_info_id")->onDelete('cascade');
             for( $i = 1; $i < 22; $i++ ) {
                 $table->string('field'.$i)->nullable();
             }
