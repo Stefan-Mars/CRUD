@@ -10,8 +10,8 @@ class Button extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function projectTest()
+    public function projectInfo()
     {
-        return $this->belongsTo(ProjectTest::class);
+        return $this->belongsTo(projectInfo::class);
     }
 }

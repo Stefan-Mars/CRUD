@@ -15,7 +15,7 @@ class ContentSeeder extends Seeder
     {
         Content::insert([
             [
-                "content" => "Montage van de kozijnen incl.klim en hijsmateriaal en of hulp",
+                "content" => "Montage van de kozijnen incl. klim en hijsmateriaal en of hulp",
             ],
             [
                 "content" => "Montagemateriaal (schroeven, band, rubbers, blokjes)",
@@ -61,11 +61,11 @@ class ContentSeeder extends Seeder
                 "content" => "Externe beglazing zoals lucaclair o.i.d",
             ],
             [
-                "content" => "<input type='radio' name='werk' value='Electrawerk'> Electrawerk <input type='radio' name='werk' value='Loodgieterswerk'>
+                "content" => "<input type='checkbox' name='Electrawerk' value='true'> Electrawerk <input type='checkbox' name='true' value='Loodgieterswerk'>
                 Loodgieterswerk",
             ],
             [
-                "content" => "Bouwkundig werk (incl spouwlatten aanbrengen indien nodig) door:",
+                "content" => "Bouwkundig werk (incl. spouwlatten aanbrengen indien nodig) door:",
             ],
             [
                 "content" => "Muren verwijderen en puin afvoeren (excl vertanden metselwerk)",

@@ -4,7 +4,7 @@
     <br>
     <div class='flex ml-[165px]'>
 
-        <form action="/tests" method="POST">
+        <form action="/project/info/create/{{$project->id}}" method="POST">
             @csrf
         <table>
             <tr>
@@ -46,10 +46,7 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="4"></td>
                 <td colspan="2" class='border border-black p-2'>
                     <input type="radio" name='label' value='leveren' id='leveren'>
                     <label for="leveren">Leveren</label>
@@ -87,10 +84,7 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="4"></td>
                 <td colspan="2" class='border border-black'>
                     <mark>Bij alleen leveren (zonder montage) op locatie doot transport dient de opdrachtgever de lege
                         bokken per email af te melden aan ons binnen 3 weken na levering</mark>
@@ -167,7 +161,7 @@
                         <u>2% OF 3% BETALINGKORTING</u></mark></td>
             </tr>
             <tr class="border-x border-black text-center">
-                <td class='border border-black'><input type="radio" name='korting'></td>
+                <td class='border border-black'><input type="radio" name='korting' value="2%"></td>
                 <td></td>
                 <td class='bg-yellow-300 border border-black'>2%</td>
                 <td colspan="4">Om in aanmerking te komen voor 2% betalingskorting op uw order is het betaalschema als
@@ -181,7 +175,7 @@
 
 
             <tr class="border-x border-black text-center">
-                <td class='border border-black'><input type="radio" name='korting'></td>
+                <td class='border border-black'><input type="radio" name='korting' value="3%"></td>
                 <td></td>
                 <td class='bg-yellow-300 border border-black'>3%</td>
                 <td colspan="4">Om in aanmerking te komen voor 3% betalingskorting op uw order is het betaalschema als
@@ -195,7 +189,7 @@
             </tr>
 
             <tr class="border border-black text-center">
-                <td class='border border-black'><input type="radio" name='korting'></td>
+                <td class='border border-black'><input type="radio" name='korting' value="0%"></td>
                 <td></td>
                 <td class='bg-yellow-300 border border-black'>0%</td>
                 <td colspan="4"><mark>1e termijn betaling 50 % bij levering kozijnen op locatie en overige betaling naar de stand van de werkzaamheden</mark></td>

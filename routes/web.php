@@ -4,7 +4,7 @@ use App\Models\Button;
 use App\Models\Content;
 use App\Models\Kozijnen;
 use App\Models\Attributes;
-use App\Models\projectTest;
+use App\Models\projectInfo;
 use Illuminate\Http\Request;
 use App\Models\testAttributes;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +32,12 @@ Route::get('/project/{project}', [ProjectController::class, 'show']);
 Route::get('/project/edit/{project}', [ProjectController::class, 'edit']);
 Route::get('/project/delete/{project}', [ProjectController::class, 'destroy']);
 
+Route::get('/project/akkoord/{project}', [ProjectController::class, 'akkoord']);
+Route::post('/project/akkoord/create/{project}', [ProjectController::class, 'akkoordCreate']);
+
+Route::get('/project/info/{project}', [ProjectController::class, 'info']);
+Route::post('/project/info/create/{project}', [ProjectController::class, 'infoCreate']);
+
 Route::post('/kozijnen', [KozijnenController::class, 'store']);
 Route::get('/kozijn/delete/{kozijnen}', [KozijnenController::class, 'destroy']);
 
@@ -46,63 +52,3 @@ Route::get('/admin', function () {
     $attributes = Attributes::get();
     return view('admin', compact('kozijnen','attributes'));
 });
-Route::get('/test', function () {
-    $content = Content::get();
-    return view('test', compact('content'));
-});
-
-
-Route::post('/tests', function (Request $request) {
-    //dd($request->all());
-    try{
-        $rules = [
-            'datumBestelling' => 'required',
-            'ProjectNaam' => 'required',
-            'telefoonnummer' => 'required',
-            'datum' => 'required',
-            'label' => 'required',
-            'totaalEuro' => 'required',
-            'dagen' => 'required',
-            'personen' => 'required',
-            'naam' => 'required',
-            'korting' => 'required',
-            'diversen' => 'required',
-            'Kraan' => 'sometimes|nullable',
-            'gevelbekleding' => 'sometimes|nullable',
-            'SRLM' => 'sometimes|nullable',
-            'andereGevelbekleding' => 'sometimes|nullable',
-            'gordijnen' => 'sometimes|nullable',
-            'ZetWater' => 'sometimes|nullable',
-            'werk' => 'required',
-            'Stuckvloer' => 'sometimes|nullable',
-            'afvoer' => 'required',
-            'Kraantype' => 'required',
-            'BTW' => 'required',
-            'inmeting' => 'required',
-            'orderVerwerktDoor' => 'required',
-
-        ];
-        $formFields = $request->validate($rules);
-
-        // Create ProjectTest
-        $projectTest = ProjectTest::create($formFields);
-
-        // Create a new Button instance
-        $button = new Button();
-
-        // Loop through content and associate fields with the Button
-        $content = Content::all();
-        foreach ($content as $attribute) {
-            $button->{'field' . $attribute->id} = $request->input('field' . $attribute->id);
-            $button->{'inclusief' . $attribute->id} = $request->input('inclusief' . $attribute->id);
-        }
-
-        // Save the Button associated with the ProjectTest
-        $projectTest->buttons()->save($button);
-
-        return back()->with('message', 'Project created successfully!');
-    }catch (\Exception $e){
-        return $e;
-    }
-});
-

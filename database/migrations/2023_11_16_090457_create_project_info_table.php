@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_test', function (Blueprint $table) {
+        Schema::create('project_info', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("project_id")->nullable();
             $table->string("ProjectNaam");
             $table->string("datumBestelling");
             $table->string("telefoonnummer");
@@ -33,7 +34,8 @@ return new class extends Migration
             $table->string("SRLM")->nullable();
             $table->string("gordijnen")->nullable();
             $table->string("ZetWater")->nullable();
-            $table->string("werk");
+            $table->string("Electrawerk")->nullable();
+            $table->string("Loodgieterswerk")->nullable();
             $table->string("Stuckvloer")->nullable();
             $table->string("afvoer");
             $table->string("andereGevelbekleding")->nullable();
@@ -49,6 +51,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_test');
+        Schema::dropIfExists('project_info');
     }
 };
