@@ -1,11 +1,11 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <form action="/project/akkoord/create/{{$project->id}}" method="POST">
+    <form action="/project/akkoords/{{$project->id}}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
             <tr class='bg-red-400 border-spacing-0' >
-                <td class='p-2' colspan="4" ><input type="radio" name="soortAanvraag"> Opleveringsbon <input type="radio" name="soortAanvraag"> Nalevering <input type="radio" name="soortAanvraag"> Service @error('soortAanvraag') <p class='text-white text-xs'>{{$message}}</p> @enderror</td>
+                <td class='p-2' colspan="4" ><input type="radio" name="soortAanvraag" value='opleveringsbon'> Opleveringsbon <input type="radio" name="soortAanvraag" value='nalevering'> Nalevering <input type="radio" name="soortAanvraag" value='service'> Service @error('soortAanvraag') <p class='text-white text-xs'>{{$message}}</p> @enderror</td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2'colspan="4"><b >Naam opdrachtgever: </b> <input class='float-right @error('naamOpdrachtgever') border border-red-500 @enderror' type="text" name="naamOpdrachtgever" value='{{old('naamOpdrachtgever')}}'></td>
@@ -57,7 +57,7 @@
                 <td class='p-2' colspan="2">Handtekening klant:</td>
             </tr>
             <tr>
-                <td><button type="submit">Submit</button></td>
+                <td colspan="4" class='text-center'><button type="submit" class='bg-red-400 p-1'>Create</button></td>
             </tr>
         </table>
     </form>

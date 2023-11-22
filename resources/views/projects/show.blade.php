@@ -27,13 +27,15 @@
                     @endforeach
                 </table>
                 @if(!$info || ($info->project_id != $project->id))
-                    <a href="/project/info/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Info</a>
+                    <a href="/project/info/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Info</a>
                     @else
-                        Show Info <br>
+                        <a href="/project/info/{{ $project->id }}">Show Info</a>
+                         <br>
                         @if(!$akkoord || ($akkoord && $akkoord->id != $project->id))
-                            <a href="/project/akkoord/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Akkoord</a>
+                            <a href="/project/akkoord/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Akkoord</a>
                             @else
-                                Show Akkoords
+                            <a href="/project/akkoord/{{ $project->id }}">Show Akkoords</a>
+                                
                         @endif
                 @endif
             </div>

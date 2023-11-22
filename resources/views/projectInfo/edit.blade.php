@@ -4,7 +4,7 @@
     <br>
     <div class='flex ml-[165px]'>
 
-        <form action="/project/infos/{{ $project->id }}" method="POST">
+        <form action="/project/info/update/{{ $projectInfo->id }}" method="POST">
             @csrf
             <table>
                 <tr>
@@ -12,7 +12,8 @@
                     <td class='border border-black '>
                         <p class='float-left font-semibold'>
                             Projectnaam<br>
-                            <input class='border border-slate-300 font-normal' type="text" name='ProjectNaam'>
+                            <input class='border border-slate-300 font-normal' type="text" name='ProjectNaam'
+                                value='{{ $projectInfo->ProjectNaam }}'>
 
                         </p>
                         @error('ProjectNaam')
@@ -20,7 +21,8 @@
                         @enderror
                         <p class='float-right font-semibold'>
                             Datum bestelling<br>
-                            <input class='border border-slate-300 font-normal' type="date" name='datumBestelling'>
+                            <input class='border border-slate-300 font-normal' type="date" name='datumBestelling'
+                                value='{{ $projectInfo->datumBestelling }}'>
                         </p>
                         @error('datumBestelling')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
@@ -37,50 +39,62 @@
                     <td colspan="4"></td>
                     <td class='border border-black p-2 font-semibold'>
                         Telefoonnummer <input class='border border-slate-300 font-normal' type="tel"
-                            name="telefoonnummer">
+                            name="telefoonnummer" value='{{ $projectInfo->telefoonnummer }}'>
                         @error('telefoonnummer')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
                     <td class='border border-black p-2'>
-                        Magazijn order compleet: <input class='border border-slate-300' type="date" name='datum'>
+                        Magazijn order compleet: <input class='border border-slate-300' type="date" name='datum'
+                            value='{{ $projectInfo->datum }}'>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
                     <td colspan="2" class='border border-black p-2'>
-                        <input type="radio" name='label' value='leveren' id='leveren'>
+                        <input type="radio" name='label' value='leveren' id='leveren'
+                            @if ($projectInfo->label == 'leveren') checked @endif>
                         <label for="leveren">Leveren</label>
 
-                        <input type="radio" name='label' value='bijKlant' id='bijKlant'>
+                        <input type="radio" name='label' value='bijKlant' id='bijKlant'
+                            @if ($projectInfo->label == 'bijKlant') checked @endif>
                         <label for="bijKlant">Bij Klant</label>
 
-                        <input type="radio" name='label' value='magazijn' id='magazijn'>
+                        <input type="radio" name='label' value='magazijn' id='magazijn'
+                            @if ($projectInfo->label == 'magazijn') checked @endif>
                         <label for="magazijn">Magazijn (afhaling)</label>
 
-                        <input type="radio" name='label' value='levertijdVolgt' id='levertijdVolgt'>
+                        <input type="radio" name='label' value='levertijdVolgt' id='levertijdVolgt'
+                            @if ($projectInfo->label == 'levertijdVolgt') checked @endif>
                         <label for="levertijdVolgt">levertijd volgt</label><br>
 
-                        <input type="radio" name='label' value='monteren' id='monteren'>
+                        <input type="radio" name='label' value='monteren' id='monteren'
+                            @if ($projectInfo->label == 'monteren') checked @endif>
                         <label for="monteren">Monteren</label>
 
-                        <input type="radio" name='label' value='oudWerk' id='oudWerk'>
+                        <input type="radio" name='label' value='oudWerk' id='oudWerk'
+                            @if ($projectInfo->label == 'oudWerk') checked @endif>
                         <label for="oudWerk">Oud werk</label>
 
-                        <input type="radio" name='label' value='nieuwWerk' id='nieuwWerk'>
+                        <input type="radio" name='label' value='nieuwWerk' id='nieuwWerk'
+                            @if ($projectInfo->label == 'nieuwWerk') checked @endif>
                         <label for="nieuwWerk">Nieuw werk</label>
 
-                        <input type="radio" name='label' value='stelkozijnen' id='stelkozijnen'>
+                        <input type="radio" name='label' value='stelkozijnen' id='stelkozijnen'
+                            @if ($projectInfo->label == 'stelkozijnen') checked @endif>
                         <label for="stelkozijnen">Stelkozijnen</label>
 
 
-                        <input type="radio" name='label' value='afwerking' id='afwerking'>
+                        <input type="radio" name='label' value='afwerking' id='afwerking'
+                            @if ($projectInfo->label == 'afwerking') checked @endif>
                         <label for="afwerking">Afwerking</label><br>
 
-                        <input type="radio" name='label' value='hulpBijMonteren' id='hulpBijMonteren'>
+                        <input type="radio" name='label' value='hulpBijMonteren' id='hulpBijMonteren'
+                            @if ($projectInfo->label == 'hulpBijMonteren') checked @endif>
                         <label for="hulpBijMonteren">Hulp bij monteren</label>
 
-                        <input type="radio" name='label' value='legeBokAfgemeld' id='legeBokAfgemeld'>
+                        <input type="radio" name='label' value='legeBokAfgemeld' id='legeBokAfgemeld'
+                            @if ($projectInfo->label == 'legeBokAfgemeld') checked @endif>
                         <label for="legeBokAfgemeld">Lege bok afgemeld</label>
                     </td>
                 </tr>
@@ -135,16 +149,20 @@
                 @foreach ($content as $item)
                     <tr class='border border-black '>
                         <td class='text-center border border-black'>
-                            <input type="radio" checked name='field{{ $item->id }}' value='teBestellen'>
+                            <input type="radio" name='field{{ $item->id }}' value='teBestellen'
+                                @if ($buttons->{'field' . $item->id} == 'teBestellen') checked @endif>
                         </td>
                         <td class='text-center border border-black'>
-                            <input type="radio" name='field{{ $item->id }}' value='besteld'>
+                            <input type="radio" name='field{{ $item->id }}' value='besteld'
+                                @if ($buttons->{'field' . $item->id} == 'besteld') checked @endif>
                         </td>
                         <td class='text-center border border-black'>
-                            <input type="radio" name='field{{ $item->id }}' value='ontvangen'>
+                            <input type="radio" name='field{{ $item->id }}' value='ontvangen'
+                                @if ($buttons->{'field' . $item->id} == 'ontvangen') checked @endif>
                         </td>
                         <td class='text-center border border-black'><input type="checkbox"
-                                name='inclusief{{ $item->id }}' value='true'></td>
+                                name='inclusief{{ $item->id }}' value='true'
+                                @if ($buttons->{'inclusief' . $item->id} == 'true') checked @endif></td>
                         <td colspan='2'> {!! $item->content !!}
 
                             @error($item->id)
@@ -156,12 +174,15 @@
 
                 <tr>
                     <td class='border border-black'colspan="6">
-                        Totaal Euro <input class='border border-slate-300' type="number" name='totaalEuro'>
+                        Totaal Euro <input class='border border-slate-300' type="number" name='totaalEuro'
+                            value='{{ $projectInfo->totaalEuro }}'>
                         @error('totaalEuro')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
-                        <input type="radio" name='BTW' value="Inclusief_BTW"> Inclusief BTW <input type="radio"
-                            name='BTW' value='Exclusief_BTW'> Exclusief BTW zonder
+                        <input type="radio" name='BTW' value="Inclusief_BTW"
+                            @if ($projectInfo->BTW == 'Inclusief_BTW') checked @endif> Inclusief BTW <input type="radio"
+                            name='BTW' value='Exclusief_BTW' @if ($projectInfo->BTW == 'Exclusief_BTW') checked @endif>
+                        Exclusief BTW zonder
                         betalingskorting<br>
                         (voor specificaties over uw bestelling en de kozijntekeningen zie de bijlage)
                     </td>
@@ -172,7 +193,8 @@
                             <u>2% OF 3% BETALINGKORTING</u></mark></td>
                 </tr>
                 <tr class="border-x border-black text-center">
-                    <td class='border border-black'><input type="radio" name='korting' value="2%"></td>
+                    <td class='border border-black'><input type="radio" name='korting' value="2%"
+                            @if ($projectInfo->korting == '2%') checked @endif></td>
                     <td></td>
                     <td class='bg-yellow-300 border border-black'>2%</td>
                     <td colspan="4">Om in aanmerking te komen voor 2% betalingskorting op uw order is het betaalschema
@@ -188,7 +210,8 @@
 
 
                 <tr class="border-x border-black text-center">
-                    <td class='border border-black'><input type="radio" name='korting' value="3%"></td>
+                    <td class='border border-black'><input type="radio" name='korting' value="3%"
+                            @if ($projectInfo->korting == '3%') checked @endif></td>
                     <td></td>
                     <td class='bg-yellow-300 border border-black'>3%</td>
                     <td colspan="4">Om in aanmerking te komen voor 3% betalingskorting op uw order is het betaalschema
@@ -203,7 +226,8 @@
                 </tr>
 
                 <tr class="border border-black text-center">
-                    <td class='border border-black'><input type="radio" name='korting' value="0%"></td>
+                    <td class='border border-black'><input type="radio" name='korting' value="0%"
+                            @if ($projectInfo->korting == '0%') checked @endif></td>
                     <td></td>
                     <td class='bg-yellow-300 border border-black'>0%</td>
                     <td colspan="4"><mark>1e termijn betaling 50 % bij levering kozijnen op locatie en overige betaling
@@ -216,38 +240,44 @@
                 </tr>
                 <tr class="border border-black">
                     <td class="border border-black"colspan="5"><b>Inmeting: </b><u>paraaf</u> <input type="radio"
-                            name='inmeting' value="Henk"> Henk <input type="radio" name='inmeting' value="Willem">
-                        Willem</td>
+                            name='inmeting' value="Henk" @if ($projectInfo->inmeting == 'Henk') checked @endif> Henk <input
+                            type="radio" name='inmeting' value="Willem"
+                            @if ($projectInfo->inmeting == 'Willem') checked @endif> Willem</td>
                     <td colspan="1"><b>Order verwerkt door:</b> <input type="radio" name='orderVerwerktDoor'
-                            value="Willem"> Willem <input type="radio" name='orderVerwerktDoor' value="Rene"> Rene
-                    </td>
+                            value="Willem" @if ($projectInfo->orderVerwerktDoor == 'Willem') checked @endif> Willem <input
+                            type="radio" name='orderVerwerktDoor' value="Rene"
+                            @if ($projectInfo->orderVerwerktDoor == 'Rene') checked @endif> Rene</td>
                 </tr>
                 <tr class="border border-black">
                     <td colspan="6">
                         Planning monteurs:
-                        dagen <input class="border border-slate-300"type="text" name='dagen'>
+                        dagen <input class="border border-slate-300"type="text" name='dagen'
+                            value='{{ $projectInfo->dagen }}'>
                         @error('dagen')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
-                        personen <input class="border border-slate-300" type="text" name='personen'>
+                        personen <input class="border border-slate-300" type="text" name='personen'
+                            value='{{ $projectInfo->personen }}'>
                         @error('personen')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
-                        naam <input class="border border-slate-300" type="text" name='naam'>
+                        naam <input class="border border-slate-300" type="text" name='naam'
+                            value='{{ $projectInfo->naam }}'>
                         @error('naam')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
-                        <input type="checkbox" name="hulpIntillen"> + hulp intillen
+                        <input type="checkbox" name="hulpIntillen" value="true"
+                            @if ($projectInfo->hulpIntillen == 'true') checked @endif> + hulp intillen
                     </td>
                 </tr>
                 <tr class="border border-black">
                     <td colspan="6">Diversen:
-                        <textarea class='w-full h-1/3' name="diversen" cols="30" rows="3"></textarea>
+                        <textarea class='w-full h-1/3' name="diversen" cols="30" rows="3" value='{{ $projectInfo->diversen }}'></textarea>
                     </td>
                 </tr>
 
             </table>
-            <button type="submit">Submit</button>
+            <button type="submit">Update</button>
         </form>
 
     </div>

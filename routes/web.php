@@ -30,11 +30,15 @@ Route::get('/project/{project}', [ProjectController::class, 'show']);
 Route::get('/project/edit/{project}', [ProjectController::class, 'edit']);
 Route::get('/project/delete/{project}', [ProjectController::class, 'destroy']);
 
-Route::get('/project/akkoord/{project}', [AkkoordController::class, 'create']);
-Route::post('/project/akkoord/create/{project}', [AkkoordController::class, 'store']);
+Route::get('/project/akkoord/create/{project}', [AkkoordController::class, 'create']);
+Route::post('/project/akkoords/{project}', [AkkoordController::class, 'store']);
+Route::get('/project/akkoord/{project}', [AkkoordController::class, 'edit']);
+Route::post('/project/akkoord/update/{project}', [AkkoordController::class, 'update']);
 
-Route::get('/project/info/{project}', [InfoController::class, 'create']);
-Route::post('/project/info/create/{project}', [infoController::class, 'store']);
+Route::get('/project/info/create/{project}', [InfoController::class, 'create']);
+Route::post('/project/infos/{project}', [infoController::class, 'store']);
+Route::get('/project/info/{project}', [InfoController::class, 'edit']);
+Route::post('/project/info/update/{project}', [InfoController::class, 'update']);
 
 Route::post('/kozijnen', [KozijnenController::class, 'store']);
 Route::get('/kozijn/delete/{kozijnen}', [KozijnenController::class, 'destroy']);

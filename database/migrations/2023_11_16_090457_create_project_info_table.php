@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string("Loodgieterswerk")->nullable();
             $table->string("Stuckvloer")->nullable();
             $table->string("afvoer");
+            $table->string("hulpIntillen")->nullable();
             $table->string("andereGevelbekleding")->nullable();
             
 
