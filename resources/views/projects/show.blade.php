@@ -25,23 +25,40 @@
                             <td>{{ $column->pivot->value }}</td>
                         </tr>
                     @endforeach
-                </table>
-                @if(!$info || ($info->project_id != $project->id))
-                    <a href="/project/info/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Info</a>
+                    @if (!$info || $info->project_id != $project->id)
+                        <tr>
+                            <td colspan="2" class='text-center'>
+                                <a href="/project/info/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create
+                                    Info</a>
+                            </td>
+                        </tr>
                     @else
-                        <a href="/project/info/{{ $project->id }}">Show Info</a>
-                         <br>
-                        @if(!$akkoord || ($akkoord && $akkoord->id != $project->id))
-                            <a href="/project/akkoord/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create Akkoord</a>
-                            @else
-                            <a href="/project/akkoord/{{ $project->id }}">Show Akkoords</a>
-                                
+                        <tr>
+                            <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                                <a class='block w-full h-full' href="/project/info/{{ $project->id }}">Info</a>
+                            </td>
+                        </tr>
+                        @if (!$akkoord || ($akkoord && $akkoord->id != $project->id))
+                            <tr>
+                                <td colspan="2" class='text-center'>
+                                    <a href="/project/akkoord/create/{{ $project->id }}"><i
+                                            class="fa-solid fa-plus"></i>Create Akkoord</a>
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                                    <a class='block w-full h-full' href="/project/akkoord/{{ $project->id }}">Akkoord</a>
+                                </td>
+                            </tr>
                         @endif
-                @endif
+                    @endif
+                </table>
+
             </div>
-            
+
         </div>
     </div>
-    
-    
+
+
 @endsection

@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
-    public function store(Request $request, Kozijnen $kozijnen){
+    public function store(Request $request, Kozijnen $kozijnen)
+    {
         $formFields = $request->validate([
             'attribute' => 'required',
         ]);
@@ -19,7 +20,8 @@ class AttributeController extends Controller
         return back()->with('message', 'Attribute created successfully!');
     }
 
-    public function destroy(Attributes $Attributes) {
+    public function destroy(Attributes $Attributes)
+    {
         $Attributes->delete();
         return back()->with('message', 'Attribute deleted successfully');
     }

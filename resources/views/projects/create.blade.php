@@ -22,8 +22,8 @@
                     <tr>
                         <td>Project Adres</td>
                         <td class='text-center'>
-                            <input type="text" name="ProjectAdres" id="ProjectAdres"
-                                placeholder="Project Adres" value='{{ old('ProjectAdres') }}' class='w-full border'>
+                            <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
+                                value='{{ old('ProjectAdres') }}' class='w-full border'>
                             @error('ProjectAdres')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror

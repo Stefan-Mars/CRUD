@@ -5,7 +5,8 @@
         <br>
         <form action="/kozijnen" method="POST" class='w-full border h-14'>
             @csrf
-            <input class='w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn" placeholder="Voeg toe">
+            <input class='w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
+                placeholder="Voeg toe">
             @error('kozijn')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
             @enderror
@@ -23,8 +24,7 @@
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
-                        <td class='whitespace-nowrap w-[1%] pr-4' id='button{{ $kozijn->id }}'
-                            >
+                        <td class='whitespace-nowrap w-[1%] pr-4' id='button{{ $kozijn->id }}'>
                             <i class="fa-solid fa-angle-right cursor-pointer"></i>
                         </td>
 
@@ -51,7 +51,7 @@
                             </td>
                         </form>
                     </tr>
-                    
+
                 </table>
 
             </div>
@@ -59,13 +59,13 @@
         <table class='w-full'>
             <tr>
                 <td class='w-1/2 text-left'><a href="{{ $kozijnen->previousPageUrl() }}">Previous</a></td>
-                @if($kozijnen->hasMorePages())
-                <td class='w-1/2 text-right'><a href="{{ $kozijnen->nextPageUrl() }}">Next</a></td>
+                @if ($kozijnen->hasMorePages())
+                    <td class='w-1/2 text-right'><a href="{{ $kozijnen->nextPageUrl() }}">Next</a></td>
                 @endif
             </tr>
         </table>
-        
-        
+
+
 
 
     </div>
@@ -92,7 +92,8 @@
         function Focus(id) {
             document.getElementById("input" + id).focus();
         }
-        function deleteAlert(id){
+
+        function deleteAlert(id) {
             Swal.fire({
                 title: "Weet je het zeker?",
                 icon: "warning",
@@ -101,15 +102,12 @@
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Ja",
                 cancelButtonText: "Nee",
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/kozijn/delete/"+id;
+                    window.location.href = "/kozijn/delete/" + id;
                 }
             });
             return false;
         }
-
-
-                
     </script>
 @endsection

@@ -14,5 +14,4 @@ class Attributes extends Model
     {
         return $this->belongsTo(Kozijnen::class);
     }
-    
 }

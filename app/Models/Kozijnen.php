@@ -21,5 +21,4 @@ class Kozijnen extends Model
     {
         return $this->hasMany(Attributes::class);
     }
-    
 };

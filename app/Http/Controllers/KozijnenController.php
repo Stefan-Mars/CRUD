@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class KozijnenController extends Controller
 {
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $formFields = $request->validate([
             'kozijn' => 'required',
         ]);
@@ -16,9 +17,9 @@ class KozijnenController extends Controller
 
         return back()->with('message', 'Kozijn created successfully!');
     }
-    public function destroy(Kozijnen $kozijnen) {
+    public function destroy(Kozijnen $kozijnen)
+    {
         $kozijnen->delete();
         return back()->with('message', 'Kozijn deleted successfully');
     }
-
 }

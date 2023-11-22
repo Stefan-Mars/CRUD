@@ -54,7 +54,7 @@
                 <td class='p-2 ' colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve hieronder aangeven:</b></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan='4'><textarea type='text'class="w-full @error('naamOpdrachtgever') border border-red-500 @enderror" name='anderePunten'  value='{{$akkoord->anderePunten}}'></textarea></td>
+                <td class='p-2' colspan='4'><textarea type='text'class="w-full @error('naamOpdrachtgever') border border-red-500 @enderror" name='anderePunten'>{{$akkoord->anderePunten}}</textarea></td>
             </tr>
             <tr class='bg-red-100'>
                 <td class='p-2' colspan="4"><b>Eventueel tekening:</b></td>

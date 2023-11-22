@@ -22,5 +22,4 @@ class Project extends Model
     {
         return $this->hasOne(Akkoord::class);
     }
-
 }

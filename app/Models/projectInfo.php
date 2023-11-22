@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class projectInfo extends Model
 {
-    use HasFactory; 
+    use HasFactory;
     protected $table = "project_info";
     protected $guarded = [];
     public function buttons()
@@ -18,5 +18,4 @@ class projectInfo extends Model
     {
         return $this->belongsTo(Project::class);
     }
-
 }

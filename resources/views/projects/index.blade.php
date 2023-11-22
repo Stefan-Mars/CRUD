@@ -20,7 +20,8 @@
                 @foreach ($projects as $project)
                     <tr>
                         <td><a class='underline'href="/project/{{ $project->id }}">{{ $project->KlantNaam }}</a></td>
-                        <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i
+                                    class="fa-solid fa-pen-to-square"></i></a></td>
                         <td class='whitespace-nowrap w-[1%]'>
                             <a onclick="return deleteAlert({{ $project->id }})" href="/project/delete/{{ $project->id }}">
                                 <i class="fa-solid fa-trash"></i>
@@ -39,7 +40,8 @@
             pagingType: 'simple',
             sort: false,
         });
-        function deleteAlert(id){
+
+        function deleteAlert(id) {
             Swal.fire({
                 title: "Weet je het zeker?",
                 icon: "warning",
@@ -48,9 +50,9 @@
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Ja",
                 cancelButtonText: "Nee",
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/project/delete/"+id;
+                    window.location.href = "/project/delete/" + id;
                 }
             });
             return false;

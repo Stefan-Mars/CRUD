@@ -29,14 +29,14 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>Email</td>
-                    <td>
-                        <input type="email" name="Email" id="Email" placeholder="Email"
-                            value='{{ $project->Email }}' class='w-full border'>
-                        @error('Email')
-                            <p class="text-red-500 text-xs">{{ $message }}</p>
-                        @enderror
-                    </td>
+                        <td>Email</td>
+                        <td>
+                            <input type="email" name="Email" id="Email" placeholder="Email"
+                                value='{{ $project->Email }}' class='w-full border'>
+                            @error('Email')
+                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                        </td>
                     </tr>
 
 
