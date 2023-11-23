@@ -15,7 +15,7 @@ class InfoController extends Controller
         $info = $project->info;
         if (!$info || ($info->project_id != $project->id)) {
             $content = Content::get();
-            return view('projectInfo/create', compact('content', 'project'));
+            return view('projects/info/create', compact('content', 'project'));
         } else {
             return redirect('/project/' . $project->id)->with('message', 'Info already exists!');
         }
@@ -77,7 +77,7 @@ class InfoController extends Controller
         $projectInfo = ProjectInfo::where('project_id', $project->id)->first();
         $buttons = Button::where('project_info_id', $projectInfo->id)->first();
         $content = Content::get();
-        return view('projectInfo/edit', compact('content', 'project', 'projectInfo', 'buttons'));
+        return view('projects/info/edit', compact('content', 'project', 'projectInfo', 'buttons'));
     }
     public function update(Request $request, Project $project)
     {

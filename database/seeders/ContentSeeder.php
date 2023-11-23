@@ -61,7 +61,7 @@ class ContentSeeder extends Seeder
                 "content" => "Externe beglazing zoals lucaclair o.i.d",
             ],
             [
-                "content" => "<input type='checkbox' name='Electrawerk' value='true'> Electrawerk <input type='checkbox' name='true' value='Loodgieterswerk'>
+                "content" => "<input type='checkbox' name='Electrawerk' value='true'> Electrawerk <input type='checkbox' name='Loodgieterswerk' value='true'>
                 Loodgieterswerk",
             ],
             [

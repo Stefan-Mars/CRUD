@@ -27,8 +27,8 @@
                     @endforeach
                     @if (!$info || $info->project_id != $project->id)
                         <tr>
-                            <td colspan="2" class='text-center'>
-                                <a href="/project/info/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create
+                            <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                                <a class='block w-full h-full' href="/project/info/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create
                                     Info</a>
                             </td>
                         </tr>
@@ -40,8 +40,8 @@
                         </tr>
                         @if (!$akkoord || ($akkoord && $akkoord->id != $project->id))
                             <tr>
-                                <td colspan="2" class='text-center'>
-                                    <a href="/project/akkoord/create/{{ $project->id }}"><i
+                                <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                                    <a class='block w-full h-full' href="/project/akkoord/create/{{ $project->id }}"><i
                                             class="fa-solid fa-plus"></i>Create Akkoord</a>
                                 </td>
                             </tr>

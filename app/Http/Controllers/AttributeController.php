@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
+    public function index(Attributes $Attributes)
+    {
+        $kozijnen = Kozijnen::paginate(10);
+        $attributes = Attributes::get();
+        return view('admin', compact('kozijnen','attributes'));
+    }
     public function store(Request $request, Kozijnen $kozijnen)
     {
         $formFields = $request->validate([
@@ -25,4 +31,6 @@ class AttributeController extends Controller
         $Attributes->delete();
         return back()->with('message', 'Attribute deleted successfully');
     }
+
+    
 }

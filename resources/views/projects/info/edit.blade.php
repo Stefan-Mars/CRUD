@@ -272,7 +272,7 @@
                 </tr>
                 <tr class="border border-black">
                     <td colspan="6">Diversen:
-                        <textarea class='w-full h-1/3' name="diversen" cols="30" rows="3" value='{{ $projectInfo->diversen }}'></textarea>
+                        <textarea class='w-full h-1/3' name="diversen" cols="30" rows="3">{{ $projectInfo->diversen }}</textarea>
                     </td>
                 </tr>
 
@@ -282,4 +282,39 @@
 
     </div>
     <br>
+    <script>
+        var data = <?php echo $projectInfo ?>;
+
+        var andereGevelbekleding = document.getElementsByName('andereGevelbekleding');
+        andereGevelbekleding[0].value = data['andereGevelbekleding'];
+
+        var Kraan = document.getElementsByName('Kraan');
+        Kraan[0].value = data['Kraan'];
+        
+        function setCheckedValue(elementName) {
+            var elements = document.getElementsByName(elementName);
+            for (var i = 0; i < elements.length; i++) {
+                if (data[elementName] === elements[i].value) {
+                    elements[i].checked = true;
+                }
+            }
+        }
+
+        [
+            'andereGevelbekleding', 
+            'Kraan', 
+            'gevelbekleding', 
+            'SRLM', 
+            'gordijnen', 
+            'ZetWater', 
+            'Electrawerk', 
+            'Loodgieterswerk', 
+            'Stuckvloer', 
+            'afvoer', 
+            'Kraantype'
+        ].forEach(function(elementName) {
+            setCheckedValue(elementName);
+        });
+
+    </script>
 @endsection

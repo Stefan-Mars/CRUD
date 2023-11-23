@@ -11,10 +11,12 @@ class AkkoordController extends Controller
 {
     public function create(Request $request, Project $project)
     {
+
         $akkoord = $project->akkoord;
+
         if (!$akkoord || ($akkoord && $akkoord->id != $project->id)) {
             $info = projectInfo::find($project->id);
-            return view('projectAkkoord/create', compact('project', 'info'));
+            return view('projects/akkoord/create', compact('project', 'info'));
         } else {
             return redirect('/project/' . $project->id)->with('message', 'Akkoord already exists!');
         }
@@ -56,38 +58,47 @@ class AkkoordController extends Controller
     }
     public function edit(Project $project)
     {
-        $akkoord = Akkoord::where('project_id', $project->id)->first();
-
-        return view('projectAkkoord/edit', compact('akkoord'));
+        $akkoord = $project->akkoord;
+        if ($akkoord || ($akkoord && $akkoord->id == $project->id)) {
+            $akkoord = Akkoord::where('project_id', $project->id)->first();
+            return view('projects/akkoord/edit', compact('akkoord'));
+        } else {
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord does not exist!');
+        }
     }
     public function update(Request $request, Project $project)
     {
-        $akkoord = Akkoord::where('project_id', $project->id)->first();
-        $formFields = $request->validate([
-            "soortAanvraag" => "required",
-            "naamOpdrachtgever" => "required",
-            "ProjectAdres" => "required",
-            "postcode" => "required",
-            "woonplaats" => "required",
-            "telefoonnummer" => "required",
-            "Email" => "required",
-            "naamMonteur" => "required",
-            "doorWieAfTeWerken" => "required",
-            "inTePlannenTijd" => "required",
-            "ordernummerFabrikant" => "required",
-            "ruimteSchoon" => "required",
-            "ramenDeurenGoed" => "required",
-            "eigendommenBeschadigd" => "required",
-            "afwerkingUitgevoerd" => "required",
-            "ruitenKozijnenOnbeschadigd" => "required",
-            "overigePunten" => "required",
-            "anderePunten" => "sometimes|nullable",
-        ]);
+        $akkoord = $project->akkoord;
+        if ($akkoord || ($akkoord && $akkoord->id == $project->id)) {
+            $akkoord = Akkoord::where('project_id', $project->id)->first();
+            $formFields = $request->validate([
+                "soortAanvraag" => "required",
+                "naamOpdrachtgever" => "required",
+                "ProjectAdres" => "required",
+                "postcode" => "required",
+                "woonplaats" => "required",
+                "telefoonnummer" => "required",
+                "Email" => "required",
+                "naamMonteur" => "required",
+                "doorWieAfTeWerken" => "required",
+                "inTePlannenTijd" => "required",
+                "ordernummerFabrikant" => "required",
+                "ruimteSchoon" => "required",
+                "ramenDeurenGoed" => "required",
+                "eigendommenBeschadigd" => "required",
+                "afwerkingUitgevoerd" => "required",
+                "ruitenKozijnenOnbeschadigd" => "required",
+                "overigePunten" => "required",
+                "anderePunten" => "sometimes|nullable",
+            ]);
 
 
-        $akkoord->update($formFields);
+            $akkoord->update($formFields);
 
 
-        return redirect('/project/' . $project->id)->with('message', 'Akkoord updated successfully!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord updated successfully!');
+        } else {
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord does not exist!');
+        }
     }
 }

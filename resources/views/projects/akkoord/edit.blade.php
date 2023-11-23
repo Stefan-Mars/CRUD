@@ -15,7 +15,7 @@
                 </td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2'colspan="4"><b >Naam opdrachtgever: </b> <input class='float-right @error('naamOpdrachtgever') border border-red-500 @enderror' type="text" name="naamOpdrachtgever" value='{{$akkoord->naamOpdrachtgever}}'></td>
+                <td class='p-2' colspan="4"><b>Naam opdrachtgever: </b> <input class='float-right @error('naamOpdrachtgever') border border-red-500 @enderror' type="text" name="naamOpdrachtgever" value='{{$akkoord->naamOpdrachtgever}}'></td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="4">Adres: <input class='float-right @error('ProjectAdres') border border-red-500 @enderror'type="text" name='ProjectAdres'value='{{$akkoord->ProjectAdres}}'></td>
@@ -51,7 +51,7 @@
                 <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens? ja <input @if($akkoord->overigePunten == 'true') checked @endif type="radio" value="true" name='overigePunten'> nee <input @if($akkoord->overigePunten == 'false') checked @endif type="radio" value="false" name='overigePunten'></td>
             </tr>
             <tr class='bg-red-300'>
-                <td class='p-2 ' colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve hieronder aangeven:</b></td>
+                <td class='p-2 'colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve hieronder aangeven:</b></td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan='4'><textarea type='text'class="w-full @error('naamOpdrachtgever') border border-red-500 @enderror" name='anderePunten'>{{$akkoord->anderePunten}}</textarea></td>
