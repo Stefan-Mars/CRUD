@@ -24,20 +24,20 @@ return new class extends Migration
             $table->string("personen");
             $table->string("naam");
             $table->string("korting");
-            $table->string("diversen");
+            $table->string("diversen")->nullable();
             $table->string("Kraan")->nullable();
             $table->string("Kraantype")->nullable();
             $table->string("BTW");
             $table->string("inmeting");
             $table->string("orderVerwerktDoor");
-            $table->string("gevelbekleding");
+            $table->string("gevelbekleding")->nullable();
             $table->string("SRLM")->nullable();
             $table->string("gordijnen")->nullable();
             $table->string("ZetWater")->nullable();
             $table->string("Electrawerk")->nullable();
             $table->string("Loodgieterswerk")->nullable();
             $table->string("Stuckvloer")->nullable();
-            $table->string("afvoer");
+            $table->string("afvoer")->nullable();
             $table->string("hulpIntillen")->nullable();
             $table->string("andereGevelbekleding")->nullable();
             

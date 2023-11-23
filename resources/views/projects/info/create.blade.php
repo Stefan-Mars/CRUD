@@ -135,7 +135,7 @@
                 @foreach ($content as $item)
                     <tr class='border border-black '>
                         <td class='text-center border border-black'>
-                            <input type="radio" checked name='field{{ $item->id }}' value='teBestellen'>
+                            <input type="radio" name='field{{ $item->id }}' value='teBestellen'>
                         </td>
                         <td class='text-center border border-black'>
                             <input type="radio" name='field{{ $item->id }}' value='besteld'>
