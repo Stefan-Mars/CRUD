@@ -5,7 +5,7 @@
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
             <tr class='bg-red-400 border-spacing-0' >
-                <td class='p-2' colspan="4" ><input type="radio" name="soortAanvraag" value='opleveringsbon'> Opleveringsbon <input type="radio" name="soortAanvraag" value='nalevering'> Nalevering <input type="radio" name="soortAanvraag" value='service'> Service @error('soortAanvraag') <p class='text-red-700 text-xs font-bold'>{{$message}}</p> @enderror</td>
+                <td class='p-2' colspan="4" ><input type="radio" name="soortAanvraag" value='opleveringsbon'> Opleveringsbon <input type="radio" name="soortAanvraag" value='nalevering'> Nalevering <input type="radio" name="soortAanvraag" value='service'> Service @error('soortAanvraag') <p class='text-red-500 text-xs'>{{$message}}</p> @enderror</td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2'colspan="4"><b >Naam opdrachtgever: </b> <input class='float-right @error('naamOpdrachtgever') border border-red-500 @enderror' type="text" name="naamOpdrachtgever" value='{{old('naamOpdrachtgever')}}'></td>
@@ -18,7 +18,7 @@
                 <td class='p-2' colspan="2">Woonplaats: <input class='float-right @error('woonplaats') border border-red-500 @enderror'type="text" name='woonplaats' value='{{old('woonplaats')}}'></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">Telefoonnummer: <input class='float-right @error('telefoonnummer') border border-red-500 @enderror'type="text" name='telefoonnummer'value='{{$info->telefoonnummer}}'></td>
+                <td class='p-2' colspan="2">Telefoonnummer: <input class='float-right @error('telefoonnummer') border border-red-500 @enderror'type="text" name='telefoonnummer'value='{{$info[0]->telefoonnummer}}'></td>
                 <td class='p-2' colspan="2">E-mail: <input class='float-right @error('Email') border border-red-500 @enderror'type="text" name='Email'value='{{$project->Email}}'></td>
             </tr>
             <tr class='bg-red-200'>
@@ -75,22 +75,47 @@
 <script>
        var canvas = document.getElementById("signature-pad");
 
-       function resizeCanvas() {
-           var ratio = Math.max(window.devicePixelRatio || 1, 1);
-           canvas.width = canvas.offsetWidth * ratio;
-           canvas.height = canvas.offsetHeight * ratio;
-           canvas.getContext("2d").scale(ratio, ratio);
-       }
-       window.onresize = resizeCanvas;
-       resizeCanvas();
+        function resizeCanvas() {
+            var ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
+        window.onresize = resizeCanvas;
+        resizeCanvas();
 
-       var signaturePad = new SignaturePad(canvas, {
+        var signaturePad = new SignaturePad(canvas, {
             backgroundColor: 'rgb(250,250,250)'
-       });
+        });
 
-       document.getElementById("clear").addEventListener('click', function(){
+        document.getElementById("clear").addEventListener('click', function(event){
+            event.preventDefault(); // Prevents the default form submission behavior
             signaturePad.clear();
-       })
+        });
+
+
+
+        var form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get the data URL of the canvas as a PNG
+            var signatureData = signaturePad.toDataURL(); // This gets the signature as a base64-encoded PNG image
+
+            // You can now use 'signatureData' to send it to the server or perform further actions
+            // For example, you can set it as a value of a hidden input field in the form before submitting
+            var signatureInput = document.createElement('input');
+            signatureInput.setAttribute('type', 'hidden');
+            signatureInput.setAttribute('name', 'signatureData');
+            signatureInput.setAttribute('value', signatureData);
+            form.appendChild(signatureInput);
+
+            // Finally, submit the form
+            form.submit();
+        });
+            
 </script>
 
 @endsection

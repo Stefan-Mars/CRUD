@@ -1,7 +1,7 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <form action="/project/akkoord/update/{{$akkoord->id}}" method="POST">
+    <form action="/project/akkoord/update/{{$akkoord->project_id}}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
             <tr class='bg-red-400 border-spacing-0' >
@@ -61,7 +61,11 @@
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het ondertekenen verklaart<br> de klant akkorrd te gaan met de werkzaamheden</td>
-                <td class='p-2' colspan="2">Handtekening klant:</td>
+                <td class='p-2' colspan="2">Handtekening klant:
+
+
+                    <img src="{{$akkoord->signatureData}}" alt="">
+                </td>
             </tr>
             <tr>
                 <td colspan="4" class='text-center'><button type="submit" class='bg-red-400 p-1'>Update</button></td>

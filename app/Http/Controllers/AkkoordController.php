@@ -14,8 +14,8 @@ class AkkoordController extends Controller
 
         $akkoord = $project->akkoord;
 
-        if (!$akkoord || ($akkoord && $akkoord->id != $project->id)) {
-            $info = projectInfo::find($project->id);
+        if (!$akkoord || ($akkoord && $akkoord->project_id != $project->id)) {
+            $info = projectInfo::where('project_id', $project->id)->get();
             return view('projects/akkoord/create', compact('project', 'info'));
         } else {
             return redirect('/project/' . $project->id)->with('message', 'Akkoord already exists!');
@@ -25,7 +25,7 @@ class AkkoordController extends Controller
     public function store(Request $request, Project $project)
     {
         $akkoord = $project->akkoord;
-        if (!$akkoord || ($akkoord && $akkoord->id != $project->id)) {
+        if (!$akkoord || ($akkoord && $akkoord->project_id != $project->id)) {
             $formFields = $request->validate([
                 "soortAanvraag" => "required",
                 "naamOpdrachtgever" => "required",
@@ -45,6 +45,7 @@ class AkkoordController extends Controller
                 "ruitenKozijnenOnbeschadigd" => "required",
                 "overigePunten" => "required",
                 "anderePunten" => "sometimes|nullable",
+                "signatureData" => "sometimes|nullable",
             ]);
 
             $akkoord = Akkoord::create($formFields);
@@ -59,7 +60,7 @@ class AkkoordController extends Controller
     public function edit(Project $project)
     {
         $akkoord = $project->akkoord;
-        if ($akkoord || ($akkoord && $akkoord->id == $project->id)) {
+        if ($akkoord || ($akkoord && $akkoord->project_id == $project->id)) {
             $akkoord = Akkoord::where('project_id', $project->id)->first();
             return view('projects/akkoord/edit', compact('akkoord'));
         } else {
@@ -69,7 +70,7 @@ class AkkoordController extends Controller
     public function update(Request $request, Project $project)
     {
         $akkoord = $project->akkoord;
-        if ($akkoord || ($akkoord && $akkoord->id == $project->id)) {
+        if ($akkoord || ($akkoord && $akkoord->project_id == $project->id)) {
             $akkoord = Akkoord::where('project_id', $project->id)->first();
             $formFields = $request->validate([
                 "soortAanvraag" => "required",

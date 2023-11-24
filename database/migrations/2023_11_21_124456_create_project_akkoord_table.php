@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string("ruitenKozijnenOnbeschadigd");
             $table->string("overigePunten");
             $table->string("anderePunten")->nullable();
+            $table->longText("signatureData")->nullable();
+            
 
             
             $table->timestamps();

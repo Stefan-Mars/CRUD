@@ -23,7 +23,7 @@
 </head>
 
 
-<body class='text-black font-sans m-0'>
+<body class='text-black font-sans m-0 '>
     @include('layouts/flash-message')
     @yield('content')
 </body>

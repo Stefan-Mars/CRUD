@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->onDelete('cascade');
             $table->foreignId('kozijnen_id')->onDelete('cascade');
-            $table->string('value'); // Add a column to store the attribute value
+            $table->string('value')->nullable(); // Add a column to store the attribute value
             $table->timestamps();
         });
     }

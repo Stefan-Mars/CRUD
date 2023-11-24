@@ -6,11 +6,11 @@
 
         <form action="/project/infos/{{ $project->id }}" method="POST">
             @csrf
-            <table>
+            <table class='border-separate border-spacing-1'>
                 <tr>
                     <td colspan="4"></td>
-                    <td class='border border-black '>
-                        <p class='float-left font-semibold'>
+                    <td class='bg-red-200'>
+                        <p class='float-left font-semibold p-2'>
                             Projectnaam<br>
                             <input class='border border-slate-300 font-normal' type="text" name='ProjectNaam'>
 
@@ -26,29 +26,27 @@
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
-                    <td class='border border-black p-2'>
-                        <mark>
+                    <td class='bg-red-200 p-2 font-bold'>
                             let op bij levering van glas op bokken op het werk<br> dit niet in de volle zon zetten ivm
                             thermische breuk !!
-                        </mark>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
-                    <td class='border border-black p-2 font-semibold'>
+                    <td class='bg-red-200 p-2 font-semibold'>
                         Telefoonnummer <input class='border border-slate-300 font-normal' type="tel"
                             name="telefoonnummer">
                         @error('telefoonnummer')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
                     </td>
-                    <td class='border border-black p-2'>
+                    <td class='bg-red-200 p-2'>
                         Magazijn order compleet: <input class='border border-slate-300' type="date" name='datum'>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
-                    <td colspan="2" class='border border-black p-2'>
+                    <td colspan="2" class='bg-red-200 p-2'>
                         <input type="radio" name='label' value='leveren' id='leveren'>
                         <label for="leveren">Leveren</label>
 
@@ -86,66 +84,66 @@
                 </tr>
                 <tr>
                     <td colspan="4"></td>
-                    <td colspan="2" class='border border-black'>
-                        <mark>Bij alleen leveren (zonder montage) op locatie doot transport dient de opdrachtgever de lege
-                            bokken per email af te melden aan ons binnen 3 weken na levering</mark>
+                    <td colspan="2" class='bg-red-200 p-1 font-bold'>
+                        Bij alleen leveren (zonder montage) op locatie doot transport dient de opdrachtgever de lege
+                            bokken per email af te melden aan ons binnen 3 weken na levering
                     </td>
                 </tr>
 
-                <tr class='border border-black p-2 '>
+                <tr class='bg-red-200 p-2 '>
                     <td rowspan='4'
-                        class='text-center p-2 border border-black font-semibold'style='writing-mode: vertical-rl;'>Te
+                        class='text-center p-2 bg-red-200 font-semibold'style='writing-mode: vertical-rl;'>Te
                         Bestellen
                     </td>
                     <td rowspan='4'
-                        class='text-center p-2 border border-black font-semibold'style='writing-mode: vertical-rl;'>Besteld
+                        class='text-center p-2 bg-red-200 font-semibold'style='writing-mode: vertical-rl;'>Besteld
                     </td>
                     <td rowspan='4'
-                        class='text-center p-2 border border-black font-semibold'style='writing-mode: vertical-rl;'>
+                        class='text-center p-2 bg-red-200 font-semibold'style='writing-mode: vertical-rl;'>
                         Ontvangen
                     </td>
                     <td rowspan='4'
-                        class='text-center p-2 border border-black font-semibold'style='writing-mode: vertical-rl;'>
+                        class='text-center p-2 bg-red-200 font-semibold'style='writing-mode: vertical-rl;'>
                         Inclusief
                     </td>
-                    <td colspan="2"class='border-black border'>Let op bij horren en gordijnen en overige producten die
+                    <td colspan="2"class='bg-red-200 p-1'>Let op bij horren en gordijnen en overige producten die
                         besteld worden voor u kan er kleurverschil zijn met<br> het bestelde kozijn. Indien inzet klikhoren
                         met
                         vast gaas mee besteld zijn voor de bestelde kozijnen dan<br> staan deze op de besteltekening apart
                         benoemd en worden gelijk mee besteld met uw kozijnen.</td>
                 </tr>
                 <tr>
-                    <td colspan="2"class='border-black border'>Let op bij beglazing van verschillende samenstellingen of
+                    <td colspan="2"class='bg-red-200 p-1'>Let op bij beglazing van verschillende samenstellingen of
                         diktes kan er kleurverschil per ruit ontstaan</td>
                 </tr>
                 <tr>
-                    <td colspan="2"class='border-black border'><mark>De koper is gehouden vooraf bij het aangaan van de
+                    <td colspan="2"class='bg-red-200 p-1 font-bold'>De koper is gehouden vooraf bij het aangaan van de
                             koopovereenkomst de aanwezigheid van asbest/en of andere potentieel<br> gevaarlijk materiaal in
                             het
                             gedeelte waar Boer kozijnen gaat verichten te (laten) verwijderen door een gecertificeerd
                             bedrijf
-                            alvorens<br> met de werkzaamheiden gestart kan worden</mark></td>
+                            alvorens<br> met de werkzaamheiden gestart kan worden</td>
                 </tr>
                 <tr>
-                    <td colspan="2"class='border-black border'><mark>De koper is verantwoordelijk voor het melden van de
+                    <td colspan="2"class='bg-red-200 p-1 font-bold'>De koper is verantwoordelijk voor het melden van de
                             aanwezigheid van asbest en of ander potentieel gevaarlijk materiaal bij de<br> bevoegde
-                            instansies</mark></td>
+                            instansies</td>
                 </tr>
 
                 @foreach ($content as $item)
-                    <tr class='border border-black '>
-                        <td class='text-center border border-black'>
+                    <tr class='bg-red-200 '>
+                        <td class='text-center bg-red-300 p-1'>
                             <input type="radio" name='field{{ $item->id }}' value='teBestellen'>
                         </td>
-                        <td class='text-center border border-black'>
+                        <td class='text-center bg-red-300 p-1'>
                             <input type="radio" name='field{{ $item->id }}' value='besteld'>
                         </td>
-                        <td class='text-center border border-black'>
+                        <td class='text-center bg-red-300 p-1'>
                             <input type="radio" name='field{{ $item->id }}' value='ontvangen'>
                         </td>
-                        <td class='text-center border border-black'><input type="checkbox"
+                        <td class='text-center bg-red-300 p-1'><input type="checkbox"
                                 name='inclusief{{ $item->id }}' value='true'></td>
-                        <td colspan='2'> {!! $item->content !!}
+                        <td colspan='2' class='p-1 {{ $item->id % 2 === 0 ? "bg-red-200" : "bg-red-100" }}'> {!! $item->content !!}
 
                             @error($item->id)
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
@@ -155,7 +153,7 @@
                 @endforeach
 
                 <tr>
-                    <td class='border border-black'colspan="6">
+                    <td class='bg-red-200 p-1'colspan="6">
                         Totaal Euro <input class='border border-slate-300' type="number" name='totaalEuro'>
                         @error('totaalEuro')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
@@ -167,63 +165,63 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class='border border-black text-center'colspan="6"><mark>BETAALSCHEMA OM IN AANMERKING TE KOMEN
+                    <td class='bg-red-200 text-center font-bold p-1'colspan="6">BETAALSCHEMA OM IN AANMERKING TE KOMEN
                             VOOR
-                            <u>2% OF 3% BETALINGKORTING</u></mark></td>
+                            <u>2% OF 3% BETALINGKORTING</u></td>
                 </tr>
-                <tr class="border-x border-black text-center">
-                    <td class='border border-black'><input type="radio" name='korting' value="2%"></td>
+                <tr class="bg-red-300 text-center">
+                    <td class='bg-red-300 p-1'><input type="radio" name='korting' value="2%"></td>
                     <td></td>
-                    <td class='bg-yellow-300 border border-black'>2%</td>
-                    <td colspan="4">Om in aanmerking te komen voor 2% betalingskorting op uw order is het betaalschema
+                    <td class=' bg-red-300 p-1'>2%</td>
+                    <td colspan="4" class=' p-1'>Om in aanmerking te komen voor 2% betalingskorting op uw order is het betaalschema
                         als
                         volgt:
 
                     </td>
                 </tr>
-                <tr class='border-x border-b border-black  text-center'>
-                    <td colspan="6"><mark> 50% - bij opdracht - 40% -14 dagen voor levering 10% -na levering en / of
-                            montage</mark></td>
+                <tr class='bg-red-200  text-center'>
+                    <td colspan="6" class='font-bold p-1'> 50% - bij opdracht - 40% -14 dagen voor levering 10% -na levering en / of
+                            montage</td>
                 </tr>
 
 
-                <tr class="border-x border-black text-center">
-                    <td class='border border-black'><input type="radio" name='korting' value="3%"></td>
+                <tr class="bg-red-300 text-center">
+                    <td class='bg-red-300 p-1'><input type="radio" name='korting' value="3%"></td>
                     <td></td>
-                    <td class='bg-yellow-300 border border-black'>3%</td>
-                    <td colspan="4">Om in aanmerking te komen voor 3% betalingskorting op uw order is het betaalschema
+                    <td class='bg-red-300 p-1'>3%</td>
+                    <td colspan="4" class=' p-1'>Om in aanmerking te komen voor 3% betalingskorting op uw order is het betaalschema
                         als
                         volgt:
 
                     </td>
                 </tr>
-                <tr class='border-x border-b border-black  text-center'>
+                <tr class='bg-red-200 text-center'>
 
-                    <td colspan="6"><mark> 100% - bij opdracht</mark></td>
+                    <td colspan="6" class='font-bold p-1'>100% - bij opdracht</td>
                 </tr>
 
-                <tr class="border border-black text-center">
-                    <td class='border border-black'><input type="radio" name='korting' value="0%"></td>
+                <tr class="bg-red-300 text-center">
+                    <td class='bg-red-300 p-1'><input type="radio" name='korting' value="0%"></td>
                     <td></td>
-                    <td class='bg-yellow-300 border border-black'>0%</td>
-                    <td colspan="4"><mark>1e termijn betaling 50 % bij levering kozijnen op locatie en overige betaling
-                            naar de stand van de werkzaamheden</mark></td>
+                    <td class=' bg-red-300 p-1'>0%</td>
+                    <td colspan="4"  class='font-bold p-1'>1e termijn betaling 50 % bij levering kozijnen op locatie en overige betaling
+                            naar de stand van de werkzaamheden</td>
                 </tr>
 
-                <tr class="bg-gray-300 border border-black text-center">
-                    <td colspan="6">Bij geen bevestiging van uw zijde per email op 1 van de bovenstaande voorstellen,
+                <tr class=" bg-red-200 text-center">
+                    <td colspan="6" class='p-1'>Bij geen bevestiging van uw zijde per email op 1 van de bovenstaande voorstellen,
                         kan er later geen korting worden verrekend</td>
                 </tr>
-                <tr class="border border-black">
-                    <td class="border border-black"colspan="5"><b>Inmeting: </b><u>paraaf</u> <input type="radio"
+                <tr class="bg-red-200">
+                    <td class="bg-red-200 p-1"colspan="5"><b>Inmeting: </b><u>paraaf</u> <input type="radio"
                             name='inmeting' value="Henk"> Henk <input type="radio" name='inmeting' value="Willem">
                         Willem</td>
-                    <td colspan="1"><b>Order verwerkt door:</b> <input type="radio" name='orderVerwerktDoor'
+                    <td colspan="1" class='p-1'><b>Order verwerkt door:</b> <input type="radio" name='orderVerwerktDoor'
                             value="Willem"> Willem <input type="radio" name='orderVerwerktDoor' value="Rene"> Rene
                     </td>
                 </tr>
-                <tr class="border border-black">
-                    <td colspan="6">
+                <tr class="bg-red-200">
+                    <td colspan="6" class='p-1'>
                         Planning monteurs:
                         dagen <input class="border border-slate-300"type="text" name='dagen'>
                         @error('dagen')
@@ -240,8 +238,8 @@
                         <input type="checkbox" name="hulpIntillen"> + hulp intillen
                     </td>
                 </tr>
-                <tr class="border border-black">
-                    <td colspan="6">Diversen:
+                <tr class="bg-red-200">
+                    <td colspan="6" class='p-1'>Diversen:
                         <textarea class='w-full h-1/3' name="diversen" cols="30" rows="3"></textarea>
                     </td>
                 </tr>

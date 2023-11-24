@@ -39,29 +39,42 @@
                         </td>
                     </tr>
 
-
+                    <script>
+                        function red(kozijn) {
+                            var selectElement = document.getElementById(kozijn);
+                            if (selectElement.value === '') {
+                                selectElement.style.border = '1px solid red';
+                            } else {
+                                selectElement.style.border = '';
+                            }
+                        }
+                    </script>
                     @foreach ($kozijnen as $kozijn)
                         <tr>
                             <td>
-                                <label for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
+                                <label id='label{{ $kozijn->kozijn }}'
+                                    for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                             </td>
                             <td>
-                                <select class='w-full border' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}">
+                                <select class='w-full border' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}"
+                                    onchange="red('{{ $kozijn->kozijn }}')">
+                                    <option value="" disabled>Selecteer optie</option>
                                     @foreach ($attributes[$kozijn->id - 1] as $attribute)
-                                        @php
-                                            $ding = $kozijn->kozijn;
-                                        @endphp
-                                        <option @if ($project->$ding == $attribute->attribute) selected @endif
+                                        <option @if ($kozijn->pivot->value == $attribute->attribute) selected @endif
                                             value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
                                     @endforeach
-                                </select>
                                 </select>
                                 @error($kozijn->kozijn)
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
                             </td>
                         </tr>
+                        <script>
+                            red('{{ $kozijn->kozijn }}')
+                        </script>
                     @endforeach
+
+
                     <tr class='text-center'>
                         <td colspan="2"><button class='bg-red-500 p-1 rounded-sm w-full'type="submit">Submit</button>
                         </td>
