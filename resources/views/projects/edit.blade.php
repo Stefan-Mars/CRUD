@@ -64,10 +64,12 @@
                                             value="{{ $attribute->attribute }}">{{ $attribute->attribute }}</option>
                                     @endforeach
                                 </select>
+                                
                                 @error($kozijn->kozijn)
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
                             </td>
+                            <td><input type="text" class='border' placeholder="Extra Info" name='extra{{ $kozijn->kozijn }}' value='{{$kozijn->pivot->extraInfo}}'></td>
                         </tr>
                         <script>
                             red('{{ $kozijn->kozijn }}')
@@ -76,10 +78,11 @@
 
 
                     <tr class='text-center'>
-                        <td colspan="2"><button class='bg-red-500 p-1 rounded-sm w-full'type="submit">Submit</button>
+                        <td colspan="3"><button class='bg-red-500 p-1 rounded-sm w-full'type="submit">Submit</button>
                         </td>
                     </tr>
                 </table>
+                
 
 
 

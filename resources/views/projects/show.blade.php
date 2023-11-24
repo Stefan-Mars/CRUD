@@ -19,22 +19,23 @@
                         <td>Email</td>
                         <td>{{ $project->Email }}</td>
                     </tr>
-                    @foreach ($kozijnen as $column)
+                    @foreach ($kozijnen as $kozijn)
                         <tr>
-                            <td>{{ str_replace('_', ' ', $column->kozijn) }}</td>
-                            <td>{{ $column->pivot->value }}</td>
+                            <td>{{ str_replace('_', ' ', $kozijn->kozijn) }}</td>
+                            <td>{{ $kozijn->pivot->value }}</td>
+                            <td>{{ $kozijn->pivot->extraInfo }}</td>
                         </tr>
                     @endforeach
                     @if (!$info || $info->project_id != $project->id)
                         <tr>
-                            <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                            <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
                                 <a class='block w-full h-full' href="/project/info/create/{{ $project->id }}"><i class="fa-solid fa-plus"></i>Create
                                     Info</a>
                             </td>
                         </tr>
                     @else
                         <tr>
-                            <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                            <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
                                 <a class='block w-full h-full' href="/project/info/{{ $project->id }}">Info</a>
                             </td>
                         </tr>
@@ -42,14 +43,14 @@
                         @if (!$akkoord || ($akkoord && $akkoord->project_id != $project->id))
                         
                             <tr>
-                                <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                                <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
                                     <a class='block w-full h-full' href="/project/akkoord/create/{{ $project->id }}"><i
                                             class="fa-solid fa-plus"></i>Create Akkoord</a>
                                 </td>
                             </tr>
                             @else
                                 <tr>
-                                    <td colspan="2" class='text-center bg-red-400 p-1 border border-white'>
+                                    <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
                                         <a class='block w-full h-full' href="/project/akkoord/{{ $project->id }}">Akkoord</a>
                                     </td>
                                 </tr>

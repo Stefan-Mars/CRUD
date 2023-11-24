@@ -30,7 +30,14 @@ Route::get('/project/delete/{project}', [ProjectController::class, 'destroy']);
 Route::post('/project/akkoords/{project}', [AkkoordController::class, 'store']);
 Route::get('/project/akkoord/create/{project}', [AkkoordController::class, 'create']);
 Route::post('/project/akkoord/update/{project}', [AkkoordController::class, 'update']);
+
+Route::get('/project/akkoord/download/{project}', [AkkoordController::class, 'download']);
+
 Route::get('/project/akkoord/{project}', [AkkoordController::class, 'edit']);
+
+
+
+
 //Project Info
 Route::post('/project/infos/{project}', [infoController::class, 'store']);
 Route::get('/project/info/create/{project}', [InfoController::class, 'create']);
@@ -43,3 +50,4 @@ Route::get('/kozijn/delete/{kozijnen}', [KozijnenController::class, 'destroy']);
 Route::get('/attributes', [AttributeController::class, 'index']);
 Route::post('/attributes/{kozijnen}', [AttributeController::class, 'store']);
 Route::get('/attribute/delete/{attributes}', [AttributeController::class, 'destroy']);
+

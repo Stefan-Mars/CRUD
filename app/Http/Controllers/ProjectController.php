@@ -25,12 +25,14 @@ class ProjectController extends Controller
         $project = Project::create($formFields);
 
         $attributes = Kozijnen::all();
+
         $attributeValues = $request->except(['_token', 'KlantNaam', 'ProjectAdres', 'Email']);
 
         if ($attributeValues){
             foreach ($attributes as $attribute) {
                 $value = $attributeValues[$attribute->kozijn] ?? null;
-                $project->kozijnen()->attach($attribute->id, ['value' => $value]);
+                $extraInfo = $attributeValues['extra'.$attribute->kozijn] ?? null;
+                $project->kozijnen()->attach($attribute->id, ['value' => $value, 'extraInfo' => $extraInfo]);
             }
         }
 
@@ -92,10 +94,11 @@ class ProjectController extends Controller
 
             $attributes = Kozijnen::all();
             $attributeValues = $request->except(['_token', 'KlantNaam', 'ProjectAdres', 'Email']);
-    
+
             foreach ($attributes as $attribute) {
                 $value = $attributeValues[$attribute->kozijn] ?? null;
-                $project->kozijnen()->syncWithoutDetaching([$attribute->id => ['value' => $value]]);
+                $extraInfo = $attributeValues['extra'.$attribute->kozijn] ?? null;
+                $project->kozijnen()->attach($attribute->id, ['value' => $value, 'extraInfo' => $extraInfo]);
             }
         
             $project->update($formFields);

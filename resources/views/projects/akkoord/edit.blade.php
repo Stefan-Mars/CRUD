@@ -1,6 +1,5 @@
 @extends('layouts/head')
 @section('content')
-    @include('layouts/nav')
     <form action="/project/akkoord/update/{{$akkoord->project_id}}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
@@ -64,11 +63,12 @@
                 <td class='p-2' colspan="2">Handtekening klant:
 
 
-                    <img src="{{$akkoord->signatureData}}" alt="">
+                    <img src="{{$akkoord->signatureData}}" alt="No image">
                 </td>
             </tr>
             <tr>
-                <td colspan="4" class='text-center'><button type="submit" class='bg-red-400 p-1'>Update</button></td>
+                <td colspan="2" class='text-center'><button type="submit" class='bg-red-400 p-1'>Update</button></td>
+                <td colspan="2" class='text-center'><a href='/project/akkoord/download/{{$akkoord->project_id}}' class='bg-red-400 p-1'>Download</a></td>
             </tr>
         </table>
     </form>

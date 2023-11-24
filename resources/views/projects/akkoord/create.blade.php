@@ -1,6 +1,5 @@
 @extends('layouts/head')
 @section('content')
-    @include('layouts/nav')
     <form action="/project/akkoords/{{$project->id}}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
@@ -73,6 +72,7 @@
     </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.5/signature_pad.min.js" integrity="sha512-kw/nRM/BMR2XGArXnOoxKOO5VBHLdITAW00aG8qK4zBzcLVZ4nzg7/oYCaoiwc8U9zrnsO9UHqpyljJ8+iqYiQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+        //Signature pad 
        var canvas = document.getElementById("signature-pad");
 
         function resizeCanvas() {
@@ -89,7 +89,7 @@
         });
 
         document.getElementById("clear").addEventListener('click', function(event){
-            event.preventDefault(); // Prevents the default form submission behavior
+            event.preventDefault();
             signaturePad.clear();
         });
 
@@ -98,21 +98,14 @@
         var form = document.querySelector('form');
 
         form.addEventListener('submit', function(event) {
-            // Prevent the default form submission
             event.preventDefault();
-
-            // Get the data URL of the canvas as a PNG
-            var signatureData = signaturePad.toDataURL(); // This gets the signature as a base64-encoded PNG image
-
-            // You can now use 'signatureData' to send it to the server or perform further actions
-            // For example, you can set it as a value of a hidden input field in the form before submitting
+            var signatureData = signaturePad.toDataURL();
             var signatureInput = document.createElement('input');
             signatureInput.setAttribute('type', 'hidden');
             signatureInput.setAttribute('name', 'signatureData');
             signatureInput.setAttribute('value', signatureData);
             form.appendChild(signatureInput);
 
-            // Finally, submit the form
             form.submit();
         });
             

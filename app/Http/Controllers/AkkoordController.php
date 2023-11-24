@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
 use App\Models\Akkoord;
 use App\Models\Project;
 use App\Models\projectInfo;
@@ -102,4 +103,30 @@ class AkkoordController extends Controller
             return redirect('/project/' . $project->id)->with('message', 'Akkoord does not exist!');
         }
     }
+    public function download(Project $project){
+
+        $akkoord = $project->akkoord;
+        $dompdf = new Dompdf();
+       
+        $html = "
+            <html>
+                <head>
+                    <style>". file_get_contents('http://crud.test/css/output.css')."</style>
+                </head>
+                <body>"
+            . view('projects/akkoord/edit', compact('akkoord')).
+            "</body>
+            </html>";
+
+
+        
+        
+        $dompdf->loadHtml($html);
+
+
+        $dompdf->render();
+        
+        $dompdf->stream("hello.pdf");
+    }
 }
+
