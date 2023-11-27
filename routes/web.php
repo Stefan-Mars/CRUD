@@ -30,14 +30,8 @@ Route::get('/project/delete/{project}', [ProjectController::class, 'destroy']);
 Route::post('/project/akkoords/{project}', [AkkoordController::class, 'store']);
 Route::get('/project/akkoord/create/{project}', [AkkoordController::class, 'create']);
 Route::post('/project/akkoord/update/{project}', [AkkoordController::class, 'update']);
-
-Route::get('/project/akkoord/download/{project}', [AkkoordController::class, 'download']);
-
 Route::get('/project/akkoord/{project}', [AkkoordController::class, 'edit']);
-
-
-
-
+Route::get('/project/akkoord/download/{project}', [AkkoordController::class, 'download']);
 //Project Info
 Route::post('/project/infos/{project}', [infoController::class, 'store']);
 Route::get('/project/info/create/{project}', [InfoController::class, 'create']);
