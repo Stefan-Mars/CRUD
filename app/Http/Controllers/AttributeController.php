@@ -13,7 +13,7 @@ class AttributeController extends Controller
     {
         $kozijnen = Kozijnen::paginate(10);
         $attributes = Attributes::get();
-        return view('admin', compact('kozijnen','attributes'));
+        return view('admin', compact('kozijnen', 'attributes'));
     }
     public function store(Request $request, Kozijnen $kozijnen)
     {
@@ -31,6 +31,4 @@ class AttributeController extends Controller
         $Attributes->delete();
         return back()->with('message', 'Attribute deleted successfully');
     }
-
-    
 }

@@ -28,10 +28,10 @@ class ProjectController extends Controller
 
         $attributeValues = $request->except(['_token', 'KlantNaam', 'ProjectAdres', 'Email']);
 
-        if ($attributeValues){
+        if ($attributeValues) {
             foreach ($attributes as $attribute) {
                 $value = $attributeValues[$attribute->kozijn] ?? null;
-                $extraInfo = $attributeValues['extra'.$attribute->kozijn] ?? null;
+                $extraInfo = $attributeValues['extra' . $attribute->kozijn] ?? null;
                 $project->kozijnen()->attach($attribute->id, ['value' => $value, 'extraInfo' => $extraInfo]);
             }
         }
@@ -40,13 +40,12 @@ class ProjectController extends Controller
     }
     public function show(Project $project)
     {
-        if ($project){
+        if ($project) {
             $kozijnen = $project->kozijnen;
             $akkoord = $project->akkoord;
             $info = $project->info;
             return view('projects/show', compact('kozijnen', 'project', 'info', 'akkoord'));
-        }
-        else{
+        } else {
             return redirect('/')->with('message', 'Project does not exist!');
         }
     }
@@ -66,7 +65,7 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        if ($project){
+        if ($project) {
             $all = Kozijnen::all();
             $attributes = array();
             foreach ($all as $koz) {
@@ -74,21 +73,20 @@ class ProjectController extends Controller
             }
             $kozijnen = $project->kozijnen;
             return view('projects/edit', compact('kozijnen', 'project', 'attributes'));
-        }
-        else{
+        } else {
             return redirect('/')->with('message', 'Project does not exist!');
         }
     }
 
     public function update(Request $request, Project $project)
     {
-        if ($project){
+        if ($project) {
             $formFields = $request->validate([
                 'KlantNaam' => 'required',
                 'ProjectAdres' => 'required',
                 'Email' => ['required', 'email'],
             ]);
-            
+
 
 
 
@@ -97,26 +95,24 @@ class ProjectController extends Controller
 
             foreach ($attributes as $attribute) {
                 $value = $attributeValues[$attribute->kozijn] ?? null;
-                $extraInfo = $attributeValues['extra'.$attribute->kozijn] ?? null;
+                $extraInfo = $attributeValues['extra' . $attribute->kozijn] ?? null;
                 $project->kozijnen()->attach($attribute->id, ['value' => $value, 'extraInfo' => $extraInfo]);
             }
-        
+
             $project->update($formFields);
 
             return redirect('/')->with('message', 'Project updated successfully!');
-        }
-        else{
+        } else {
             return redirect('/')->with('message', 'Project does not exist!');
         }
     }
 
     public function destroy(Project $project)
     {
-        if ($project){
+        if ($project) {
             $project->delete();
             return redirect('/')->with('message', 'Project deleted successfully');
-        }
-        else{
+        } else {
             return redirect('/')->with('message', 'Project does not exist!');
         }
     }

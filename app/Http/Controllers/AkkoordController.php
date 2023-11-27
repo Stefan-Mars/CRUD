@@ -103,30 +103,68 @@ class AkkoordController extends Controller
             return redirect('/project/' . $project->id)->with('message', 'Akkoord does not exist!');
         }
     }
-    public function download(Project $project){
+    public function download(Project $project)
+    {
 
         $akkoord = $project->akkoord;
         $dompdf = new Dompdf();
-       
+
         $html = "
             <html>
                 <head>
-                    <style>". file_get_contents('http://crud.test/css/output.css')."</style>
+
+                    <style>" . file_get_contents('http://crud.test/css/output.css') . "
+                        .hide-for-pdf {
+                            display: none !important;
+                        }
+                        .pdf{
+                            background-color: rgb(254 202 202);
+                            width: 170px;
+                        }
+                        .custom-radio {
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            border: 1px solid #000;
+                            border-radius: 50%;
+                            background-color: #fff;
+                        }
+                        
+                        .custom-radio.checked {
+                            background-color: #000;
+                        }
+                        .bg-red-100 {
+                            background-color: rgb(254 226 226);
+                        }
+                          
+                        .bg-red-200 {
+                        background-color: rgb(254 202 202);
+                        }
+                          
+                        .bg-red-300 {
+                        background-color: rgb(252 165 165);
+                        }
+                          
+                        .bg-red-400 {
+                        background-color: rgb(248 113 113);
+                        }
+    
+                          
+                    </style>
                 </head>
                 <body>"
-            . view('projects/akkoord/edit', compact('akkoord')).
+            . view('projects/akkoord/edit', compact('akkoord')) .
             "</body>
             </html>";
 
 
-        
-        
+
+
         $dompdf->loadHtml($html);
 
 
         $dompdf->render();
-        
-        $dompdf->stream("hello.pdf");
+
+        $dompdf->stream("akkoord.pdf");
     }
 }
-
