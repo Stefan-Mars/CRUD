@@ -1,17 +1,18 @@
 @extends('layouts/head')
 @section('content')
+@include('layouts/nav')
     <form action="/project/akkoord/update/{{ $akkoord->project_id }}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
             <tr class='bg-red-400 border-spacing-0'>
-                <td class='p-2' colspan="4">
+                <td class='p-2 title' colspan="4">
                     <span class="custom-radio @if ($akkoord->soortAanvraag == 'opleveringsbon') checked @endif"></span><input
                         class='hide-for-pdf' type="radio" name="soortAanvraag" value='opleveringsbon'
                         @if ($akkoord->soortAanvraag == 'opleveringsbon') checked @endif> Opleveringsbon
-                    <span class="custom-radio @if ($akkoord->soortAanvraag == 'nalevering') checked @endif"></span><input
+                    <span class="custom-radio margin @if ($akkoord->soortAanvraag == 'nalevering') checked @endif"></span><input
                         class='hide-for-pdf' type="radio" name="soortAanvraag"
                         value='nalevering'@if ($akkoord->soortAanvraag == 'nalevering') checked @endif> Nalevering
-                    <span class="custom-radio @if ($akkoord->soortAanvraag == 'service') checked @endif"></span><input
+                    <span class="custom-radio margin @if ($akkoord->soortAanvraag == 'service') checked @endif"></span><input
                         class='hide-for-pdf' type="radio" name="soortAanvraag" value='service'
                         @if ($akkoord->soortAanvraag == 'service') checked @endif> Service
                     @error('soortAanvraag')
@@ -30,8 +31,6 @@
                         name='ProjectAdres'value='{{ $akkoord->ProjectAdres }}'></td>
                 <td colspan="2"></td>
             </tr>
-
-
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="2">Postcode: <input
                         class='pdf float-right @error('postcode') border border-red-500 @enderror'type="text"
@@ -63,56 +62,56 @@
             </tr>
             <tr class='bg-red-300'>
                 <td class='p-2' colspan="4"><b>Ordernummer fabrikant:</b> <input
-                        class='pdf float-right @error('ordernummerFabrikant') border border-red-500 @enderror'type="text"
+                        class='tr float-right @error('ordernummerFabrikant') border border-red-500 @enderror'type="text"
                         name='ordernummerFabrikant' value='{{ $akkoord->ordernummerFabrikant }}'></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">1. Zijn de ruimtes schoon opgeleverd?<br> ja <span
+                <td class='p-2' colspan="2">1. Zijn de ruimtes schoon opgeleverd? <span class='float-right'>ja <span
                         class="custom-radio @if ($akkoord->ruimteSchoon == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'true') checked @endif type="radio" value="true"
                         name='ruimteSchoon'> nee <span
                         class="custom-radio @if ($akkoord->ruimteSchoon == 'false') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'false') checked @endif type="radio" value="false"
-                        name='ruimteSchoon'></td>
-                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed?<br> ja <span
+                        name='ruimteSchoon'></span></td>
+                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed?  <span class='float-right'>ja <span
                         class="custom-radio @if ($akkoord->ramenDeurenGoed == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->ramenDeurenGoed == 'true') checked @endif type="radio" value="true"
                         name='ramenDeurenGoed'> nee <span
                         class="custom-radio @if ($akkoord->ramenDeurenGoed == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->ramenDeurenGoed == 'false') checked @endif type="radio"
-                        value="false" name='ramenDeurenGoed'></td>
+                        value="false" name='ramenDeurenGoed'></span></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">2. Zijn uw eigendommen onbeschadigd gebleven?<br> ja <span
+                <td class='p-2' colspan="2">2. Zijn uw eigendommen onbeschadigd gebleven?  <span class='float-right'>ja <span
                         class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->eigendommenBeschadigd == 'true') checked @endif type="radio"
                         value="true" name='eigendommenBeschadigd'> nee <span
                         class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif type="radio"
-                        value="false" name='eigendommenBeschadigd'></td>
-                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd?<br> ja <span
+                        value="false" name='eigendommenBeschadigd'></span></td>
+                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd?  <span class='float-right'>ja <span
                         class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif type="radio"
                         value="true" name='afwerkingUitgevoerd'> nee <span
                         class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->afwerkingUitgevoerd == 'false') checked @endif type="radio"
-                        value="false" name='afwerkingUitgevoerd'></td>
+                        value="false" name='afwerkingUitgevoerd'></span></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">3. Zijn de ruiten en kozijnen onbeschadigd?<br> ja <span
+                <td class='p-2' colspan="2">3. Zijn de ruiten en kozijnen onbeschadigd?  <span class='float-right'>ja <span
                         class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'true') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'true') checked @endif type="radio"
                         value="true" name='ruitenKozijnenOnbeschadigd'> nee <span
                         class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif type="radio"
-                        value="false" name='ruitenKozijnenOnbeschadigd'></td>
-                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens?<br> ja <span
+                        value="false" name='ruitenKozijnenOnbeschadigd'></span></td>
+                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens?  <span class='float-right'>ja <span
                         class="custom-radio @if ($akkoord->overigePunten == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->overigePunten == 'true') checked @endif type="radio"
                         value="true" name='overigePunten'> nee <span
                         class="custom-radio @if ($akkoord->overigePunten == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->overigePunten == 'false') checked @endif type="radio"
-                        value="false" name='overigePunten'></td>
+                        value="false" name='overigePunten'></span></td>
             </tr>
             <tr class='bg-red-300'>
                 <td class='p-2 'colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve hieronder
@@ -120,19 +119,20 @@
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan='4'>
-                    <textarea type='text'class="w-full @error('naamOpdrachtgever') border border-red-500 @enderror"
+                    <textarea id='textbox' type='text'class="w-full @error('anderePunten') border border-red-500 @enderror overflow-hidden p-0 outline-none min-w-[30%]"
                         name='anderePunten'>{{ $akkoord->anderePunten }}</textarea>
                 </td>
+
             </tr>
             <tr class='bg-red-100'>
-                <td class='p-2' colspan="4"><b>Eventueel tekening:</b></td>
+                <td class='p-2' colspan="4"><b>Eventueel tekening:</b>
+                    <img src="{{ $akkoord->tekeningData }}" alt="No image">
+                </td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het ondertekenen
-                    verklaart<br> de klant akkorrd te gaan met de werkzaamheden</td>
+                    verklaart<br> de klant akkoord te gaan met de werkzaamheden</td>
                 <td class='p-2' colspan="2">Handtekening klant:
-
-
                     <img src="{{ $akkoord->signatureData }}" alt="No image">
                 </td>
             </tr>
@@ -145,4 +145,40 @@
             </tr>
         </table>
     </form>
+    <script>
+        var observe;
+        if (window.attachEvent) {
+            observe = function (element, event, handler) {
+                element.attachEvent('on'+event, handler);
+            };
+        }
+        else {
+            observe = function (element, event, handler) {
+                element.addEventListener(event, handler, false);
+            };
+        }
+        function init () {
+            var text = document.getElementById('textbox');
+            function resize () {
+                text.style.height = 'auto';
+                text.style.height = text.scrollHeight+'px';
+            }
+            /* 0-timeout to get the already changed text */
+            function delayedResize () {
+                window.setTimeout(resize, 0);
+            }
+            observe(text, 'change',  resize);
+            observe(text, 'cut',     delayedResize);
+            observe(text, 'paste',   delayedResize);
+            observe(text, 'drop',    delayedResize);
+            observe(text, 'keydown', delayedResize);
+
+            text.focus();
+            text.select();
+            resize();
+        }
+        init();
+    </script>
+
+
 @endsection

@@ -47,6 +47,7 @@ class AkkoordController extends Controller
                 "overigePunten" => "required",
                 "anderePunten" => "sometimes|nullable",
                 "signatureData" => "sometimes|nullable",
+                "tekeningData" => "sometimes|nullable",
             ]);
 
             $akkoord = Akkoord::create($formFields);
@@ -114,39 +115,57 @@ class AkkoordController extends Controller
                 <head>
 
                     <style>" . file_get_contents('http://crud.test/css/output.css') . "
+                        *{
+                            margin: 5px;
+                            font-size: 13px;
+                        }
+                        table{
+                            border-collapse: separate;
+                            border-spacing: 0.25rem 0.25rem;
+                        }
+                        
                         .hide-for-pdf {
                             display: none !important;
                         }
-                        .pdf{
+                        .pdf, #textbox{
                             background-color: rgb(254 202 202);
-                            width: 170px;
                         }
                         .custom-radio {
                             display: inline-block;
-                            width: 10px;
-                            height: 10px;
-                            border: 1px solid #000;
-                            border-radius: 50%;
+                            width: 15px;
+                            height: 15px;
                             background-color: #fff;
                         }
-                        
                         .custom-radio.checked {
                             background-color: #000;
                         }
+                        b,img,.custom-radio,#textbox, span{
+                            margin: 0px;
+                        }
+                        
                         .bg-red-100 {
                             background-color: rgb(254 226 226);
                         }
                           
-                        .bg-red-200 {
-                        background-color: rgb(254 202 202);
+                        
+                        .bg-red-200{
+                            background-color: rgb(254 202 202);
                         }
                           
-                        .bg-red-300 {
-                        background-color: rgb(252 165 165);
+                        .bg-red-300,.tr  {
+                            background-color: rgb(252 165 165);
                         }
                           
                         .bg-red-400 {
-                        background-color: rgb(248 113 113);
+                            background-color: rgb(248 113 113);
+                        }
+                        .title{
+                            color: white;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                        .margin{
+                            margin-left: 100px;
                         }
     
                           

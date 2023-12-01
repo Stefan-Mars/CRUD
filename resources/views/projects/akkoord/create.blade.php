@@ -1,5 +1,6 @@
 @extends('layouts/head')
 @section('content')
+@include('layouts/nav')
     <form action="/project/akkoords/{{ $project->id }}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
@@ -80,17 +81,30 @@
                         name='overigePunten'></td>
             </tr>
             <tr class='bg-red-300'>
-                <td class='p-2 ' colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve
+                <td class='p-2' colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve
                         hieronder aangeven:</b></td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan='4'>
-                    <textarea type='text'class="w-full @error('naamOpdrachtgever') border border-red-500 @enderror"
+                    <textarea type='text'class="w-full @error('anderePunten') border border-red-500 @enderror"
                         name='anderePunten'>{{ old('anderePunten') }}</textarea>
                 </td>
             </tr>
             <tr class='bg-red-100'>
-                <td class='p-2' colspan="4"><b>Eventueel tekening:</b></td>
+                <td class='p-2' colspan="4"><b>Eventueel tekening:</b>
+                
+                
+                    <div id="zbeubeu"></div>
+
+                    <style>
+                        #zbeubeu {
+                            width: 1100px;
+                            height: 300px;
+                        }
+                    </style>
+
+                
+                </td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het ondertekenen
@@ -99,7 +113,7 @@
                     <div class="flex">
                         <div class="border border-purple-600">
                             <canvas id="signature-pad" class="w-full h-full cursor-crosshair bg-white" width="400"
-                                height="200"></canvas>
+                                height="150"></canvas>
                         </div>
                         <div class="">
                             <button id="clear"
@@ -120,6 +134,18 @@
         integrity="sha512-kw/nRM/BMR2XGArXnOoxKOO5VBHLdITAW00aG8qK4zBzcLVZ4nzg7/oYCaoiwc8U9zrnsO9UHqpyljJ8+iqYiQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        var drawingBoard = new DrawingBoard.Board('zbeubeu', {
+            controls: [
+                'Color',
+                { Size: { type: 'range' } },
+                'DrawingMode',
+                { Navigation: { back: true, forward: true } }
+            ],
+            color: '#000000',
+            size: 5,
+            droppable: true,
+
+        });
         //Signature pad 
         var canvas = document.getElementById("signature-pad");
 
@@ -133,7 +159,7 @@
         resizeCanvas();
 
         var signaturePad = new SignaturePad(canvas, {
-            backgroundColor: 'rgb(250,250,250)'
+            backgroundColor: 'rgb(254, 202, 202)'
         });
 
         document.getElementById("clear").addEventListener('click', function(event) {
@@ -153,6 +179,18 @@
             signatureInput.setAttribute('name', 'signatureData');
             signatureInput.setAttribute('value', signatureData);
             form.appendChild(signatureInput);
+
+
+
+
+            var canvas = drawingBoard.canvas;
+            var tekeningData = canvas.toDataURL(); // Retrieve drawing data as Data URL
+            var tekeningInput = document.createElement('input');
+            tekeningInput.setAttribute('type', 'hidden');
+            tekeningInput.setAttribute('name', 'tekeningData');
+            tekeningInput.setAttribute('value', tekeningData);
+            form.appendChild(tekeningInput);
+
 
             form.submit();
         });

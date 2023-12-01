@@ -31,8 +31,9 @@ return new class extends Migration
             $table->string("afwerkingUitgevoerd");
             $table->string("ruitenKozijnenOnbeschadigd");
             $table->string("overigePunten");
-            $table->string("anderePunten")->nullable();
+            $table->longText("anderePunten")->nullable();
             $table->longText("signatureData")->nullable();
+            $table->longText("tekeningData")->nullable();
             
 
             

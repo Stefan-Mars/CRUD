@@ -13,6 +13,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src='/js/index.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
@@ -20,6 +21,8 @@
                 font-family: 'Poppins', sans-serif;
             }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawingboard.js/0.4.6/drawingboard.css" integrity="sha512-2M0DWVGgE/KcpPAGTDHLL7vcfzBcPSMJbqnJS3h9gV9LdvZ7R9cw/dcTQzqMsEj74lEo+6cWF/zJcMKseYHgDg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawingboard.js/0.4.6/drawingboard.min.js" integrity="sha512-nBD3/PMDHBJJwtFI79Ffp5p4XFB8BAX/N8KdvwGm+m1i56JtzPG66yQJwGO9gxEdgOw81ysvtyOGetJcElEhqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 
