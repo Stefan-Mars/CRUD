@@ -4,6 +4,7 @@
 
     <div class='mr-[15%] ml-[15%]'>
         <br>
+        <h1 class='text-center text-3xl'>Welkom</h1>
         <table id="myTable" class='display table'>
             <thead>
                 <tr>

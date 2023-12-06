@@ -1,9 +1,17 @@
 @extends('layouts/head')
 @section('content')
 @include('layouts/nav')
+<br>
+    
     <form action="/project/akkoord/update/{{ $akkoord->project_id }}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
+            <tr>
+                <td colspan="4">
+                    <a href="/project/{{ $akkoord->project_id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+                    <h1 class="text-2xl text-center">Bewerk Akkoord</h1>
+                </td>
+            </tr>
             <tr class='bg-red-400 border-spacing-0'>
                 <td class='p-2 title' colspan="4">
                     <span class="custom-radio @if ($akkoord->soortAanvraag == 'opleveringsbon') checked @endif"></span><input

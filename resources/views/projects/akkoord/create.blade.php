@@ -4,6 +4,12 @@
     <form action="/project/akkoords/{{ $project->id }}" method="POST">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
+            <tr>
+                <td colspan="4">
+                    <a href="/project/{{ $project->id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+                    <h1 class="text-2xl text-center">Maak Akkoord</h1>
+                </td>
+            </tr>
             <tr class='bg-red-400 border-spacing-0'>
                 <td class='p-2' colspan="4"><input type="radio" name="soortAanvraag" value='opleveringsbon'>
                     Opleveringsbon <input type="radio" name="soortAanvraag" value='nalevering'> Nalevering <input
@@ -36,7 +42,7 @@
                         name='telefoonnummer'value='{{ $info[0]->telefoonnummer }}'></td>
                 <td class='p-2' colspan="2">E-mail: <input
                         class='float-right @error('Email') border border-red-500 @enderror'type="text"
-                        name='Email'value='{{ $project->Email }}'></td>
+                        name='Email'value='{{ $project->Email }}' autocomplete='email'></td>
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="4"><b>Naam monteur:</b> <input
@@ -57,28 +63,28 @@
                         name='ordernummerFabrikant' value='{{ old('ordernummerFabrikant') }}'></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">1. Zijn de ruimtes schoon opgeleverd? ja <input type="radio"
-                        value="true" name='ruimteSchoon'> nee <input type="radio" value="false" name='ruimteSchoon'>
+                <td class='p-2' colspan="2">1. Zijn de ruimtes schoon opgeleverd? <span class='float-right'>ja <input type="radio"
+                        value="true" name='ruimteSchoon'> nee <input type="radio" value="false" name='ruimteSchoon'></span>
                 </td>
-                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed? ja <input type="radio"
+                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed? <span class='float-right'>ja <input type="radio"
                         value="true" name='ramenDeurenGoed'> nee <input type="radio" value="false"
-                        name='ramenDeurenGoed'></td>
+                        name='ramenDeurenGoed'></span></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">2. Zijn uw eigendommen onbeschadigd gebleven? ja <input type="radio"
+                <td class='p-2' colspan="2">2. Zijn uw eigendommen onbeschadigd gebleven? <span class='float-right'>ja <input type="radio"
                         value="true" name='eigendommenBeschadigd'> nee <input type="radio" value="false"
-                        name='eigendommenBeschadigd'></td>
-                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd? ja <input type="radio"
+                        name='eigendommenBeschadigd'></span></td>
+                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd? <span class='float-right'>ja <input type="radio"
                         value="true" name='afwerkingUitgevoerd'> nee <input type="radio" value="false"
-                        name='afwerkingUitgevoerd'></td>
+                        name='afwerkingUitgevoerd'></span></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">3. Zijn de ruiten en kozijnen onbeschadigd? ja <input type="radio"
+                <td class='p-2' colspan="2">3. Zijn de ruiten en kozijnen onbeschadigd? <span class='float-right'>ja <input type="radio"
                         value="true" name='ruitenKozijnenOnbeschadigd'> nee <input type="radio" value="false"
-                        name='ruitenKozijnenOnbeschadigd'></td>
-                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens? ja <input type="radio"
+                        name='ruitenKozijnenOnbeschadigd'></span></td>
+                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens? <span class='float-right'>ja <input type="radio"
                         value="true" name='overigePunten'> nee <input type="radio" value="false"
-                        name='overigePunten'></td>
+                        name='overigePunten'></span></td>
             </tr>
             <tr class='bg-red-300'>
                 <td class='p-2' colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve
@@ -134,18 +140,103 @@
         integrity="sha512-kw/nRM/BMR2XGArXnOoxKOO5VBHLdITAW00aG8qK4zBzcLVZ4nzg7/oYCaoiwc8U9zrnsO9UHqpyljJ8+iqYiQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        
+
+    DrawingBoard.Control.StraightLine = DrawingBoard.Control.extend({
+        name: 'straightLine',
+        isDrawing: false,
+        startDrawX: 0,
+        startDrawY: 0,
+
+        initialize: function() {
+            var self = this;
+
+            this.$el = document.createElement('button');
+            this.$el.classList.add('drawing-board-control');
+            this.$el.innerHTML = '|';
+            this.$el.style.width = '25px';
+            this.$el.style.height = '25px';
+            this.$el.style.border = '1px solid lightgray';
+            this.$el.style.backgroundColor = 'white';
+            this.$el.addEventListener('click', function(event) {
+                if (event.cancelable) event.preventDefault();
+                self.toggleDrawing();
+            });
+
+            const canvasBoard = document.querySelector('.drawing-board-canvas');
+            canvasBoard.addEventListener('mousemove', this.onMouseMove.bind(this));
+            canvasBoard.addEventListener('mousedown', this.onMouseDown.bind(this));
+            canvasBoard.addEventListener('mouseup', this.onMouseUp.bind(this));
+        },
+
+        toggleDrawing: function() {
+            console.log('Toggle');
+            this.isDrawing = !this.isDrawing;
+
+            if (this.isDrawing) {
+                this.$el.style.boxShadow = 'inset 0 0 5px gray';
+                this.$el.classList.add('active');
+
+                
+            } else {
+                this.$el.style.boxShadow = '';
+                this.$el.classList.remove('active');
+                
+            }
+            
+        
+        },
+
+        onMouseDown: function(event) {
+            if (!this.isDrawing) return;
+            console.log('Down');
+            var canvas = document.querySelector('.drawing-board-canvas');
+            var rect = canvas.getBoundingClientRect();
+            this.startDrawX = event.clientX - rect.left;
+            this.startDrawY = event.clientY - rect.top;
+        },
+
+        onMouseUp: function(event) {
+            if (!this.isDrawing) return;
+            console.log('Up');
+            var canvas = document.querySelector('.drawing-board-canvas');
+            var rect = canvas.getBoundingClientRect();
+            var endDrawX = event.clientX - rect.left;
+            var endDrawY = event.clientY - rect.top;
+
+            var ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.moveTo(this.startDrawX, this.startDrawY);
+            ctx.lineTo(endDrawX, endDrawY);
+            ctx.stroke();
+        },
+
+        onMouseMove: function() {
+            
+            console.log('Move');
+            if (this.isDrawing) {
+                this.board.ev.trigger('mousedown', this);
+            }
+            
+        }
+    });
+
+
+
+
         var drawingBoard = new DrawingBoard.Board('zbeubeu', {
             controls: [
                 'Color',
                 { Size: { type: 'range' } },
                 'DrawingMode',
-                { Navigation: { back: true, forward: true } }
+                { Navigation: { back: true, forward: true } },
+                'StraightLine' // Add the custom control here
             ],
             color: '#000000',
             size: 5,
-            droppable: true,
-
+            droppable: true
         });
+
         //Signature pad 
         var canvas = document.getElementById("signature-pad");
 
@@ -163,7 +254,7 @@
         });
 
         document.getElementById("clear").addEventListener('click', function(event) {
-            event.preventDefault();
+            if (event.cancelable) event.preventDefault();
             signaturePad.clear();
         });
 
@@ -172,7 +263,7 @@
         var form = document.querySelector('form');
 
         form.addEventListener('submit', function(event) {
-            event.preventDefault();
+            if (event.cancelable) event.preventDefault();
             var signatureData = signaturePad.toDataURL();
             var signatureInput = document.createElement('input');
             signatureInput.setAttribute('type', 'hidden');

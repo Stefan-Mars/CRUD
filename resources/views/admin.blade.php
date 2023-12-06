@@ -3,6 +3,8 @@
     @include('layouts/nav')
     <div class='mr-[35%] ml-[35%]'>
         <br>
+        <h1 class='text-center text-2xl'>Attribuut Overzicht</h1>
+        <br>
         <form action="/kozijnen" method="POST" class='w-full border h-14'>
             @csrf
             <input class='w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
@@ -16,7 +18,7 @@
             <div class='rounded-sm'>
                 <table class='border-separate table-fixed border'>
                     <tr onclick="show({{ $kozijn->id }})">
-                        <td class='p-2 pl-4 truncate '>
+                        <td class='p-2 pl-4 truncate text-lg'>
                             {{ str_replace('_', ' ', $kozijn->kozijn) }}
                         </td>
                         <td id='delete{{ $kozijn->id }}' class='whitespace-nowrap w-[1%] pr-16'>
@@ -32,7 +34,7 @@
                     @foreach ($attributes as $attribute)
                         @if ($kozijn->id == $attribute->kozijnen_id)
                             <tr class='attribute-row k{{ $kozijn->id }} truncate' style='display: none;'>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;• {{ $attribute->attribute }}</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $attribute->attribute }}</td>
                                 <td><a href="/attribute/delete/{{ $attribute->id }}"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>

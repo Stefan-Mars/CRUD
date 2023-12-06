@@ -1,12 +1,13 @@
 @extends('layouts.head')
 @section('content')
+@include('layouts/nav')
     <div class='w-full h-view bg-slate-200'>
         <br>
 
         <div class='flex justify-center'>
             <form action="/projects" method="POST" class='p-10 rounded-sm bg-white border'>
                 @csrf
-                <a href="/"><i class="fa-solid fa-arrow-left"></i>Back</a>
+                <a href="/"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
                 <h1 class="text-center">Nieuw Project</h1>
                 <table class='border-separate'>
                     <tr>

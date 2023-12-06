@@ -1,14 +1,14 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <br>
-    <div class='flex ml-[165px]'>
+    <div class='flex ml-[165px]' >
+
 
         <form action="/project/info/update/{{ $projectInfo->id }}" method="POST">
             @csrf
             <table class='border-separate border-spacing-1'>
                 <tr>
-                    <td colspan="4"></td>
+                    <td colspan="4"><a href="/project/{{ $project->id}}"><i class="fa-solid fa-arrow-left fa-xl"></i></a></td>
                     <td class='bg-red-300 p-2'>
                         <p class='float-left font-semibold'>
                             Projectnaam<br>

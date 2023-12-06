@@ -11,7 +11,7 @@ class AttributeController extends Controller
 {
     public function index(Attributes $Attributes)
     {
-        $kozijnen = Kozijnen::paginate(10);
+        $kozijnen = Kozijnen::paginate(14);
         $attributes = Attributes::get();
         return view('admin', compact('kozijnen', 'attributes'));
     }
