@@ -8,13 +8,13 @@
             <form action="/projects" method="POST" class='p-10 rounded-sm bg-white border'>
                 @csrf
                 <a href="/"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
-                <h1 class="text-center">Nieuw Project</h1>
+                <h1 class="text-center text-xl">Nieuw Project</h1>
                 <table class='border-separate'>
                     <tr>
                         <td>Klant Naam</td>
-                        <td class='text-center'>
+                        <td class='text-center h-10'>
                             <input type="text" name="KlantNaam" id="KlantNaam" placeholder="Klantnaam"
-                                value='{{ old('Klantnaam') }}' class='w-full border'>
+                                value='{{ old('Klantnaam') }}' class='w-full border h-full'>
                             @error('KlantNaam')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
@@ -22,18 +22,18 @@
                     </tr>
                     <tr>
                         <td>Project Adres</td>
-                        <td class='text-center'>
+                        <td class='text-center h-10'>
                             <input type="text" name="ProjectAdres" id="ProjectAdres" placeholder="Project Adres"
-                                value='{{ old('ProjectAdres') }}' class='w-full border'>
+                                value='{{ old('ProjectAdres') }}' class='w-full border h-full'>
                             @error('ProjectAdres')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
                         </td>
                     </tr>
                     <td>Email</td>
-                    <td class='text-center'>
+                    <td class='text-center h-10'>
                         <input type="email" name="Email" id="Email" placeholder="Email"
-                            class='w-full border'value='{{ old('Email') }}'>
+                            class='w-full border h-full'value='{{ old('Email') }}'>
                         @error('Email')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
@@ -56,8 +56,8 @@
                                 <label id='label{{ $kozijn->kozijn }}'
                                     for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                             </td>
-                            <td>
-                                <select class='w-full border' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}"
+                            <td class="h-10">
+                                <select class='w-full border h-full' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}"
                                     onchange="red('{{ $kozijn->kozijn }}')">
                                     <option value="" disabled selected>Selecteer optie</option>
                                     @foreach ($attributes[$kozijn->id - 1] as $attribute)
@@ -69,7 +69,7 @@
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
                             </td>
-                            <td><input type="text" class='border' placeholder="Extra Info"
+                            <td class="h-10"><input type="text" class='border h-full' placeholder="Extra Info"
                                     name='extra{{ $kozijn->kozijn }}'></td>
                         </tr>
                         <script>
@@ -78,7 +78,7 @@
                     @endforeach
 
                     <tr class='text-center'>
-                        <td colspan="2"><button class='bg-red-500 p-1 rounded-sm w-full'type="submit">Submit</button>
+                        <td colspan="3"  class='h-10'><button class='bg-red-500 p-1 rounded-sm w-full h-full'type="submit">Opslaan</button>
                         </td>
                     </tr>
                 </table>

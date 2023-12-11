@@ -36,7 +36,7 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect('/')->with('message', 'Project created successfully!');
+        return redirect('/')->with('message', 'Project succesvol opgeslagen!');
     }
     public function show(Project $project)
     {
@@ -46,7 +46,7 @@ class ProjectController extends Controller
             $info = $project->info;
             return view('projects/show', compact('kozijnen', 'project', 'info', 'akkoord'));
         } else {
-            return redirect('/')->with('message', 'Project does not exist!');
+            return redirect('/')->with('message', 'Project bestaat niet!');
         }
     }
 
@@ -74,7 +74,7 @@ class ProjectController extends Controller
             $kozijnen = $project->kozijnen;
             return view('projects/edit', compact('kozijnen', 'project', 'attributes'));
         } else {
-            return redirect('/')->with('message', 'Project does not exist!');
+            return redirect('/')->with('message', 'Project bestaat niet!');
         }
     }
 
@@ -101,9 +101,9 @@ class ProjectController extends Controller
 
             $project->update($formFields);
 
-            return redirect('/')->with('message', 'Project updated successfully!');
+            return redirect('/')->with('message', 'Project succesvol upgedate!');
         } else {
-            return redirect('/')->with('message', 'Project does not exist!');
+            return redirect('/')->with('message', 'Project bestaat niet!');
         }
     }
 
@@ -111,9 +111,9 @@ class ProjectController extends Controller
     {
         if ($project) {
             $project->delete();
-            return redirect('/')->with('message', 'Project deleted successfully');
+            return redirect('/')->with('message', 'Project succesvol verwijderd');
         } else {
-            return redirect('/')->with('message', 'Project does not exist!');
+            return redirect('/')->with('message', 'Project bestaat niet!');
         }
     }
 }

@@ -19,7 +19,7 @@ class AkkoordController extends Controller
             $info = projectInfo::where('project_id', $project->id)->get();
             return view('projects/akkoord/create', compact('project', 'info'));
         } else {
-            return redirect('/project/' . $project->id)->with('message', 'Akkoord already exists!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord bestaat al!');
         }
     }
 
@@ -54,9 +54,9 @@ class AkkoordController extends Controller
 
             $project->akkoord()->save($akkoord);
 
-            return redirect('/project/' . $project->id)->with('message', 'Akkoord created successfully!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord succesvol opgeslagen!');
         } else {
-            return redirect('/project/' . $project->id)->with('message', 'Akkoord already exists!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord bestaat al!');
         }
     }
     public function edit(Project $project)
@@ -66,7 +66,7 @@ class AkkoordController extends Controller
             $akkoord = Akkoord::where('project_id', $project->id)->first();
             return view('projects/akkoord/edit', compact('akkoord'));
         } else {
-            return redirect('/project/' . $project->id)->with('message', 'Akkoord does not exist!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord bestaat niet!');
         }
     }
     public function update(Request $request, Project $project)
@@ -99,9 +99,9 @@ class AkkoordController extends Controller
             $akkoord->update($formFields);
 
 
-            return redirect('/project/' . $project->id)->with('message', 'Akkoord updated successfully!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord succesvol bewerkt!');
         } else {
-            return redirect('/project/' . $project->id)->with('message', 'Akkoord does not exist!');
+            return redirect('/project/' . $project->id)->with('message', 'Akkoord bestaat niet!');
         }
     }
     public function download(Project $project)
@@ -119,7 +119,11 @@ class AkkoordController extends Controller
                             margin: 5px;
                             font-size: 13px;
                         }
+                        form{
+                            width: 100%;
+                        }
                         table{
+                            width: 100%;
                             border-collapse: separate;
                             border-spacing: 0.25rem 0.25rem;
                         }

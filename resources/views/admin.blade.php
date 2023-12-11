@@ -1,13 +1,13 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <div class='mr-[35%] ml-[35%]'>
+    <div class='m-auto'>
         <br>
         <h1 class='text-center text-2xl'>Attribuut Overzicht</h1>
         <br>
-        <form action="/kozijnen" method="POST" class='w-full border h-14'>
+        <form action="/kozijnen" method="POST" class='m-auto w-3/5 border h-14'>
             @csrf
-            <input class='w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
+            <input class=' w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
                 placeholder="Voeg toe">
             @error('kozijn')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
@@ -15,25 +15,28 @@
         </form>
 
         @foreach ($kozijnen as $kozijn)
-            <div class='rounded-sm'>
-                <table class='border-separate table-fixed border'>
-                    <tr onclick="show({{ $kozijn->id }})">
-                        <td class='p-2 pl-4 truncate text-lg'>
-                            {{ str_replace('_', ' ', $kozijn->kozijn) }}
+            <div class='rounded-sm m-auto'>
+                <table class='border-separate table-auto border w-3/5 m-auto'>
+                    <tr class='w-full'onclick="show({{ $kozijn->id }})">
+                        <td class='p-2 pl-4 truncate text-lg w-full'>
+                            <form action="/kozijnen/{{$kozijn->id}}"  method="POST" >
+                                @csrf
+                                <input type="text" name='name'value="{{ str_replace('_', ' ', $kozijn->kozijn) }}">
+                            </form>
                         </td>
-                        <td id='delete{{ $kozijn->id }}' class='whitespace-nowrap w-[1%] pr-16'>
+                        <td id='delete{{ $kozijn->id }}' class=''>
                             <a onclick="return deleteAlert({{ $kozijn->id }});" href="/kozijn/delete/{{ $kozijn->id }}">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
-                        <td class='whitespace-nowrap w-[1%] pr-4' id='button{{ $kozijn->id }}'>
+                        <td class='pl-10' id='button{{ $kozijn->id }}'>
                             <i class="fa-solid fa-angle-right cursor-pointer"></i>
                         </td>
 
                     </tr>
                     @foreach ($attributes as $attribute)
                         @if ($kozijn->id == $attribute->kozijnen_id)
-                            <tr class='attribute-row k{{ $kozijn->id }} truncate' style='display: none;'>
+                            <tr class='attribute-row k{{ $kozijn->id }} truncate' style='display: none; w-1/2'>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $attribute->attribute }}</td>
                                 <td><a href="/attribute/delete/{{ $attribute->id }}"><i class="fa-solid fa-trash"></i></a>
                                 </td>
@@ -58,9 +61,9 @@
 
             </div>
         @endforeach
-        <table class='w-full'>
+        <table class='w-3/5 m-auto'>
             <tr>
-                <td class='w-1/2 text-left'><a href="{{ $kozijnen->previousPageUrl() }}">Previous</a></td>
+                <td class='w-3/5 text-left'><a href="{{ $kozijnen->previousPageUrl() }}">Previous</a></td>
                 @if ($kozijnen->hasMorePages())
                     <td class='w-1/2 text-right'><a href="{{ $kozijnen->nextPageUrl() }}">Next</a></td>
                 @endif

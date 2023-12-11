@@ -33,7 +33,7 @@
                         <tr>
                             <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
                                 <a class='block w-full h-full' href="/project/info/create/{{ $project->id }}"><i
-                                        class="fa-solid fa-plus"></i>Create
+                                        class="fa-solid fa-plus"></i>Nieuw
                                     Info</a>
                             </td>
                         </tr>
@@ -48,7 +48,7 @@
                             <tr>
                                 <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
                                     <a class='block w-full h-full' href="/project/akkoord/create/{{ $project->id }}"><i
-                                            class="fa-solid fa-plus"></i>Create Akkoord</a>
+                                            class="fa-solid fa-plus"></i>Nieuw Akkoord</a>
                                 </td>
                             </tr>
                         @else

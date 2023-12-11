@@ -21,8 +21,14 @@
                 font-family: 'Poppins', sans-serif;
             }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawingboard.js/0.4.6/drawingboard.css" integrity="sha512-2M0DWVGgE/KcpPAGTDHLL7vcfzBcPSMJbqnJS3h9gV9LdvZ7R9cw/dcTQzqMsEj74lEo+6cWF/zJcMKseYHgDg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawingboard.js/0.4.6/drawingboard.min.js" integrity="sha512-nBD3/PMDHBJJwtFI79Ffp5p4XFB8BAX/N8KdvwGm+m1i56JtzPG66yQJwGO9gxEdgOw81ysvtyOGetJcElEhqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="/literallyCanvas/css/literallycanvas.css" rel="stylesheet">
+
+    <!-- dependency: React.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+
+    <!-- Literally Canvas -->
+    <script src="/literallyCanvas/js/literallycanvas-core.js"></script>
 </head>
 
 

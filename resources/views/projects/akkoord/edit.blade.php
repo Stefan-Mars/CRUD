@@ -9,7 +9,7 @@
             <tr>
                 <td colspan="4">
                     <a href="/project/{{ $akkoord->project_id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
-                    <h1 class="text-2xl text-center">Bewerk Akkoord</h1>
+                    <h1 class="text-2xl text-center hide-for-pdf">Bewerk Akkoord</h1>
                 </td>
             </tr>
             <tr class='bg-red-400 border-spacing-0'>
@@ -81,7 +81,7 @@
                         class="custom-radio @if ($akkoord->ruimteSchoon == 'false') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'false') checked @endif type="radio" value="false"
                         name='ruimteSchoon'></span></td>
-                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed?  <span class='float-right'>ja <span
+                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed?  <span class='ml-4 float-right'>ja <span
                         class="custom-radio @if ($akkoord->ramenDeurenGoed == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->ramenDeurenGoed == 'true') checked @endif type="radio" value="true"
                         name='ramenDeurenGoed'> nee <span
@@ -97,7 +97,7 @@
                         class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif type="radio"
                         value="false" name='eigendommenBeschadigd'></span></td>
-                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd?  <span class='float-right'>ja <span
+                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd?  <span class='float-right ml-4'>ja <span
                         class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif type="radio"
                         value="true" name='afwerkingUitgevoerd'> nee <span
@@ -113,7 +113,7 @@
                         class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif"></span><input
                         class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif type="radio"
                         value="false" name='ruitenKozijnenOnbeschadigd'></span></td>
-                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens?  <span class='float-right'>ja <span
+                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens?  <span class='ml-4 float-right'>ja <span
                         class="custom-radio @if ($akkoord->overigePunten == 'true') checked @endif"></span><input
                         class='hide-for-pdf'@if ($akkoord->overigePunten == 'true') checked @endif type="radio"
                         value="true" name='overigePunten'> nee <span
@@ -138,8 +138,8 @@
                 </td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het ondertekenen
-                    verklaart<br> de klant akkoord te gaan met de werkzaamheden</td>
+                <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het<br> ondertekenen 
+                    verklaart de klant akkoord te gaan met de <br>werkzaamheden</td>
                 <td class='p-2' colspan="2">Handtekening klant:
                     <img src="{{ $akkoord->signatureData }}" alt="No image">
                 </td>

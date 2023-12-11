@@ -1,10 +1,10 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <div class='flex ml-[165px]' >
+    <div class='flex m-auto' >
 
 
-        <form action="/project/info/update/{{ $projectInfo->id }}" method="POST">
+        <form class='m-auto'action="/project/info/update/{{ $projectInfo->id }}" method="POST">
             @csrf
             <table class='border-separate border-spacing-1'>
                 <tr>
@@ -99,7 +99,7 @@
                 <tr>
                     <td colspan="4"></td>
                     <td colspan="2" class='bg-red-200 p-1 font-bold'>
-                        Bij alleen leveren (zonder montage) op locatie doot transport dient de opdrachtgever de lege
+                        Bij alleen leveren (zonder montage) op locatie door transport dient de opdrachtgever de lege
                         bokken per email af te melden aan ons binnen 3 weken na levering
                     </td>
                 </tr>

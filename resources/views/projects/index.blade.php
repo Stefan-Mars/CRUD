@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts/nav')
 
-    <div class='mr-[15%] ml-[15%]'>
+    <div class='m-auto w-1/2 md:w-4/5'>
         <br>
         <h1 class='text-center text-3xl'>Welkom</h1>
         <table id="myTable" class='display table'>

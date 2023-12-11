@@ -17,7 +17,7 @@ class InfoController extends Controller
             $content = Content::get();
             return view('projects/info/create', compact('content', 'project'));
         } else {
-            return redirect('/project/' . $project->id)->with('message', 'Info already exists!');
+            return redirect('/project/' . $project->id)->with('message', 'Info bestaat al!');
         }
     }
     public function store(Request $request, Project $project)
@@ -67,9 +67,9 @@ class InfoController extends Controller
             $projectInfo->buttons()->save($button);
 
 
-            return redirect('/project/' . $project->id)->with('message', 'Info created successfully!');
+            return redirect('/project/' . $project->id)->with('message', 'Info succesvol opgeslagen!');
         } else {
-            return redirect('/project/' . $project->id)->with('message', 'Info already exists!');
+            return redirect('/project/' . $project->id)->with('message', 'Info bestaat al!');
         }
     }
     public function edit(Project $project)
@@ -127,6 +127,6 @@ class InfoController extends Controller
             );
         }
 
-        return redirect('/project/' . $project->id)->with('message', 'Info updated successfully!');
+        return redirect('/project/' . $project->id)->with('message', 'Info succesvol bewerkt!');
     }
 }

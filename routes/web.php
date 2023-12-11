@@ -39,6 +39,7 @@ Route::post('/project/info/update/{project}', [InfoController::class, 'update'])
 Route::get('/project/info/{project}', [InfoController::class, 'edit']);
 //Kozijnen
 Route::post('/kozijnen', [KozijnenController::class, 'store']);
+Route::post('/kozijnen/{kozijnen}', [KozijnenController::class, 'update']);
 Route::get('/kozijn/delete/{kozijnen}', [KozijnenController::class, 'destroy']);
 //Attributes
 Route::get('/attributes', [AttributeController::class, 'index']);
