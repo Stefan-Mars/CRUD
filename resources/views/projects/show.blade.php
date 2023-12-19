@@ -32,7 +32,7 @@
                     @if (!$info || $info->project_id != $project->id)
                         <tr>
                             <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
-                                <a class='block w-full h-full' href="/project/info/create/{{ $project->id }}"><i
+                                <a class='block w-full h-full' href="/project/info/{{ $project->id }}"><i
                                         class="fa-solid fa-plus"></i>Nieuw
                                     Info</a>
                             </td>
@@ -40,21 +40,21 @@
                     @else
                         <tr>
                             <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
-                                <a class='block w-full h-full' href="/project/info/{{ $project->id }}">Info</a>
+                                <a class='block w-full h-full' href="/project/info/edit/{{ $project->id }}">Info</a>
                             </td>
                         </tr>
 
                         @if (!$akkoord || ($akkoord && $akkoord->project_id != $project->id))
                             <tr>
                                 <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
-                                    <a class='block w-full h-full' href="/project/akkoord/create/{{ $project->id }}"><i
+                                    <a class='block w-full h-full' href="/project/akkoord/{{ $project->id }}"><i
                                             class="fa-solid fa-plus"></i>Nieuw Akkoord</a>
                                 </td>
                             </tr>
                         @else
                             <tr>
                                 <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
-                                    <a class='block w-full h-full' href="/project/akkoord/{{ $project->id }}">Akkoord</a>
+                                    <a class='block w-full h-full' href="/project/akkoord/edit/{{ $project->id }}">Akkoord</a>
                                 </td>
                             </tr>
                         @endif

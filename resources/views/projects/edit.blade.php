@@ -6,6 +6,7 @@
         <div class='flex justify-center'>
             <form action="/projects/{{ $project->id }}" method="POST" class='border p-10 rounded-sm bg-white '>
                 @csrf
+                @method("PUT")
                 <a href="/"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
                 <h1 class="text-center text-xl">Bewerk {{ $project->KlantNaam }}</h1>
                 <table class='border-separate'>

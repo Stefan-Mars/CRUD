@@ -24,9 +24,13 @@
                         <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                         <td class='whitespace-nowrap w-[1%]'>
-                            <a onclick="return deleteAlert({{ $project->id }})" href="/project/delete/{{ $project->id }}">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                            <form action="/project/{{ $project->id }}" method="POST" id="deleteForm{{ $project->id }}">
+                                @csrf
+                                @method("delete")
+                                <button type="button"onclick="warningMessage({{ $project->id }})">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -41,8 +45,7 @@
             pagingType: 'simple',
             sort: false,
         });
-
-        function deleteAlert(id) {
+        function warningMessage(id){
             Swal.fire({
                 title: "Weet je het zeker?",
                 icon: "warning",
@@ -53,10 +56,10 @@
                 cancelButtonText: "Nee",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/project/delete/" + id;
+                    document.getElementById('deleteForm'+id).submit();
                 }
             });
-            return false;
         }
+
     </script>
 @endsection

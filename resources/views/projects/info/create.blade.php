@@ -117,7 +117,7 @@
                     <td colspan="2"class='bg-red-200 p-1 font-bold'>De koper is gehouden vooraf bij het aangaan van de
                         koopovereenkomst de aanwezigheid van asbest/en of andere potentieel<br> gevaarlijk materiaal in
                         het
-                        gedeelte waar Boer kozijnen gaat verichten te (laten) verwijderen door een gecertificeerd
+                        gedeelte waar Boer kozijnen gaat verrichten te (laten) verwijderen door een gecertificeerd
                         bedrijf
                         alvorens<br> met de werkzaamheiden gestart kan worden</td>
                 </tr>

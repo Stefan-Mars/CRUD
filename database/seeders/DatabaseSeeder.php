@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             KozijnenSeeder::class,
             AttributeSeeder::class,
             ContentSeeder::class,
+            RolesAndPermissionsSeeder::class,
+            UserSeeder::class,
+            
         ]);
         // \App\Models\User::factory(10)->create();
 

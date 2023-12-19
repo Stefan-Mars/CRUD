@@ -15,7 +15,7 @@ class KozijnenController extends Controller
         ]);
         Kozijnen::insert($formFields);
 
-        return back()->with('message', 'Kozijn succesvol opgeslagen!');
+        return back()->with('message', 'Kozijn Attribuut succesvol opgeslagen!');
     }
 
     public function update(Request $request, Kozijnen $kozijnen)
@@ -28,11 +28,11 @@ class KozijnenController extends Controller
     $updatedFields = ['kozijn' => $formFields['name']];
 
     $kozijnen->update($updatedFields);
-    return back()->with('message', 'Kozijn succesvol bewerkt');
+    return back();
 }
     public function destroy(Kozijnen $kozijnen)
     {
         $kozijnen->delete();
-        return back()->with('message', 'Kozijn succesvol verwijderd');
+        return back()->with('message', 'Kozijn Attribuut succesvol verwijderd');
     }
 }

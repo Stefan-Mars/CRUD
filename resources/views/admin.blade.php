@@ -9,6 +9,7 @@
             @csrf
             <input class=' w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
                 placeholder="Voeg toe">
+                <input type="submit" style="display: none;">
             @error('kozijn')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
             @enderror
@@ -17,19 +18,25 @@
         @foreach ($kozijnen as $kozijn)
             <div class='rounded-sm m-auto'>
                 <table class='border-separate table-auto border w-3/5 m-auto'>
-                    <tr class='w-full'onclick="show({{ $kozijn->id }})">
+                    <tr onclick="show({{ $kozijn->id }})">
                         <td class='p-2 pl-4 truncate text-lg w-full'>
-                            <form action="/kozijnen/{{$kozijn->id}}"  method="POST" >
+                            <form action="/kozijn/{{$kozijn->id}}"  method="POST" >
                                 @csrf
-                                <input type="text" name='name'value="{{ str_replace('_', ' ', $kozijn->kozijn) }}">
+                                @method("put")
+                                <input type="text" name='name'value="{{ str_replace('_', ' ', $kozijn->kozijn) }}" class='nameInputs'>
+                                <input type="submit" style="display: none;">
                             </form>
                         </td>
-                        <td id='delete{{ $kozijn->id }}' class=''>
-                            <a onclick="return deleteAlert({{ $kozijn->id }});" href="/kozijn/delete/{{ $kozijn->id }}">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                        <td id='delete{{ $kozijn->id }}' class='pr-10'>
+                            <form action="/kozijn/{{ $kozijn->id }}" method="POST" id="deleteForm{{ $kozijn->id }}">
+                                @csrf
+                                @method("delete")
+                                <button type="button" onclick="warningMessage({{ $kozijn->id }})">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                        </form>
                         </td>
-                        <td class='pl-10' id='button{{ $kozijn->id }}'>
+                        <td class='pr-8' id='button{{ $kozijn->id }}'>
                             <i class="fa-solid fa-angle-right cursor-pointer"></i>
                         </td>
 
@@ -38,23 +45,33 @@
                         @if ($kozijn->id == $attribute->kozijnen_id)
                             <tr class='attribute-row k{{ $kozijn->id }} truncate' style='display: none; w-1/2'>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $attribute->attribute }}</td>
-                                <td><a href="/attribute/delete/{{ $attribute->id }}"><i class="fa-solid fa-trash"></i></a>
+                                <td><form action="/attribute/{{ $attribute->id }}" method="POST">
+                                    @csrf
+                                    @method("delete")
+                                    <button type="submit">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                    </form>
+                                    
                                 </td>
                             </tr>
                         @endif
                     @endforeach
                     <tr class='k{{ $kozijn->id }}' style='display: none;'>
-                        <form action="/attributes/{{ $kozijn->id }}" method="POST">
-                            @csrf
-                            <td colspan="2">
-                                <i onclick="Focus({{ $kozijn->id }})" class="fa-solid fa-plus ml-4 cursor-pointer"></i>
-                                <input id='input{{ $kozijn->id }}'class='indent-px p-2 focus-visible:outline-slate-300'
-                                    type="text" name="attribute" id="attribute" placeholder="Voeg toe">
+                        
+                        <td colspan="2">
+                            <i onclick="Focus({{ $kozijn->id }})" class="fa-solid fa-plus ml-4 cursor-pointer"></i>
+                            <form action="/attributes/{{ $kozijn->id }}" method="POST">
+                                @csrf
+                                <input id='input{{ $kozijn->id }}'class='indent-px p-2 focus-visible:outline-slate-300 nameInputs'
+                                type="text" name="attribute" id="attribute" placeholder="Voeg toe">
+                                <input type="submit" style="display: none;">
                                 @error('attribute')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
-                            </td>
-                        </form>
+                            </form>
+                        </td>
+                        
                     </tr>
 
                 </table>
@@ -75,6 +92,25 @@
 
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameInputs = document.querySelectorAll('.nameInputs');
+
+            nameInputs.forEach(function(input) {
+                input.addEventListener('blur', function() {
+                    const form = input.closest('form'); // Find the parent form of the input
+                    form.querySelector('input[type="submit"]').click(); // Simulate click on the submit button
+                    console.log('d');
+                });
+            });
+        });
+
+
+
+        document.getElementById('kozijn').addEventListener('blur', function() {
+            const form = document.getElementById('kozijn').closest('form'); // Find the parent form of the input
+            form.querySelector('input[type="submit"]').click(); // Simulate click on the submit button
+        });
+
         function show(id) {
             var elements = document.querySelectorAll('.k' + id);
             elements.forEach(function(element) {
@@ -98,7 +134,7 @@
             document.getElementById("input" + id).focus();
         }
 
-        function deleteAlert(id) {
+        function warningMessage(id){
             Swal.fire({
                 title: "Weet je het zeker?",
                 icon: "warning",
@@ -109,10 +145,15 @@
                 cancelButtonText: "Nee",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/kozijn/delete/" + id;
+                    document.getElementById('deleteForm' + id).submit();
                 }
             });
-            return false;
         }
     </script>
+    <style>input {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }</style>
 @endsection

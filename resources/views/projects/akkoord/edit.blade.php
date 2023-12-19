@@ -3,8 +3,9 @@
 @include('layouts/nav')
 <br>
     
-    <form action="/project/akkoord/update/{{ $akkoord->project_id }}" method="POST">
+    <form action="/project/akkoord/{{ $akkoord->project_id }}" method="POST">
         @csrf
+        @method("PUT")
         <table class='m-auto border-separate border-spacing-1'>
             <tr>
                 <td colspan="4">
@@ -146,7 +147,7 @@
             </tr>
             <tr>
                 <td colspan="2" class='text-center hide-for-pdf'><button type="submit"
-                        class='bg-red-400 p-1'>Update</button></td>
+                        class='bg-red-400 p-1'>Opslaan</button></td>
                 <td colspan="2" class='text-center hide-for-pdf'><a
                         href='/project/akkoord/download/{{ $akkoord->project_id }}' class='bg-red-400 p-1'>Download</a>
                 </td>
@@ -171,7 +172,6 @@
                 text.style.height = 'auto';
                 text.style.height = text.scrollHeight+'px';
             }
-            /* 0-timeout to get the already changed text */
             function delayedResize () {
                 window.setTimeout(resize, 0);
             }

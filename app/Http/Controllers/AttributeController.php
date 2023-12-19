@@ -23,12 +23,12 @@ class AttributeController extends Controller
         $formFields["kozijnen_id"] = $kozijnen->id;
         Attributes::insert($formFields);
 
-        return back()->with('message', 'Attribute succesvol opgeslagen!');
+        return back()->with('message', 'Attribuut succesvol opgeslagen!');
     }
 
     public function destroy(Attributes $Attributes)
     {
         $Attributes->delete();
-        return back()->with('message', 'Attribute succesvol verwijderd');
+        return back()->with('message', 'Attribuut succesvol verwijderd');
     }
 }
