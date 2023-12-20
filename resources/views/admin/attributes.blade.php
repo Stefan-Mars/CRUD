@@ -80,7 +80,9 @@
         @endforeach
         <table class='w-3/5 m-auto'>
             <tr>
-                <td class='w-3/5 text-left'><a href="{{ $kozijnen->previousPageUrl() }}">Previous</a></td>
+                @if ($kozijnen->currentPage() > 1)
+                    <td class='w-3/5 text-left'><a href="{{ $kozijnen->previousPageUrl() }}">Previous</a></td>
+                @endif
                 @if ($kozijnen->hasMorePages())
                     <td class='w-1/2 text-right'><a href="{{ $kozijnen->nextPageUrl() }}">Next</a></td>
                 @endif

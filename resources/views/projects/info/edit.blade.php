@@ -4,9 +4,9 @@
     <div class='flex m-auto' >
 
 
-        <form class='m-auto'action="/project/info/{{ $projectInfo->id }}" method="POST">
+        <form class='m-auto'action="/project/info/{{ $project->id }}" method="POST">
             @csrf
-            @method("PUT")
+            @method("put")
             <table class='border-separate border-spacing-1'>
                 <tr>
                     <td colspan="4"><a href="/project/{{ $project->id}}"><i class="fa-solid fa-arrow-left fa-xl"></i></a></td>

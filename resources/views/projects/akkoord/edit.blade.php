@@ -7,9 +7,9 @@
         @csrf
         @method("PUT")
         <table class='m-auto border-separate border-spacing-1'>
-            <tr>
-                <td colspan="4">
-                    <a href="/project/{{ $akkoord->project_id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+            <tr class="hide-for-pdf">
+                <td class="hide-for-pdf" colspan="4">
+                    <a class="hide-for-pdf" href="/project/{{ $akkoord->project_id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
                     <h1 class="text-2xl text-center hide-for-pdf">Bewerk Akkoord</h1>
                 </td>
             </tr>

@@ -1,18 +1,19 @@
 @extends('layouts/head')
 @section('content')
 @extends('layouts/nav')
-<table>
-    <tr>
-        <td>Naam</td>
-        <td>{{ Auth::user()->name }}</td>
+<br>
+<table class="m-auto">
+    <tr class="border">
+        <td class="p-2">Naam</td>
+        <td class="p-2">{{ Auth::user()->name }}</td>
     </tr>
-    <tr>
-        <td>Email</td>
-        <td>{{ Auth::user()->email }}</td>
+    <tr class="border">
+        <td class="p-2">Email</td>
+        <td class="p-2">{{ Auth::user()->email }}</td>
     </tr>
-    <tr>
-        <td>Rol</td>
-        <td>
+    <tr class="border">
+        <td class="p-2">Rol</td>
+        <td class="p-2">
             @foreach(Auth::user()->getRoleNames() as $role) 
                 {{$role}}
             @endforeach

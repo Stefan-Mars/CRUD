@@ -21,4 +21,8 @@ class Project extends Model
     {
         return $this->hasOne(Akkoord::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

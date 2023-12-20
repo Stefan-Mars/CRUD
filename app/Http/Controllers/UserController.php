@@ -65,28 +65,4 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
-    // public function update(Request $request)
-    // {
-    //     $formFields = $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required',
-    //         'new_password' => 'required|confirmed|min:6'
-    //     ]);
-
-    //     if (auth()->attempt($formFields)) {
-    //         $password = bcrypt($formFields['new_password']);
-    //         User::where('email', $request->email)
-    //             ->update(
-    //                 [
-    //                     'email' => $request->email,
-    //                     'password' => $password,
-    //                 ]
-    //             );
-
-    //         return redirect('/account-settings')->with('message', 'Password changed');
-    //     } else {
-    //         return back()->withErrors(['password' => 'Invalid Credentials'])->onlyInput('password');
-    //     };
-    // }
-
 }

@@ -22,8 +22,11 @@ class ProjectController extends Controller
             'Email' => ['required', 'email'],
         ]);
 
-        $project = Project::create($formFields);
+        $user = auth()->user();
 
+        $project = new Project($formFields);
+        $project->user_id = $user->id;
+        $project->save();
         $attributes = Kozijnen::all();
 
         $attributeValues = $request->except(['_token', 'KlantNaam', 'ProjectAdres', 'Email']);
@@ -101,7 +104,7 @@ class ProjectController extends Controller
 
             $project->update($formFields);
 
-            return redirect('/')->with('message', 'Project succesvol upgedate!');
+            return redirect('/')->with('message', 'Project succesvol bewerkt!');
         } else {
             return redirect('/')->with('message', 'Project bestaat niet!');
         }
