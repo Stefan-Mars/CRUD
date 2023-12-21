@@ -4,13 +4,13 @@
 
 ### Kloon de repository
 
-Kloon de repository met de volgende opdracht in de terminal:
+Kloon de repository met het volgende commando in de command prompt:
 
     git clone https://github.com/Stefan-Mars/CRUD.git
 
 ### Composer
 
-Navigeer naar de gekloonde map in de terminal en voer de volgende opdracht uit om afhankelijkheden te installeren:
+Ga naar de gekloonde map in de command prompt en voer het volgende commando uit:
 
     composer update
 
