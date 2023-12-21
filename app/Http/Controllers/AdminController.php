@@ -10,9 +10,6 @@ use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
-    public function show(){
-        return view('admin/admin');
-    }
     public function attributes(Attributes $Attributes)
     {
         $kozijnen = Kozijnen::paginate(14);
@@ -36,7 +33,9 @@ class AdminController extends Controller
                 return back()->with("message", "Je mag geen admin veranderen");
             }
     
+            // Sync roles and update the updated_at timestamp
             $user->syncRoles([$newRole]);
+            $user->touch(); // Update the updated_at timestamp
             return back()->with("message", "Rol succesvol bewerkt!");
         }
     

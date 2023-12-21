@@ -1,11 +1,12 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
+    @include('layouts/admin')
     <div class='m-auto'>
-        <br>
         <h1 class='text-center text-2xl'>Attribuut Overzicht</h1>
         <br>
-        <form action="/kozijnen" method="POST" class='m-auto w-3/5 border h-14'>
+        
+        <form action="/kozijnen" method="POST" class='m-auto w-[85%] sm:w-3/5  border h-14'>
             @csrf
             <input class=' w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
                 placeholder="Voeg toe">

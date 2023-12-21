@@ -25,6 +25,6 @@ class RolesAndPermissionsSeeder extends Seeder
         Role::create(['name' => 'Admin'])
             ->givePermissionTo(Permission::all());
 
-        Role::create(['name' => 'Default']);
+        Role::create(['name' => 'Gast']);
     }
 }

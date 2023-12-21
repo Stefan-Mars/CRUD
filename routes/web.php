@@ -23,19 +23,19 @@ use App\Http\Controllers\AttributeController;
 Route::redirect('/','/users/login');
 Route::post('/users', [UserController::class, 'store']);
 Route::middleware(['guest'])->group(function () {
-    Route::post('/users/authenticate', [UserController::class, 'authenticate'])->middleware("guest");
-    Route::get('/users/register', [UserController::class, 'create'])->middleware("guest");
-    Route::get('/users/login', [UserController::class, 'login'])->name('login')->middleware("guest");
+    Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+    Route::get('/users/register', [UserController::class, 'create']);
+    Route::get('/users/login', [UserController::class, 'login'])->name('login');
 });
 
 Route::middleware(['auth'])->group(function () {
     //Users
-    Route::get('/users/show', [UserController::class, 'show'])->middleware("auth");
-    Route::post('/users/update', [UserController::class, 'update'])->middleware("auth");
-    Route::get('/users/logout', [UserController::class, 'logout'])->middleware("auth");
+    Route::get('/users/show', [UserController::class, 'show']);
+    Route::post('/users/update', [UserController::class, 'update']);
+    Route::get('/users/logout', [UserController::class, 'logout']);
     //Projects
     Route::get('/home', [ProjectController::class, 'index']);
-    Route::group(['middleware' => ['can:makeProject']], function () {
+    Route::middleware(['can:makeProject'])->group(function () {
         Route::post('/projects', [ProjectController::class, 'store']);
         Route::get('/project/create', [ProjectController::class, 'create']);
         Route::put('/projects/{project}', [ProjectController::class, 'update']);
@@ -57,7 +57,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:Admin'])->group(function () {
         //Admin
-        Route::get('/admin', [AdminController::class, 'show']);
         Route::get('/admin/accounts', [AdminController::class, 'accounts']);
         Route::get('/admin/attributes', [AdminController::class, 'attributes']);
         Route::put('/admin/roles/{id}', [AdminController::class, 'roles']);

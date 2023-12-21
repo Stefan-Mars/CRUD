@@ -3,6 +3,9 @@
 @extends('layouts/nav')
 <br>
 <table class="m-auto">
+    <tr>
+        <td colspan="2"class="text-center text-xl p-2">Account Overzicht</td>
+    </tr>
     <tr class="border">
         <td class="p-2">Naam</td>
         <td class="p-2">{{ Auth::user()->name }}</td>

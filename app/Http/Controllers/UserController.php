@@ -24,7 +24,7 @@ class UserController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
-        $user->assignRole('Default');
+        $user->assignRole('Gast');
 
         auth()->login($user);
 
@@ -62,7 +62,7 @@ class UserController extends Controller
             return redirect('/home')->with('message', 'Je bent ingelogd!');
         }
 
-        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        return back()->withErrors(['email' => 'Ongeldige inloggegevens'])->onlyInput('email');
     }
 
 }

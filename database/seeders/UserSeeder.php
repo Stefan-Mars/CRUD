@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -24,6 +23,7 @@ class UserSeeder extends Seeder
         
         // Assign the role to the created user
         $user->assignRole('Admin');
+        
         
     }
 }

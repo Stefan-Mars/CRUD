@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="width: 100%;">
 
 <head>
     <meta charset="UTF-8">
@@ -31,8 +31,7 @@
     <script src="/literallyCanvas/js/literallycanvas-core.js"></script>
 </head>
 
-
-<body class='text-black font-sans m-0 '>
+<body class='text-black font-sans m-0' style="width: 100%;">
     @include('layouts/flash-message')
     @yield('content')
 </body>
