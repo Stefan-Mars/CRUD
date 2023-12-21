@@ -137,18 +137,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script>
-        LC.setDefaultImageURLPrefix('/literallyCanvas/img');
-        LC.init(document.getElementById('zbeubeu'), {
-            toolbarPosition: 'top',
-            imageURLPrefix: '/literallyCanvas/img',
-            tools: [LC.tools.Pencil, LC.tools.Eraser, LC.tools.Line,
-                    LC.tools.Rectangle, LC.tools.Text, LC.tools.Eyedropper]
-        });
 
-
-        
-
-        //Signature pad 
         var canvas = document.getElementById("signature-pad");
 
         function resizeCanvas() {
@@ -182,15 +171,6 @@
     signatureInput.setAttribute('name', 'signatureData');   
     signatureInput.setAttribute('value', signatureData);
     form.appendChild(signatureInput);
-
-    var lcInstance = LC.init(document.getElementById('zbeubeu'));
-    var canvasElement = document.querySelector('#zbeubeu canvas:nth-child(1)'); // Get the first canvas element inside #zbeubeu
-    var tekeningData = canvasElement.toDataURL(); // Capture drawing data from the canvas
-    var tekeningInput = document.createElement('input');
-    tekeningInput.setAttribute('type', 'hidden');
-    tekeningInput.setAttribute('name', 'tekeningData');
-    tekeningInput.setAttribute('value', tekeningData);
-    form.appendChild(tekeningInput);
 
     form.submit();
 });

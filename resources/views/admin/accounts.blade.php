@@ -4,7 +4,7 @@
     @include('layouts/admin')
     <h1 class="text-xl text-center">Alle Gebruikers</h1>
    
-    <table class="m-auto w-[70%]">
+    <table class="m-auto w-[85%] sm:w-3/5">
         <tr class="border">
             <td class="px-2">Naam</td>
             <td class="px-2">Email</td>

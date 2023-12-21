@@ -5,7 +5,7 @@
     <div class='m-auto'>
         <h1 class='text-center text-2xl'>Attribuut Overzicht</h1>
         <br>
-        
+
         <form action="/kozijnen" method="POST" class='m-auto w-[85%] sm:w-3/5  border h-14'>
             @csrf
             <input class=' w-full h-full indent-5 focus-visible:outline-slate-300' type="text" name="kozijn" id="kozijn"
@@ -28,7 +28,7 @@
                                 <input type="submit" style="display: none;">
                             </form>
                         </td>
-                        <td id='delete{{ $kozijn->id }}' class='pr-10'>
+                        <td id='delete{{ $kozijn->id }}' class='pr-8 text-red-600'>
                             <form action="/kozijn/{{ $kozijn->id }}" method="POST" id="deleteForm{{ $kozijn->id }}">
                                 @csrf
                                 @method("delete")
@@ -46,7 +46,7 @@
                         @if ($kozijn->id == $attribute->kozijnen_id)
                             <tr class='attribute-row k{{ $kozijn->id }} truncate' style='display: none; w-1/2'>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $attribute->attribute }}</td>
-                                <td><form action="/attribute/{{ $attribute->id }}" method="POST">
+                                <td><form action="/attribute/{{ $attribute->id }}" method="POST" class="text-red-600">
                                     @csrf
                                     @method("delete")
                                     <button type="submit">

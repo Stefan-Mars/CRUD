@@ -28,7 +28,7 @@
                         <td>{{$project->created_at->format("d/m/Y")}}</td>
                         <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
-                        <td class='whitespace-nowrap w-[1%]'>
+                        <td class='whitespace-nowrap w-[1%] text-red-600'>
                             <form action="/project/{{ $project->id }}" method="POST" id="deleteForm{{ $project->id }}">
                                 @csrf
                                 @method("delete")
