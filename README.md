@@ -6,4 +6,5 @@ Om te installeren:
     git clone https://github.com/Stefan-Mars/CRUD.git
 <h2>Composer</h2> 
 <p>Na het clonen open terminal op het mapje waar je het ingezet en doe</p>
+
     composer update
