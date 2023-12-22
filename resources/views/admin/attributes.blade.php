@@ -2,28 +2,23 @@
 @section('content')
     @include('layouts/nav')
     @include('layouts/admin')
-    <div class='m-auto'>
+    <div class='m-auto overflow-auto'>
         <h1 class='text-center text-2xl'>Attribuut Overzicht</h1>
         <br>
 
 
 
-        <div class='rounded-sm m-auto'>
-            <table class='border-separate table-auto border w-3/5 m-auto'>
-                <tr>
-                    <td class='text-lg w-full'>
-                        <form action="/kozijnen" method="POST" class='m-auto h-14'>
-                            @csrf
-                            <input class='w-full h-full indent-5 focus-visible:outline-slate-300 m-auto' type="text"
-                                name="kozijn" id="kozijn" placeholder="Voeg toe">
-                            <input type="submit" style="display: none;">
-                            @error('kozijn')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
-                            @enderror
-                        </form>
-                    </td>
-                </tr>
-            </table>
+        <div class='rounded-sm m-auto w-3/5'>
+            <form action="/kozijnen" method="POST" class='m-auto h-14 border'>
+                @csrf
+                <input class='w-full h-full indent-5 focus-visible:outline-slate-300 m-auto' type="text" name="kozijn"
+                    id="kozijn" placeholder="Voeg toe">
+                <input type="submit" style="display: none;">
+                @error('kozijn')
+                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                @enderror
+            </form>
+
         </div>
         @foreach ($kozijnen as $kozijn)
             <div class='rounded-sm m-auto'>
@@ -114,7 +109,7 @@
                 input.addEventListener('blur', function() {
                     const form = input.closest('form'); // Find the parent form of the input
                     form.querySelector('input[type="submit"]')
-                .click(); // Simulate click on the submit button
+                        .click(); // Simulate click on the submit button
                     console.log('d');
                 });
             });

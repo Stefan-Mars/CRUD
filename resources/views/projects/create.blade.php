@@ -1,6 +1,6 @@
 @extends('layouts.head')
 @section('content')
-@include('layouts/nav')
+    @include('layouts/nav')
     <div class='w-full h-view bg-slate-200'>
         <br>
 
@@ -57,8 +57,8 @@
                                     for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                             </td>
                             <td class="h-10">
-                                <select class='w-full border h-full' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}"
-                                    onchange="red('{{ $kozijn->kozijn }}')">
+                                <select class='w-full border h-full' name="{{ $kozijn->kozijn }}"
+                                    id="{{ $kozijn->kozijn }}" onchange="red('{{ $kozijn->kozijn }}')">
                                     <option value="" disabled selected>Selecteer optie</option>
                                     @foreach ($attributes[$kozijn->id - 1] as $attribute)
                                         <option @if (old($kozijn->kozijn) == $attribute->attribute) selected @endif
@@ -78,7 +78,8 @@
                     @endforeach
 
                     <tr class='text-center'>
-                        <td colspan="3"  class='h-10'><button class='bg-red-500 p-1 rounded-sm w-full h-full'type="submit">Opslaan</button>
+                        <td colspan="3" class='h-10'><button
+                                class='bg-red-500 p-1 rounded-sm w-full h-full'type="submit">Opslaan</button>
                         </td>
                     </tr>
                 </table>

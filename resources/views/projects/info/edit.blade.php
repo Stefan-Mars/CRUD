@@ -1,15 +1,16 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <div class='flex m-auto overflow-auto' >
+    <div class='flex m-auto overflow-auto'>
 
 
         <form class='m-auto'action="/project/info/{{ $project->id }}" method="POST">
             @csrf
-            @method("put")
+            @method('put')
             <table class='border-separate border-spacing-1'>
                 <tr>
-                    <td colspan="4"><a href="/project/{{ $project->id}}"><i class="fa-solid fa-arrow-left fa-xl"></i></a></td>
+                    <td colspan="4"><a href="/project/{{ $project->id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+                    </td>
                     <td class='bg-red-300 p-2'>
                         <p class='float-left font-semibold'>
                             Projectnaam<br>

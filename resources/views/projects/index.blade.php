@@ -6,45 +6,45 @@
         <br>
         <h1 class='text-center text-3xl'>Welkom</h1>
         @can('viewPages')
-        <table id="myTable" class='display table'>
-            <thead>
-                <tr>
-                    <td>Naam</td>
-                    <td>Aangemaakt door</td>
-                    <td class="whitespace-nowrap w-[1%]">Gemaakt Op</td>
-                    <td></td>
-                    <td>
-                        <a href='/project/create'>
-                            <i class="fa-solid fa-plus"></i>
-                        </a>
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($projects as $project)
+            <table id="myTable" class='display table table-auto'>
+                <thead>
                     <tr>
-                        <td><a class='underline'href="/project/{{ $project->id }}">{{ $project->KlantNaam }}</a></td>
-                        <td>{{$project->user->name}}</td>
-                        <td>{{$project->created_at->format("d/m/Y")}}</td>
-                        <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
-                        <td class='whitespace-nowrap w-[1%] text-red-600'>
-                            <form action="/project/{{ $project->id }}" method="POST" id="deleteForm{{ $project->id }}">
-                                @csrf
-                                @method("delete")
-                                <button type="button"onclick="warningMessage({{ $project->id }})">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
+                        <td>Naam</td>
+                        <td>Aangemaakt door</td>
+                        <td class="whitespace-nowrap w-[1%]">Gemaakt Op</td>
+                        <td></td>
+                        <td>
+                            <a href='/project/create'>
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        
+                </thead>
+                <tbody>
+                    @foreach ($projects as $project)
+                        <tr>
+                            <td><a class='underline'href="/project/{{ $project->id }}">{{ $project->KlantNaam }}</a></td>
+                            <td>{{ $project->user->name }}</td>
+                            <td>{{ $project->created_at->format('d/m/Y') }}</td>
+                            <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i
+                                        class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td class='whitespace-nowrap w-[1%] text-red-600'>
+                                <form action="/project/{{ $project->id }}" method="POST" id="deleteForm{{ $project->id }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button"onclick="warningMessage({{ $project->id }})">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
 
-    </div>
+
+        </div>
     @else
         <p class="text-center">Je hebt geen permissie om deze pagina te zien</p>
     @endcan
@@ -55,7 +55,8 @@
             sort: false,
             responsive: true,
         });
-        function warningMessage(id){
+
+        function warningMessage(id) {
             Swal.fire({
                 title: "Weet je het zeker?",
                 icon: "warning",
@@ -66,10 +67,9 @@
                 cancelButtonText: "Nee",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById('deleteForm'+id).submit();
+                    document.getElementById('deleteForm' + id).submit();
                 }
             });
         }
-
     </script>
 @endsection

@@ -1,12 +1,12 @@
 @extends('layouts.head')
 @section('content')
-@include('layouts/nav')
+    @include('layouts/nav')
     <div class='w-full h-view bg-slate-200'>
         <br>
         <div class='flex justify-center'>
             <form action="/projects/{{ $project->id }}" method="POST" class='border p-10 rounded-sm bg-white '>
                 @csrf
-                @method("PUT")
+                @method('PUT')
                 <a href="/"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
                 <h1 class="text-center text-xl">Bewerk {{ $project->KlantNaam }}</h1>
                 <table class='border-separate'>
@@ -58,8 +58,8 @@
                                     for="{{ $kozijn->kozijn }}">{{ str_replace('_', ' ', $kozijn->kozijn) }}</label>
                             </td>
                             <td class='h-10'>
-                                <select class='w-full border h-full' name="{{ $kozijn->kozijn }}" id="{{ $kozijn->kozijn }}"
-                                    onchange="red('{{ $kozijn->kozijn }}')">
+                                <select class='w-full border h-full' name="{{ $kozijn->kozijn }}"
+                                    id="{{ $kozijn->kozijn }}" onchange="red('{{ $kozijn->kozijn }}')">
                                     <option value="" disabled>Selecteer optie</option>
                                     @foreach ($attributes[$kozijn->id - 1] as $attribute)
                                         <option @if ($kozijn->pivot->value == $attribute->attribute) selected @endif
@@ -81,7 +81,8 @@
 
 
                     <tr class='text-center'>
-                        <td colspan="3" class='h-10'><button class='bg-red-500 p-1 rounded-sm w-full h-full'type="submit">Opslaan</button>
+                        <td colspan="3" class='h-10'><button
+                                class='bg-red-500 p-1 rounded-sm w-full h-full'type="submit">Opslaan</button>
                         </td>
                     </tr>
                 </table>

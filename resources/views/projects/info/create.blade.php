@@ -8,7 +8,8 @@
             @csrf
             <table class='border-separate border-spacing-1'>
                 <tr>
-                    <td colspan="4"><a href="/project/{{ $project->id}}"><i class="fa-solid fa-arrow-left fa-xl"></i></a></td>
+                    <td colspan="4"><a href="/project/{{ $project->id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+                    </td>
                     <td class='bg-red-200'>
                         <p class='float-left font-semibold p-2'>
                             Projectnaam<br>

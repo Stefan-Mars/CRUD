@@ -1,15 +1,16 @@
 @extends('layouts/head')
 @section('content')
-@include('layouts/nav')
-<br>
-    
+    @include('layouts/nav')
+    <br>
+
     <form action="/project/akkoord/{{ $akkoord->project_id }}" method="POST" class="overflow-auto">
         @csrf
-        @method("PUT")
+        @method('PUT')
         <table class='m-auto border-separate border-spacing-1'>
             <tr class="hide-for-pdf">
                 <td class="hide-for-pdf" colspan="4">
-                    <a class="hide-for-pdf" href="/project/{{ $akkoord->project_id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+                    <a class="hide-for-pdf" href="/project/{{ $akkoord->project_id }}"><i
+                            class="fa-solid fa-arrow-left fa-xl"></i></a>
                     <h1 class="text-2xl text-center hide-for-pdf">Bewerk Akkoord</h1>
                 </td>
             </tr>
@@ -76,51 +77,56 @@
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan="2">1. Zijn de ruimtes schoon opgeleverd? <span class='float-right'>ja <span
-                        class="custom-radio @if ($akkoord->ruimteSchoon == 'true') checked @endif"></span><input
-                        class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'true') checked @endif type="radio" value="true"
-                        name='ruimteSchoon'> nee <span
-                        class="custom-radio @if ($akkoord->ruimteSchoon == 'false') checked @endif"></span><input
-                        class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'false') checked @endif type="radio" value="false"
-                        name='ruimteSchoon'></span></td>
-                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed?  <span class='ml-4 float-right'>ja <span
-                        class="custom-radio @if ($akkoord->ramenDeurenGoed == 'true') checked @endif"></span><input
-                        class='hide-for-pdf'@if ($akkoord->ramenDeurenGoed == 'true') checked @endif type="radio" value="true"
-                        name='ramenDeurenGoed'> nee <span
-                        class="custom-radio @if ($akkoord->ramenDeurenGoed == 'false') checked @endif"></span><input
-                        class='hide-for-pdf' @if ($akkoord->ramenDeurenGoed == 'false') checked @endif type="radio"
-                        value="false" name='ramenDeurenGoed'></span></td>
+                            class="custom-radio @if ($akkoord->ruimteSchoon == 'true') checked @endif"></span><input
+                            class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'true') checked @endif type="radio"
+                            value="true" name='ruimteSchoon'> nee <span
+                            class="custom-radio @if ($akkoord->ruimteSchoon == 'false') checked @endif"></span><input
+                            class='hide-for-pdf'@if ($akkoord->ruimteSchoon == 'false') checked @endif type="radio"
+                            value="false" name='ruimteSchoon'></span></td>
+                <td class='p-2' colspan="2">4. Functioneren de ramen en deuren goed? <span
+                        class='ml-4 float-right'>ja <span
+                            class="custom-radio @if ($akkoord->ramenDeurenGoed == 'true') checked @endif"></span><input
+                            class='hide-for-pdf'@if ($akkoord->ramenDeurenGoed == 'true') checked @endif type="radio"
+                            value="true" name='ramenDeurenGoed'> nee <span
+                            class="custom-radio @if ($akkoord->ramenDeurenGoed == 'false') checked @endif"></span><input
+                            class='hide-for-pdf' @if ($akkoord->ramenDeurenGoed == 'false') checked @endif type="radio"
+                            value="false" name='ramenDeurenGoed'></span></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">2. Zijn uw eigendommen onbeschadigd gebleven?  <span class='float-right'>ja <span
-                        class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'true') checked @endif"></span><input
-                        class='hide-for-pdf'@if ($akkoord->eigendommenBeschadigd == 'true') checked @endif type="radio"
-                        value="true" name='eigendommenBeschadigd'> nee <span
-                        class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif"></span><input
-                        class='hide-for-pdf' @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif type="radio"
-                        value="false" name='eigendommenBeschadigd'></span></td>
-                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd?  <span class='float-right ml-4'>ja <span
-                        class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif"></span><input
-                        class='hide-for-pdf'@if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif type="radio"
-                        value="true" name='afwerkingUitgevoerd'> nee <span
-                        class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'false') checked @endif"></span><input
-                        class='hide-for-pdf' @if ($akkoord->afwerkingUitgevoerd == 'false') checked @endif type="radio"
-                        value="false" name='afwerkingUitgevoerd'></span></td>
+                <td class='p-2' colspan="2">2. Zijn uw eigendommen onbeschadigd gebleven? <span
+                        class='float-right'>ja <span
+                            class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'true') checked @endif"></span><input
+                            class='hide-for-pdf'@if ($akkoord->eigendommenBeschadigd == 'true') checked @endif type="radio"
+                            value="true" name='eigendommenBeschadigd'> nee <span
+                            class="custom-radio @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif"></span><input
+                            class='hide-for-pdf' @if ($akkoord->eigendommenBeschadigd == 'false') checked @endif type="radio"
+                            value="false" name='eigendommenBeschadigd'></span></td>
+                <td class='p-2' colspan="2">5. Is de afwerking naar wens uitgevoerd? <span
+                        class='float-right ml-4'>ja <span
+                            class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif"></span><input
+                            class='hide-for-pdf'@if ($akkoord->afwerkingUitgevoerd == 'true') checked @endif type="radio"
+                            value="true" name='afwerkingUitgevoerd'> nee <span
+                            class="custom-radio @if ($akkoord->afwerkingUitgevoerd == 'false') checked @endif"></span><input
+                            class='hide-for-pdf' @if ($akkoord->afwerkingUitgevoerd == 'false') checked @endif type="radio"
+                            value="false" name='afwerkingUitgevoerd'></span></td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">3. Zijn de ruiten en kozijnen onbeschadigd?  <span class='float-right'>ja <span
-                        class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'true') checked @endif"></span><input
-                        class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'true') checked @endif type="radio"
-                        value="true" name='ruitenKozijnenOnbeschadigd'> nee <span
-                        class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif"></span><input
-                        class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif type="radio"
-                        value="false" name='ruitenKozijnenOnbeschadigd'></span></td>
-                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens?  <span class='ml-4 float-right'>ja <span
-                        class="custom-radio @if ($akkoord->overigePunten == 'true') checked @endif"></span><input
-                        class='hide-for-pdf'@if ($akkoord->overigePunten == 'true') checked @endif type="radio"
-                        value="true" name='overigePunten'> nee <span
-                        class="custom-radio @if ($akkoord->overigePunten == 'false') checked @endif"></span><input
-                        class='hide-for-pdf' @if ($akkoord->overigePunten == 'false') checked @endif type="radio"
-                        value="false" name='overigePunten'></span></td>
+                <td class='p-2' colspan="2">3. Zijn de ruiten en kozijnen onbeschadigd? <span
+                        class='float-right'>ja <span
+                            class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'true') checked @endif"></span><input
+                            class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'true') checked @endif type="radio"
+                            value="true" name='ruitenKozijnenOnbeschadigd'> nee <span
+                            class="custom-radio @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif"></span><input
+                            class='hide-for-pdf' @if ($akkoord->ruitenKozijnenOnbeschadigd == 'false') checked @endif type="radio"
+                            value="false" name='ruitenKozijnenOnbeschadigd'></span></td>
+                <td class='p-2' colspan="2">6. Voldoen alle overige punten aan uw wens? <span
+                        class='ml-4 float-right'>ja <span
+                            class="custom-radio @if ($akkoord->overigePunten == 'true') checked @endif"></span><input
+                            class='hide-for-pdf'@if ($akkoord->overigePunten == 'true') checked @endif type="radio"
+                            value="true" name='overigePunten'> nee <span
+                            class="custom-radio @if ($akkoord->overigePunten == 'false') checked @endif"></span><input
+                            class='hide-for-pdf' @if ($akkoord->overigePunten == 'false') checked @endif type="radio"
+                            value="false" name='overigePunten'></span></td>
             </tr>
             <tr class='bg-red-300'>
                 <td class='p-2 'colspan='4'><b>Indien er punten zijn die afgewerkt dienen te worden dan gelieve hieronder
@@ -128,7 +134,8 @@
             </tr>
             <tr class='bg-red-200'>
                 <td class='p-2' colspan='4'>
-                    <textarea id='textbox' type='text'class="w-full @error('anderePunten') border border-red-500 @enderror overflow-hidden p-0 outline-none min-w-[30%]"
+                    <textarea id='textbox'
+                        type='text'class="w-full @error('anderePunten') border border-red-500 @enderror overflow-hidden p-0 outline-none min-w-[30%]"
                         name='anderePunten'>{{ $akkoord->anderePunten }}</textarea>
                 </td>
 
@@ -139,7 +146,7 @@
                 </td>
             </tr>
             <tr class='bg-red-200'>
-                <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het<br> ondertekenen 
+                <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het<br> ondertekenen
                     verklaart de klant akkoord te gaan met de <br>werkzaamheden</td>
                 <td class='p-2' colspan="2">Handtekening klant:
                     <img src="{{ $akkoord->signatureData }}" alt="No image">
@@ -157,28 +164,30 @@
     <script>
         var observe;
         if (window.attachEvent) {
-            observe = function (element, event, handler) {
-                element.attachEvent('on'+event, handler);
+            observe = function(element, event, handler) {
+                element.attachEvent('on' + event, handler);
             };
-        }
-        else {
-            observe = function (element, event, handler) {
+        } else {
+            observe = function(element, event, handler) {
                 element.addEventListener(event, handler, false);
             };
         }
-        function init () {
+
+        function init() {
             var text = document.getElementById('textbox');
-            function resize () {
+
+            function resize() {
                 text.style.height = 'auto';
-                text.style.height = text.scrollHeight+'px';
+                text.style.height = text.scrollHeight + 'px';
             }
-            function delayedResize () {
+
+            function delayedResize() {
                 window.setTimeout(resize, 0);
             }
-            observe(text, 'change',  resize);
-            observe(text, 'cut',     delayedResize);
-            observe(text, 'paste',   delayedResize);
-            observe(text, 'drop',    delayedResize);
+            observe(text, 'change', resize);
+            observe(text, 'cut', delayedResize);
+            observe(text, 'paste', delayedResize);
+            observe(text, 'drop', delayedResize);
             observe(text, 'keydown', delayedResize);
 
             text.focus();
@@ -187,6 +196,4 @@
         }
         init();
     </script>
-
-
 @endsection

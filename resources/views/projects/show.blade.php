@@ -1,15 +1,15 @@
 @extends('layouts/head')
 @section('content')
-@include('layouts/nav')
+    @include('layouts/nav')
     <div class='h-screen bg-slate-200 overflow-auto'>
         <br>
 
         <div class='flex justify-center'>
             <div class='border p-16 rounded-sm border-spacing-y-3 bg-white'>
-                
+
                 <table>
                     <tr>
-                        <td class="text-left"><a href="/" ><i class="fa-solid fa-arrow-left fa-xl"></i></a></td>
+                        <td class="text-left"><a href="/"><i class="fa-solid fa-arrow-left fa-xl"></i></a></td>
                     </tr>
                     <tr class="text-center text-2xl">
                         <td colspan="2">{{ $project->KlantNaam }}</td>
@@ -54,7 +54,8 @@
                         @else
                             <tr>
                                 <td colspan="3" class='text-center bg-red-400 p-1 border border-white'>
-                                    <a class='block w-full h-full' href="/project/akkoord/edit/{{ $project->id }}">Akkoord</a>
+                                    <a class='block w-full h-full'
+                                        href="/project/akkoord/edit/{{ $project->id }}">Akkoord</a>
                                 </td>
                             </tr>
                         @endif

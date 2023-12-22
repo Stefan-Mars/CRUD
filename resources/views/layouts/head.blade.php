@@ -13,13 +13,14 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src='/js/index.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <title>Document</title>
+
+    <title>Boer Kozijnen</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-            * {
-                font-family: 'Poppins', sans-serif;
-            }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
     </style>
 
 </head>
