@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts/nav')
 
-    <form action="/project/akkoords/{{ $project->id }}" method="POST">
+    <form action="/project/akkoords/{{ $project->id }}" method="POST" class="overflow-auto">
         @csrf
         <table class='m-auto border-separate border-spacing-1'>
             <tr>

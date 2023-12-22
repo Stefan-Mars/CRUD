@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts/nav')
     <br>
-    <div class='flex m-auto'>
+    <div class='flex m-auto overflow-auto'>
 
         <form action="/project/infos/{{ $project->id }}" method="POST" class="m-auto">
             @csrf

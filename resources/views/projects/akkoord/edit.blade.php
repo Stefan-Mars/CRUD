@@ -3,7 +3,7 @@
 @include('layouts/nav')
 <br>
     
-    <form action="/project/akkoord/{{ $akkoord->project_id }}" method="POST">
+    <form action="/project/akkoord/{{ $akkoord->project_id }}" method="POST" class="overflow-auto">
         @csrf
         @method("PUT")
         <table class='m-auto border-separate border-spacing-1'>

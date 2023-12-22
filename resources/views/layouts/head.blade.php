@@ -21,14 +21,7 @@
                 font-family: 'Poppins', sans-serif;
             }
     </style>
-    <link href="/literallyCanvas/css/literallycanvas.css" rel="stylesheet">
 
-    <!-- dependency: React.js -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
-
-    <!-- Literally Canvas -->
-    <script src="/literallyCanvas/js/literallycanvas-core.js"></script>
 </head>
 
 <body class='text-black font-sans m-0' style="width: 100%;">

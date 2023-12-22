@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts/nav')
 
-    <div class='m-auto w:3/5 md:w-4/5'>
+    <div class='m-auto w:3/5 md:w-4/5 overflow-auto'>
         <br>
         <h1 class='text-center text-3xl'>Welkom</h1>
         @can('viewPages')

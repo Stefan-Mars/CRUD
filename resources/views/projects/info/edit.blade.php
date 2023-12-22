@@ -1,7 +1,7 @@
 @extends('layouts/head')
 @section('content')
     @include('layouts/nav')
-    <div class='flex m-auto' >
+    <div class='flex m-auto overflow-auto' >
 
 
         <form class='m-auto'action="/project/info/{{ $project->id }}" method="POST">

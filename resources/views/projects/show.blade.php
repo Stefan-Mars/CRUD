@@ -1,7 +1,7 @@
 @extends('layouts/head')
 @section('content')
 @include('layouts/nav')
-    <div class='h-screen bg-slate-200'>
+    <div class='h-screen bg-slate-200 overflow-auto'>
         <br>
 
         <div class='flex justify-center'>
