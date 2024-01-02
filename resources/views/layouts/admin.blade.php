@@ -1,4 +1,4 @@
-<table id="myTable">
+<table id="myTable" class="w-full sm:w-auto">
     <tr class="border">
         <td class="p-2 text-xl @if (Request::url() === url('/admin/attributes')) bg-gray-300 @endif">
             <a href="/admin/attributes" style="display: block; width: 100%; height: 100%;">Attribuut Editor</a>

@@ -8,18 +8,18 @@
 
 
 
-        <div class='rounded-sm m-auto w-3/5'>
-            <form action="/kozijnen" method="POST" class='m-auto h-14 border'>
+        <div class='rounded-sm m-auto'>
+            <form action="/kozijnen" method="POST" class='border w-3/5 m-auto'>
                 @csrf
-                <input class='w-full h-full indent-5 focus-visible:outline-slate-300 m-auto' type="text" name="kozijn"
+                <input class='p-4 w-full h-full  focus-visible:outline-slate-300 m-auto' type="text" name="kozijn"
                     id="kozijn" placeholder="Voeg toe">
                 <input type="submit" style="display: none;">
                 @error('kozijn')
                     <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
             </form>
-
         </div>
+
         @foreach ($kozijnen as $kozijn)
             <div class='rounded-sm m-auto'>
                 <table class='border-separate table-auto border w-3/5 m-auto'>

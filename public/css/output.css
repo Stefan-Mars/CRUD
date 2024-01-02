@@ -733,6 +733,14 @@ video {
   width: 100%;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
 .min-w-\[30\%\] {
   min-width: 30%;
 }
@@ -1142,6 +1150,10 @@ video {
     width: 100%;
   }
 
+  .sm\:w-auto {
+    width: auto;
+  }
+
   .sm\:border {
     border-width: 1px;
   }
@@ -1150,5 +1162,25 @@ video {
 @media (min-width: 768px) {
   .md\:w-4\/5 {
     width: 80%;
+  }
+
+  .md\:w-3\/5 {
+    width: 60%;
+  }
+
+  .md\:overflow-hidden {
+    overflow: hidden;
+  }
+
+  .md\:overflow-clip {
+    overflow: clip;
+  }
+
+  .md\:overflow-visible {
+    overflow: visible;
+  }
+
+  .md\:overflow-scroll {
+    overflow: scroll;
   }
 }

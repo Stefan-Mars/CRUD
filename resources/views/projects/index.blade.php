@@ -2,11 +2,11 @@
 @section('content')
     @include('layouts/nav')
 
-    <div class='m-auto w:3/5 md:w-4/5 overflow-auto'>
+    <div class='m-auto w-full md:w-4/5 overflow-auto'>
         <br>
         <h1 class='text-center text-3xl'>Welkom</h1>
         @can('viewPages')
-            <table id="myTable" class='display table table-auto'>
+            <table id="myTable" class='display table'>
                 <thead>
                     <tr>
                         <td>Naam</td>
@@ -26,8 +26,7 @@
                             <td><a class='underline'href="/project/{{ $project->id }}">{{ $project->KlantNaam }}</a></td>
                             <td>{{ $project->user->name }}</td>
                             <td>{{ $project->created_at->format('d/m/Y') }}</td>
-                            <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i
-                                        class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td class='whitespace-nowrap w-[1%]'><a href="/project/edit/{{ $project->id }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td class='whitespace-nowrap w-[1%] text-red-600'>
                                 <form action="/project/{{ $project->id }}" method="POST" id="deleteForm{{ $project->id }}">
                                     @csrf

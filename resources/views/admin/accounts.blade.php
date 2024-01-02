@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts/nav')
     @include('layouts/admin')
-    <h1 class="text-xl text-center">Alle Gebruikers</h1>
+    <h1 class="text-2xl text-center">Alle Gebruikers</h1>
     <div class="overflow-x-auto">
         <table class="m-auto w-[85%] sm:w-3/5">
             <tr class="border">
