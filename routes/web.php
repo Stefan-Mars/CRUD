@@ -8,6 +8,7 @@ use App\Http\Controllers\AkkoordController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\KozijnenController;
 use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\SignatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/project/info/{project}', [InfoController::class, 'create']);
         Route::put('/project/info/{project}', [InfoController::class, 'update']);
         Route::get('/project/info/edit/{project}', [InfoController::class, 'edit']);
+
+        Route::post('/project/akkoord/signature/{akkoord}', [SignatureController::class, 'store']);
+        Route::get('/project/akkoord/signature/{akkoord}', [SignatureController::class, 'create']);
     }); 
 
     Route::middleware(['role:Admin'])->group(function () {

@@ -149,7 +149,19 @@
                 <td class='p-2' colspan="2">Akkoordverklaring voor de werkzaamheden middels het<br> ondertekenen
                     verklaart de klant akkoord te gaan met de <br>werkzaamheden</td>
                 <td class='p-2' colspan="2">Handtekening klant:
-                    <img src="{{ $akkoord->signatureData }}" alt="No image">
+                    @if($akkoord->signature != null)
+                        <img src="{{ $akkoord->signature->image }}" alt="No image">
+                    
+                    @else
+                    <br>
+                    <br>
+                        <a class="bg-red-400 p-2" href="/project/akkoord/signature/{{ $akkoord->id }}">
+                            Maak Handtekening
+                            <i class="fa-solid fa-plus"></i>
+                            <br>
+                        </a>
+                        <br>
+                    @endif
                 </td>
             </tr>
             <tr>

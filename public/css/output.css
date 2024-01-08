@@ -556,6 +556,10 @@ video {
   position: relative;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .left-1\/2 {
   left: 50%;
 }
@@ -580,10 +584,6 @@ video {
   top: 100px;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
 .z-20 {
   z-index: 20;
 }
@@ -606,11 +606,6 @@ video {
 
 .m-auto {
   margin: auto;
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .-mb-2 {
@@ -667,10 +662,6 @@ video {
 
 .h-10 {
   height: 2.5rem;
-}
-
-.h-14 {
-  height: 3.5rem;
 }
 
 .h-24 {
@@ -733,24 +724,8 @@ video {
   width: 100%;
 }
 
-.w-4\/5 {
-  width: 80%;
-}
-
-.w-2\/5 {
-  width: 40%;
-}
-
 .min-w-\[30\%\] {
   min-width: 30%;
-}
-
-.min-w-full {
-  min-width: 100%;
-}
-
-.max-w-screen-md {
-  max-width: 768px;
 }
 
 .table-auto {
@@ -885,6 +860,16 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.border-gray-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(249 250 251 / var(--tw-border-opacity));
+}
+
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
 .bg-gray-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
@@ -974,21 +959,6 @@ video {
   padding-bottom: 0.75rem;
 }
 
-.px-36 {
-  padding-left: 9rem;
-  padding-right: 9rem;
-}
-
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .pl-4 {
   padding-left: 1rem;
 }
@@ -1007,10 +977,6 @@ video {
 
 .text-right {
   text-align: right;
-}
-
-.indent-5 {
-  text-indent: 1.25rem;
 }
 
 .indent-px {
@@ -1118,16 +1084,8 @@ video {
 }
 
 @media (min-width: 640px) {
-  .sm\:visible {
-    visibility: visible;
-  }
-
-  .sm\:static {
-    position: static;
-  }
-
-  .sm\:top-0 {
-    top: 0px;
+  .sm\:float-right {
+    float: right;
   }
 
   .sm\:block {
@@ -1142,45 +1100,33 @@ video {
     width: 60%;
   }
 
-  .sm\:w-1\/2 {
-    width: 50%;
-  }
-
-  .sm\:w-full {
-    width: 100%;
-  }
-
   .sm\:w-auto {
     width: auto;
-  }
-
-  .sm\:border {
-    border-width: 1px;
   }
 }
 
 @media (min-width: 768px) {
+  .md\:float-right {
+    float: right;
+  }
+
   .md\:w-4\/5 {
     width: 80%;
   }
 
-  .md\:w-3\/5 {
-    width: 60%;
+  .md\:w-1\/2 {
+    width: 50%;
   }
+}
 
-  .md\:overflow-hidden {
-    overflow: hidden;
+@media (min-width: 1280px) {
+  .xl\:float-right {
+    float: right;
   }
+}
 
-  .md\:overflow-clip {
-    overflow: clip;
-  }
-
-  .md\:overflow-visible {
-    overflow: visible;
-  }
-
-  .md\:overflow-scroll {
-    overflow: scroll;
+@media (min-width: 1536px) {
+  .\32xl\:float-right {
+    float: right;
   }
 }

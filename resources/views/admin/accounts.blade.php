@@ -27,7 +27,7 @@
                                     </option>
                                 @endforeach
                             </select>
-                            <button type="submit">Opslaan</button>
+                            <button type="submit" class="border border-gray-500 p-1">Opslaan</button>
                         </form>
                     </td>
                     <td class="px-2 whitespace-nowrap w-[1%]">{{ $user->updated_at->format('d/m/Y') }}</td>

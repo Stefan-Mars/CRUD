@@ -11,19 +11,20 @@
                 <tr>
                     <td colspan="4"><a href="/project/{{ $project->id }}"><i class="fa-solid fa-arrow-left fa-xl"></i></a>
                     </td>
-                    <td class='bg-red-300 p-2'>
+                    <td class='bg-red-300 p-2 text-center'>
                         <p class='float-left font-semibold'>
-                            Projectnaam<br>
-                            <input class='border border-slate-300 font-normal' type="text" name='ProjectNaam'
+                            <h1 class="font-semibold">Projectnaam</h1>
+                            <input class='border border-slate-300 font-normal w-full md:w-1/2' type="text" name='ProjectNaam'
                                 value='{{ $projectInfo->ProjectNaam }}'>
 
                         </p>
                         @error('ProjectNaam')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
+                        
                         <p class='float-right font-semibold'>
-                            Datum bestelling<br>
-                            <input class='border border-slate-300 font-normal' type="date" name='datumBestelling'
+                            <h1 class="font-semibold">Datum bestelling</h1>
+                            <input class='border border-slate-300 font-normal w-full md:w-1/2' type="date" name='datumBestelling'
                                 value='{{ $projectInfo->datumBestelling }}'>
                         </p>
                         @error('datumBestelling')
