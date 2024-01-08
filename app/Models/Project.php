@@ -15,7 +15,7 @@ class Project extends Model
     }
     public function info()
     {
-        return $this->hasOne(projectInfo::class);
+        return $this->hasOne(ProjectInfo::class);
     }
     public function akkoord()
     {

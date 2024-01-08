@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Dompdf\Dompdf;
 use App\Models\Akkoord;
 use App\Models\Project;
-use App\Models\projectInfo;
+use App\Models\ProjectInfo;
 use Illuminate\Http\Request;
 
 class AkkoordController extends Controller
@@ -16,7 +16,7 @@ class AkkoordController extends Controller
         $akkoord = $project->akkoord;
 
         if (!$akkoord || ($akkoord && $akkoord->project_id != $project->id)) {
-            $info = projectInfo::where('project_id', $project->id)->get();
+            $info = ProjectInfo::where('project_id', $project->id)->get();
             return view('projects/akkoord/create', compact('project', 'info'));
         } else {
             return redirect('/project/' . $project->id)->with('message', 'Akkoord bestaat al!');
@@ -114,7 +114,7 @@ class AkkoordController extends Controller
             <html>
                 <head>
 
-                    <style>" . file_get_contents('http://crud.test/css/output.css') . "
+                    <style>" . file_get_contents( env('APP_URL') . '/css/output.css') . "
                         *{
                             margin: 5px;
                             font-size: 13px;
@@ -127,7 +127,7 @@ class AkkoordController extends Controller
                             border-collapse: separate;
                             border-spacing: 0.25rem 0.25rem;
                         }
-                        
+
                         .hide-for-pdf {
                             display: none !important;
                         }
@@ -146,20 +146,20 @@ class AkkoordController extends Controller
                         b,img,.custom-radio,#textbox, span{
                             margin: 0px;
                         }
-                        
+
                         .bg-red-100 {
                             background-color: rgb(254 226 226);
                         }
-                          
-                        
+
+
                         .bg-red-200{
                             background-color: rgb(254 202 202);
                         }
-                          
+
                         .bg-red-300,.tr  {
                             background-color: rgb(252 165 165);
                         }
-                          
+
                         .bg-red-400 {
                             background-color: rgb(248 113 113);
                         }
@@ -171,8 +171,8 @@ class AkkoordController extends Controller
                         .margin{
                             margin-left: 100px;
                         }
-    
-                          
+
+
                     </style>
                 </head>
                 <body>"

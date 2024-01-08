@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Button;
 use App\Models\Content;
 use App\Models\Project;
-use App\Models\projectInfo;
+use App\Models\ProjectInfo;
 use Illuminate\Http\Request;
 
 class InfoController extends Controller
@@ -53,7 +53,7 @@ class InfoController extends Controller
 
             ]);
 
-            $projectInfo = projectInfo::create($formFields);
+            $projectInfo = ProjectInfo::create($formFields);
 
             $button = new Button();
 

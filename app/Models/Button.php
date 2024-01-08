@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ProjectInfo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Button extends Model
 {
@@ -12,6 +13,6 @@ class Button extends Model
 
     public function projectInfo()
     {
-        return $this->belongsTo(projectInfo::class);
+        return $this->belongsTo(ProjectInfo::class);
     }
 }
